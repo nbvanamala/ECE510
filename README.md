@@ -1,4 +1,5 @@
 Name: Naveen Babu Vanamala
+
 Course: Hardware for Artificial Intelligence and Machine Learning
 Term: Spring 2026
 
