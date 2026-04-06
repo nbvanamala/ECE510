@@ -1,3 +1,5 @@
+**Project: Edge CNN Accelerator for Industrial AI Applications**
+
 **Question 1: What are you trying to do?**
 
 I am designing a hardware accelerator for Convolutional Neural Networks (CNNs) tailored for edge devices used in industrial settings. The goal is to enable fast, efficient AI processing on small devices such as cameras or sensors, allowing tasks like defect detection, image recognition, and equipment monitoring to be performed locally without relying on large servers or cloud computing.
