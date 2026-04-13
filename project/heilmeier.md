@@ -28,10 +28,8 @@ well left of the ridge point, confirming it is deeply memory-bound on the curren
 The proposed accelerator replaces this kernel with a weight-stationary systolic array
 in SystemVerilog, loading weights once into on-chip SRAM and reusing them across all
 output spatial positions. This raises the effective arithmetic intensity to approximately
-50 FLOP/byte, crossing the ridge point and moving the kernel into the compute-bound
+10 FLOP/byte, crossing the ridge point and moving the kernel into the compute-bound
 regime. Fixed-point (INT8/INT16) arithmetic replaces FP64, reducing memory footprint
 by 4-8x and enabling denser MAC parallelism. The roofline gap between 2.48 and
-50 FLOP/byte directly quantifies the performance headroom the accelerator is designed
+10 FLOP/byte directly quantifies the performance headroom the accelerator is designed
 to capture.
-
-
