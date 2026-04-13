@@ -22,24 +22,24 @@ pass (_col2im) may also remain in software initially, as it contributes only ~11
 
 ## (c) Interface bandwidth required to avoid becoming interface-bound
 
-For a target accelerator operating at 1,800 GFLOP/s with a target arithmetic intensity of
-50 FLOP/byte (the hypothetical HW design point on the roofline), the required interface bandwidth
+For a target accelerator operating at 500 GFLOP/s with a target arithmetic intensity of
+10 FLOP/byte (the hypothetical HW design point on the roofline), the required interface bandwidth
 is:
 
-    Required BW = Peak GFLOP/s / Target AI = 1,800 / 50 = 36 GB/s
+    Required BW = Peak GFLOP/s / Target AI = 500 / 10 = 50 GB/s
 
-The accelerator must therefore sustain at least 36 GB/s of on-chip memory bandwidth to remain
+The accelerator must therefore sustain at least 50 GB/s of on-chip memory bandwidth to remain
 compute-bound. This is achievable with a scratchpad SRAM and weight-stationary dataflow, where
 weights are loaded once and reused across all output spatial positions — consistent with
 established edge accelerator designs like Eyeriss.
 
 ## (d) Current bound classification and expected change with the accelerator
 
-On the current Apple M2 CPU, the Conv2D kernel is memory-bound (AI = 2.48 FLOP/byte 
+On the current Apple M2 CPU, the Conv2D kernel is memory-bound (AI = 2.48 FLOP/byte
 ridge point = 18 FLOP/byte). The bottleneck is DRAM bandwidth consumed by im2col data movement,
 compounded by Python interpreter overhead. The proposed hardware accelerator changes this by
 implementing im2col in hardware with on-chip weight caching, raising the effective arithmetic
-intensity to approximately 50 FLOP/byte and moving the kernel into the compute-bound regime.
+intensity to approximately 10 FLOP/byte and moving the kernel into the compute-bound regime.
 Fixed-point (INT8/INT16) arithmetic further reduces memory footprint by 4-8x relative to FP64,
 enabling denser parallelism. The accelerator design therefore successfully transforms the bottleneck
 from memory bandwidth to MAC throughput, which is the intended outcome for a fixed-function
