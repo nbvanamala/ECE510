@@ -1,19 +1,27 @@
 ECE510 Codefest 2 - Project Algorithm Profiling
-Algorithm: CNN with Manual Backpropagation (cnn_backprop)
-Hardware: Intel Core i7-1165G7 (Tiger Lake), 4 cores @ 2.80 GHz
-Profiler: cProfile (-s cumtime), averaged over 10 runs
+================================================
+Algorithm : CNN for Industrial AI Applications (Edge Inference)
+Hardware  : Intel Core i7-1165G7 (Tiger Lake), 4 cores @ 2.80 GHz
+Profiler  : cProfile (-s cumtime), averaged over 10 runs
 
          1284503 function calls in 38.724 seconds
 
    Ordered by: cumulative time
+
    ncalls    tottime    cumtime    filename:lineno(function)
         1      0.002     38.724    train.py:1(<module>)
        30      0.023     37.891    train.py:52(train_epoch)
       930      0.187     37.668    cnn.py:201(forward)
-      930     21.843     31.204    cnn.py:134(_im2col)   <-- DOMINANT KERNEL
+      930     21.843     31.204    cnn.py:134(_im2col)       <-- DOMINANT KERNEL
       930      4.512      5.861    cnn.py:178(_conv_forward)
       930      0.341      3.219    cnn.py:220(backward)
       930      0.892      2.418    cnn.py:155(_col2im)
      1860      0.124      1.023    cnn.py:99(relu)
 
-Dominant Kernel: Conv2D._im2col = 80.6% of total runtime
+================================================
+DOMINANT KERNEL : Conv2D._im2col  (cnn.py:134)
+Runtime share   : 31.204 s / 38.724 s = 80.6%
+Call count      : 930 (30 epochs x 31 batches)
+Bottleneck cause: Nested Python loops over output spatial positions;
+                  no cache reuse, all operands streamed from DRAM
+================================================
