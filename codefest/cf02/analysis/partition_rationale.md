@@ -1,35 +1,46 @@
-# HW/SW Partition Proposal
-## ECE510 Codefest 2 | Naveen Babu Vanamala | Spring 2026
+# HW/SW Partition Rationale — Edge CNN Accelerator
 
-## (a) Which Kernel to Accelerate in Hardware and Why
-The roofline analysis identifies Conv2D forward pass as the dominant kernel,
-consuming 80.6% of total runtime. With an arithmetic intensity of 2.51 FLOP/byte
-and a CPU ridge point of 2.75 FLOP/byte, the kernel sits just below the ridge
-and is memory-bound on the CPU. This makes it ideal for hardware acceleration.
-A custom accelerator with larger on-chip SRAM buffers and dedicated convolution
-engines can exploit data reuse across the kernel window, raising the operational
-arithmetic intensity well above the ridge point. Instead of reloading input patches
-from DRAM for each output position, a hardware accelerator can cache the input
-feature map tile on-chip and stream the weights, drastically reducing DRAM traffic.
+## (a) Kernel to accelerate in hardware and roofline justification
 
-## (b) What the Software Baseline Will Continue to Handle
-The software layer will manage data loading, preprocessing, training loop control,
-epoch iteration, learning rate scheduling, loss computation, the backward pass,
-pooling layers, fully connected layers, and activation functions such as ReLU.
-These components account for less than 20% of total runtime and involve control
-flow that is difficult to pipeline efficiently in hardware. The host CPU will
-orchestrate data transfer to and from the accelerator and manage the interface.
+The dominant kernel identified via cProfile is `Conv2D._im2col`, which accounts for approximately
+72% of total training runtime (27.9 s out of 38.7 s). Roofline analysis on the Apple M2 laptop CPU
+places this kernel at an arithmetic intensity of 2.48 FLOP/byte, well below the ridge point of
+18 FLOP/byte. This confirms the kernel is deeply memory-bound on general-purpose hardware. The
+bottleneck is the nested Python loop structure over output spatial positions, which generates
+excessive DRAM traffic with no cache reuse. The convolution kernel is therefore the clear candidate
+for hardware acceleration. Its regular, data-parallel structure — a tiled matrix-matrix
+multiplication after im2col — maps directly onto fixed-function parallel MAC units in a custom
+accelerator using a weight-stationary dataflow.
 
-## (c) Interface Bandwidth Required
-With a target of 500 GFLOP/s and arithmetic intensity of 2.51 FLOP/byte:
-Required BW = 500 / 2.51 = 199 GB/s
-This exceeds PCIe 4.0 x16 bandwidth (~32 GB/s), so on-chip SRAM buffering
-is essential. The accelerator must buffer entire input tiles locally and minimize
-DRAM round-trips. A tile size of 64x64 with double-buffering is planned.
+## (b) What the software baseline will continue to handle
 
-## (d) Bound Classification and Accelerator Impact
-On the CPU, Conv2D is memory-bound (AI=2.51 < ridge=2.75 FLOP/byte).
-The hardware accelerator targets AI of 8-12 FLOP/byte through on-chip SRAM
-reuse and fixed-point arithmetic (INT8/INT16), pushing the kernel into the
-compute-bound regime. Performance will then scale with peak FLOP/s rather
-than memory bandwidth, which is the target for edge CNN inference.
+The software baseline will continue to manage training loop orchestration, loss computation,
+parameter updates (SGD optimizer), data loading and preprocessing, and activation functions
+(ReLU, softmax). These components are either control-flow-heavy, sequentially dependent, or
+low-compute relative to convolution, making them poor candidates for custom hardware. The backward
+pass (_col2im) may also remain in software initially, as it contributes only ~11% of runtime.
+
+## (c) Interface bandwidth required to avoid becoming interface-bound
+
+For a target accelerator operating at 1,800 GFLOP/s with a target arithmetic intensity of
+50 FLOP/byte (the hypothetical HW design point on the roofline), the required interface bandwidth
+is:
+
+    Required BW = Peak GFLOP/s / Target AI = 1,800 / 50 = 36 GB/s
+
+The accelerator must therefore sustain at least 36 GB/s of on-chip memory bandwidth to remain
+compute-bound. This is achievable with a scratchpad SRAM and weight-stationary dataflow, where
+weights are loaded once and reused across all output spatial positions — consistent with
+established edge accelerator designs like Eyeriss.
+
+## (d) Current bound classification and expected change with the accelerator
+
+On the current Apple M2 CPU, the Conv2D kernel is memory-bound (AI = 2.48 FLOP/byte 
+ridge point = 18 FLOP/byte). The bottleneck is DRAM bandwidth consumed by im2col data movement,
+compounded by Python interpreter overhead. The proposed hardware accelerator changes this by
+implementing im2col in hardware with on-chip weight caching, raising the effective arithmetic
+intensity to approximately 50 FLOP/byte and moving the kernel into the compute-bound regime.
+Fixed-point (INT8/INT16) arithmetic further reduces memory footprint by 4-8x relative to FP64,
+enabling denser parallelism. The accelerator design therefore successfully transforms the bottleneck
+from memory bandwidth to MAC throughput, which is the intended outcome for a fixed-function
+convolution engine implemented in SystemVerilog.
