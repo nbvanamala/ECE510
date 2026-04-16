@@ -46,9 +46,13 @@ int main() {
     cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
 
     dim3 threads(TILE, TILE);
-    dim3 blocks((N+TILE-1)/TILE, (N+TILE-1)/TILE);
+    dim3 blocks((N + TILE - 1) / TILE, (N + TILE - 1) / TILE);
 
-    // Timing
+    /* Warm-up run */
+    gemm_tiled<<<blocks, threads>>>(d_A, d_B, d_C, N);
+    cudaDeviceSynchronize();
+
+    /* Timed run */
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -61,12 +65,13 @@ int main() {
     float ms = 0;
     cudaEventElapsedTime(&ms, start, stop);
 
-    double flops = 2.0 * N * N * N;
+    double flops  = 2.0 * N * N * N;
     double gflops = flops / (ms / 1000.0) / 1e9;
 
     printf("Tiled GEMM: %.3f ms, %.2f GFLOP/s\n", ms, gflops);
 
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
+    printf("Correctness check C[0][0] = %.1f (expected %d)\n", h_C[0], N);
 
     cudaFree(d_A); cudaFree(d_B); cudaFree(d_C);
     free(h_A); free(h_B); free(h_C);
