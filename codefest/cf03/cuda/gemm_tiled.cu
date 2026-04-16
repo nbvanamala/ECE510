@@ -1,36 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <cuda_runtime.h>
 
-#define N         1024
-#define TILE_SIZE 8
+#define N 1024
+#define TILE 8
 
-__global__ void gemm_tiled(const float *A, const float *B, float *C, int n) {
-    __shared__ float As[TILE_SIZE][TILE_SIZE];
-    __shared__ float Bs[TILE_SIZE][TILE_SIZE];
+__global__ void gemm_tiled(float *A, float *B, float *C, int n) {
+    __shared__ float sA[TILE][TILE];
+    __shared__ float sB[TILE][TILE];
 
-    int row = blockIdx.y * TILE_SIZE + threadIdx.y;
-    int col = blockIdx.x * TILE_SIZE + threadIdx.x;
-
+    int row = blockIdx.y * TILE + threadIdx.y;
+    int col = blockIdx.x * TILE + threadIdx.x;
     float sum = 0.0f;
-    int num_tiles = (n + TILE_SIZE - 1) / TILE_SIZE;
 
-    for (int t = 0; t < num_tiles; t++) {
-        /* load tile of A */
-        int a_col = t * TILE_SIZE + threadIdx.x;
-        As[threadIdx.y][threadIdx.x] = (row < n && a_col < n)
-                                       ? A[row * n + a_col] : 0.0f;
-
-        /* load tile of B */
-        int b_row = t * TILE_SIZE + threadIdx.y;
-        Bs[threadIdx.y][threadIdx.x] = (b_row < n && col < n)
-                                       ? B[b_row * n + col] : 0.0f;
-
+    for (int t = 0; t < n / TILE; t++) {
+        sA[threadIdx.y][threadIdx.x] = A[row * n + t * TILE + threadIdx.x];
+        sB[threadIdx.y][threadIdx.x] = B[(t * TILE + threadIdx.y) * n + col];
         __syncthreads();
 
-        for (int k = 0; k < TILE_SIZE; k++)
-            sum += As[threadIdx.y][k] * Bs[k][threadIdx.x];
-
+        for (int k = 0; k < TILE; k++)
+            sum += sA[threadIdx.y][k] * sB[k][threadIdx.x];
         __syncthreads();
     }
 
@@ -39,56 +27,47 @@ __global__ void gemm_tiled(const float *A, const float *B, float *C, int n) {
 }
 
 int main() {
-    size_t bytes = (size_t)N * N * sizeof(float);
+    int size = N * N * sizeof(float);
+    float *h_A = (float*)malloc(size);
+    float *h_B = (float*)malloc(size);
+    float *h_C = (float*)malloc(size);
 
-    float *h_A = (float*)malloc(bytes);
-    float *h_B = (float*)malloc(bytes);
-    float *h_C = (float*)malloc(bytes);
-
-    srand(42);
-    for (int i = 0; i < N * N; i++) {
-        h_A[i] = (float)rand() / RAND_MAX;
-        h_B[i] = (float)rand() / RAND_MAX;
+    for (int i = 0; i < N*N; i++) {
+        h_A[i] = 1.0f;
+        h_B[i] = 1.0f;
     }
 
     float *d_A, *d_B, *d_C;
-    cudaMalloc(&d_A, bytes);
-    cudaMalloc(&d_B, bytes);
-    cudaMalloc(&d_C, bytes);
+    cudaMalloc(&d_A, size);
+    cudaMalloc(&d_B, size);
+    cudaMalloc(&d_C, size);
 
-    cudaMemcpy(d_A, h_A, bytes, cudaMemcpyHostToDevice);
-    cudaMemcpy(d_B, h_B, bytes, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
 
-    dim3 block(TILE_SIZE, TILE_SIZE);
-    dim3 grid((N + TILE_SIZE - 1) / TILE_SIZE, (N + TILE_SIZE - 1) / TILE_SIZE);
+    dim3 threads(TILE, TILE);
+    dim3 blocks((N+TILE-1)/TILE, (N+TILE-1)/TILE);
 
-    /* warmup */
-    gemm_tiled<<<grid, block>>>(d_A, d_B, d_C, N);
-    cudaDeviceSynchronize();
-
-    /* timed run */
+    // Timing
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
-
     cudaEventRecord(start);
-    gemm_tiled<<<grid, block>>>(d_A, d_B, d_C, N);
+
+    gemm_tiled<<<blocks, threads>>>(d_A, d_B, d_C, N);
+
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
-
-    float ms = 0.0f;
+    float ms = 0;
     cudaEventElapsedTime(&ms, start, stop);
 
-    double flops  = 2.0 * (double)N * N * N;
-    double gflops = flops / (ms * 1e-3) / 1e9;
+    double flops = 2.0 * N * N * N;
+    double gflops = flops / (ms / 1000.0) / 1e9;
 
-    printf("gemm_tiled : N=%d  tile=%d  time=%.3f ms  %.2f GFLOP/s\n",
-           N, TILE_SIZE, ms, gflops);
+    printf("Tiled GEMM: %.3f ms, %.2f GFLOP/s\n", ms, gflops);
 
-    cudaMemcpy(h_C, d_C, bytes, cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
 
-    cudaEventDestroy(start);
-    cudaEventDestroy(stop);
     cudaFree(d_A); cudaFree(d_B); cudaFree(d_C);
     free(h_A); free(h_B); free(h_C);
     return 0;
