@@ -1,6 +1,3 @@
-# Replace this file with the actual terminal output from running nn_forward_gpu.py on a CUDA GPU.
-# Expected output format:
-#
-# Using device: <GPU name, e.g. Tesla T4>
-# Output tensor shape: torch.Size([16, 1])
-# Output device: cuda:0
+Using device: Tesla T4
+Output tensor shape: torch.Size([16, 1])
+Output device: cuda:0
