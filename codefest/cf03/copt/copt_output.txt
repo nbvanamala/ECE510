@@ -1,4 +1,6 @@
 Using device: Tesla T4
+Model loaded on GPU: cuda:0
 Output shape: torch.Size([16, 1])
 Output device: cuda:0
+
 
