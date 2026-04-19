@@ -12,9 +12,19 @@ __global__ void gemm_tiled(float *A, float *B, float *C, int n) {
     int col = blockIdx.x * TILE + threadIdx.x;
     float sum = 0.0f;
 
-    for (int t = 0; t < n / TILE; t++) {
-        sA[threadIdx.y][threadIdx.x] = A[row * n + t * TILE + threadIdx.x];
-        sB[threadIdx.y][threadIdx.x] = B[(t * TILE + threadIdx.y) * n + col];
+    /* Use (n + TILE - 1) / TILE so the loop covers all tiles even when
+       n is not divisible by TILE. Out-of-bounds threads load 0.0f so
+       they contribute nothing to the dot product but the kernel stays
+       correct for arbitrary n. */
+    int num_tiles = (n + TILE - 1) / TILE;
+    for (int t = 0; t < num_tiles; t++) {
+        int a_col = t * TILE + threadIdx.x;
+        int b_row = t * TILE + threadIdx.y;
+
+        sA[threadIdx.y][threadIdx.x] = (row < n && a_col < n)
+                                        ? A[row * n + a_col] : 0.0f;
+        sB[threadIdx.y][threadIdx.x] = (b_row < n && col < n)
+                                        ? B[b_row * n + col] : 0.0f;
         __syncthreads();
 
         for (int k = 0; k < TILE; k++)
