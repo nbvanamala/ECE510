@@ -32,11 +32,19 @@ kernel is bottlenecked entirely by memory bandwidth, not compute throughput.
 The tiled kernel loads TxT (8x8) sub-blocks of A and B into on-chip shared
 memory once per tile step, then each loaded value is reused T=8 times for the
 inner product before the next DRAM fetch. This raises arithmetic intensity by a
-factor of T: from 0.25 to T/4 = 2.0 FLOP/byte. Each matrix element is fetched
-from DRAM only N/T = 128 times instead of N = 1024 times — an 8x reduction in
-traffic. Nsight Compute confirms: tiled kernel reads only 168 MB from DRAM
-versus 207 MB for naive, and achieves ~147 GB/s bandwidth versus ~80 GB/s,
-explaining the 1.33x speedup (6.560 ms to 4.925 ms).
+factor of T: from 0.25 to 2.0 FLOP/byte. Theoretically, tiling should reduce
+DRAM traffic by 8x compared to naive. However, Nsight Compute reports only
+168 MB read for tiled versus 207 MB for naive — a 1.23x reduction rather than
+the expected 8x. This discrepancy is explained by the L2 cache: the naive
+kernel's row-major access pattern for A is already cache-friendly and benefits
+significantly from L2 reuse, as confirmed by the l1tex load bytes metric
+(4.29 GB for naive vs 1.07 GB for tiled at the L1 level). This means naive
+DRAM traffic is already partially filtered by the cache hierarchy before
+reaching DRAM, making the raw DRAM delta smaller than the theoretical
+prediction. The tiled kernel's true benefit is visible in achieved bandwidth
+(147 GB/s vs 80 GB/s) and arithmetic intensity (2.0 vs 0.25 FLOP/byte),
+confirming the kernel is doing significantly more useful work per byte fetched
+even if raw DRAM bytes saved appear modest in the Nsight report.
 
 ## (c) Whether Tiled Kernel Achieved Expected Improvement
 
