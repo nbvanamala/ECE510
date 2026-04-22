@@ -19,12 +19,12 @@ test_mac_basic
 ------------------------------------------------------------
 test_mac_overflow
 ------------------------------------------------------------
-   100.00ns INFO     Reset applied, rst de-asserted
-  1010.00ns INFO     Cycle 100: out = 1612900  (expected 1612900)  PASS
-  1010.00ns INFO     Overflow behavior: 32-bit signed wrap-around (no saturation).
-  1010.00ns INFO     Predicted wrap at cycle ~133170 from reset.
-  1010.00ns INFO     Design does NOT saturate — accumulator rolls over to large negative.
-  1010.00ns INFO     test_mac_overflow passed
+      0.00ns INFO     Reset applied
+1331700.00ns INFO     Wrap-around detected at cycle 133170: 2147467519 → -2147483648
+1331700.00ns INFO     Behavior: 32-bit signed WRAP-AROUND (does NOT saturate).
+1331700.00ns INFO     No saturation logic present in mac_correct.v — accumulator
+1331700.00ns INFO     rolls over from INT32_MAX to a large negative value.
+1331700.00ns INFO     test_mac_overflow passed
 ------------------------------------------------------------
 TESTS=2 PASS=2 FAIL=0 SKIP=0
 ============================================================

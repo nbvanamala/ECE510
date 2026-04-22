@@ -57,11 +57,10 @@ async def test_mac_basic(dut):
 async def test_mac_overflow(dut):
     """
     Overflow test: accumulate with a=127, b=127 (+16129 per cycle).
-    Verifies wrap-around behavior (no saturation) near 2^31 - 1.
+    Runs until the 32-bit signed accumulator actually wraps past 2^31-1,
+    then asserts that the design wraps (does NOT saturate).
 
-    At +16129/cycle, overflow occurs around cycle 133,170.
-    We run 100 cycles to confirm linear accumulation, then
-    mathematically confirm wrap-around (no saturation hardware present).
+    Expected wrap-around at cycle ~133,170 (2147483647 // 16129 + 1).
     """
     cocotb.start_soon(Clock(dut.clk, 10, units="ns").start())
 
@@ -73,21 +72,34 @@ async def test_mac_overflow(dut):
 
     dut.a.value = 127
     dut.b.value = 127
-    step = 127 * 127  # 16129
+    step        = 127 * 127   # 16129 per cycle
+    INT32_MAX   = (1 << 31) - 1
 
-    # Run 100 cycles and verify linear accumulation
-    for i in range(1, 101):
+    prev_val = 0
+    wrapped  = False
+
+    # Run up to 140 000 cycles — enough to pass the overflow point (~133 170)
+    for cycle in range(1, 140_001):
         await RisingEdge(dut.clk)
-    got      = dut.out.value.signed_integer
-    expected = step * 100  # 1,612,900
-    assert got == expected, f"At cycle 100 expected {expected}, got {got}"
-    dut._log.info(f"Cycle 100: out = {got}  (expected {expected})  PASS")
+        cur_val = dut.out.value.signed_integer
 
-    # Predict overflow cycle and document wrap behavior
-    INT32_MAX       = (1 << 31) - 1
-    overflow_cycle  = INT32_MAX // step + 1   # ~133,170
-    dut._log.info(
-        f"Overflow behavior: 32-bit signed wrap-around (no saturation). "
-        f"Predicted wrap at cycle ~{overflow_cycle} from reset. "
-        f"Design does NOT saturate — accumulator rolls over to large negative."
+        # Detect sign flip: positive → negative means wrap occurred
+        if prev_val > 0 and cur_val < 0:
+            dut._log.info(
+                f"Wrap-around detected at cycle {cycle}: "
+                f"{prev_val} → {cur_val}"
+            )
+            dut._log.info(
+                "Behavior: 32-bit signed WRAP-AROUND (does NOT saturate). "
+                "No saturation logic present in mac_correct.v — accumulator "
+                "rolls over from INT32_MAX to a large negative value."
+            )
+            wrapped = True
+            break
+
+        prev_val = cur_val
+
+    assert wrapped, (
+        f"No overflow observed within 140 000 cycles. "
+        f"Last value: {prev_val}"
     )
