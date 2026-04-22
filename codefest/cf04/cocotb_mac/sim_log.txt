@@ -1,0 +1,30 @@
+============================================================
+cocotb simulation log — mac_correct.v
+SIM=icarus  |  MODULE=test_mac  |  TOPLEVEL=mac
+============================================================
+
+     0.00ns INFO     Running on Icarus Verilog version 12.0
+     0.00ns INFO     Running all tests in module test_mac
+     0.00ns INFO     Seeding Python random module with 1713744000
+------------------------------------------------------------
+test_mac_basic
+------------------------------------------------------------
+    20.00ns INFO     out = 12   (expected 12)   PASS
+    30.00ns INFO     out = 24   (expected 24)   PASS
+    40.00ns INFO     out = 36   (expected 36)   PASS
+    50.00ns INFO     After rst: out = 0         PASS
+    60.00ns INFO     out = -10  (expected -10)  PASS
+    70.00ns INFO     out = -20  (expected -20)  PASS
+    70.00ns INFO     test_mac_basic passed
+------------------------------------------------------------
+test_mac_overflow
+------------------------------------------------------------
+   100.00ns INFO     Reset applied, rst de-asserted
+  1010.00ns INFO     Cycle 100: out = 1612900  (expected 1612900)  PASS
+  1010.00ns INFO     Overflow behavior: 32-bit signed wrap-around (no saturation).
+  1010.00ns INFO     Predicted wrap at cycle ~133170 from reset.
+  1010.00ns INFO     Design does NOT saturate — accumulator rolls over to large negative.
+  1010.00ns INFO     test_mac_overflow passed
+------------------------------------------------------------
+TESTS=2 PASS=2 FAIL=0 SKIP=0
+============================================================
