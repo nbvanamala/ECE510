@@ -20,7 +20,7 @@ async def test_conv_pe_reset(dut):
     dut.weight_in.value = 0
 
     await RisingEdge(dut.clk)
-    await Timer(1, unit="ns")
+    await Timer(1, unit="ns")   # wait for outputs to settle from X state
 
     assert dut.accum_out.value.to_signed() == 0, "accum_out not cleared by reset"
     assert dut.valid_out.value == 0,              "valid_out not cleared by reset"
@@ -35,7 +35,6 @@ async def test_conv_pe_accumulation(dut):
     """
     cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
 
-    # Reset
     dut.rst.value       = 1
     dut.valid_in.value  = 0
     dut.pixel_in.value  = 0
@@ -44,7 +43,6 @@ async def test_conv_pe_accumulation(dut):
     await Timer(1, unit="ns")
     dut.rst.value = 0
 
-    # Drive 9 pixel-weight pairs (all ones)
     dut.valid_in.value = 1
     for _ in range(9):
         dut.pixel_in.value  = 1
