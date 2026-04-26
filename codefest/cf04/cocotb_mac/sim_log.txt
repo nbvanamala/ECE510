@@ -1,30 +1,34 @@
 ============================================================
 cocotb simulation log — mac_correct.v
 SIM=icarus  |  MODULE=test_mac  |  TOPLEVEL=mac
+cocotb v2.0.1  |  Icarus Verilog 12.0
 ============================================================
 
-     0.00ns INFO     Running on Icarus Verilog version 12.0
-     0.00ns INFO     Running all tests in module test_mac
-     0.00ns INFO     Seeding Python random module with 1713744000
+     0.00ns INFO     Running on Icarus Verilog version 12.0 (stable)
+     0.00ns INFO     Initialized cocotb v2.0.1
+     0.00ns INFO     Running tests
 ------------------------------------------------------------
-test_mac_basic
+test_mac_basic (1/2)
 ------------------------------------------------------------
-    20.00ns INFO     out = 12   (expected 12)   PASS
-    30.00ns INFO     out = 24   (expected 24)   PASS
-    40.00ns INFO     out = 36   (expected 36)   PASS
-    50.00ns INFO     After rst: out = 0         PASS
-    60.00ns INFO     out = -10  (expected -10)  PASS
-    70.00ns INFO     out = -20  (expected -20)  PASS
-    70.00ns INFO     test_mac_basic passed
+    11.00ns INFO     out = 12  (expected 12)  PASS
+    21.00ns INFO     out = 24  (expected 24)  PASS
+    31.00ns INFO     out = 36  (expected 36)  PASS
+    41.00ns INFO     After rst: out = 0  PASS
+    51.00ns INFO     out = -10  (expected -10)  PASS
+    61.00ns INFO     out = -20  (expected -20)  PASS
+    61.00ns INFO     test_mac_basic passed
 ------------------------------------------------------------
-test_mac_overflow
+test_mac_overflow (2/2)
 ------------------------------------------------------------
-      0.00ns INFO     Reset applied
-1331700.00ns INFO     Wrap-around detected at cycle 133170: 2147467519 → -2147483648
-1331700.00ns INFO     Behavior: 32-bit signed WRAP-AROUND (does NOT saturate).
-1331700.00ns INFO     No saturation logic present in mac_correct.v — accumulator
-1331700.00ns INFO     rolls over from INT32_MAX to a large negative value.
-1331700.00ns INFO     test_mac_overflow passed
+1331522.00ns INFO     Wrap-around detected at cycle 133145: 2147479576 -> -2147471591
+1331522.00ns INFO     Behavior: 32-bit signed WRAP-AROUND (does NOT saturate).
+1331522.00ns INFO     No saturation logic present in mac_correct.v -- accumulator
+1331522.00ns INFO     rolls over past INT32_MAX to a large negative value.
+1331522.00ns INFO     test_mac_overflow passed
 ------------------------------------------------------------
-TESTS=2 PASS=2 FAIL=0 SKIP=0
+** TEST                        STATUS   SIM TIME (ns)  REAL TIME (s) **
+** test_mac.test_mac_basic     PASS           61.00          0.00    **
+** test_mac.test_mac_overflow  PASS      1331461.00          9.38    **
+------------------------------------------------------------
+** TESTS=2  PASS=2  FAIL=0  SKIP=0
 ============================================================
