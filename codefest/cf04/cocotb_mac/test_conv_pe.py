@@ -1,7 +1,7 @@
 """
 test_conv_pe.py — cocotb testbench stub for conv_pe.sv
 Project: Edge CNN Accelerator (ECE510 Spring 2026)
-COPT Part B — simulation harness (assertions not required to be exhaustive)
+COPT Part B — simulation harness
 """
 
 import cocotb
@@ -20,7 +20,7 @@ async def test_conv_pe_reset(dut):
     dut.weight_in.value = 0
 
     await RisingEdge(dut.clk)
-    await Timer(1, unit="ns")   # wait for outputs to settle from X state
+    await Timer(1, unit="ns")   # let outputs settle out of X state
 
     assert dut.accum_out.value.to_signed() == 0, "accum_out not cleared by reset"
     assert dut.valid_out.value == 0,              "valid_out not cleared by reset"
