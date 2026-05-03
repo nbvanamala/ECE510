@@ -1,3 +1,58 @@
+// ============================================================
+// interface.sv  —  AXI4-Lite Slave Interface Module
+// Project  : Edge CNN Accelerator for Industrial AI Applications
+// Course   : ECE510 Spring 2026
+// Author   : Naveen Babu Vanamala
+// File     : project/m2/rtl/interface.sv
+//
+// Description
+//   AXI4-Lite slave interface connecting the host CPU to the
+//   Edge CNN Accelerator compute core. The host writes pixel
+//   and weight values via AXI4-Lite, triggers computation via
+//   the CTRL register, and reads back the STATUS register.
+//   Protocol: ARM AMBA AXI4-Lite (IHI0022E).
+//   Handshake implemented on all 5 channels:
+//     Write address (AW), Write data (W), Write response (B),
+//     Read address (AR), Read data (R).
+//   BRESP and RRESP always return OKAY (2'b00).
+//
+// Clock domain : Single clock (clk), rising-edge triggered.
+//                No clock-domain crossings.
+// Reset        : Synchronous, active-HIGH (rst).
+//                All registers and FSM states cleared on rst=1.
+//
+// Register Map (word-aligned, 4-byte addresses)
+//   0x00  PIXEL_IN   [7:0]   Write/Read  Signed INT8 pixel value
+//   0x04  WEIGHT_IN  [7:0]   Write/Read  Signed INT8 weight value
+//   0x08  CTRL       [0]     Write/Read  Write 1: pulse valid_out (self-clearing)
+//   0x0C  STATUS     [0]     Read-only   Set to 1 when done_in asserted
+//
+// Port List
+//   clk        : input   1b        System clock, rising-edge triggered
+//   rst        : input   1b        Synchronous active-high reset
+//   s_awvalid  : input   1b        Master: write address valid
+//   s_awready  : output  1b        Slave:  ready to accept write address
+//   s_awaddr   : input   32b       Write address (word-aligned)
+//   s_wvalid   : input   1b        Master: write data valid
+//   s_wready   : output  1b        Slave:  ready to accept write data
+//   s_wdata    : input   32b       Write data
+//   s_wstrb    : input   4b        Byte strobes for write data
+//   s_bvalid   : output  1b        Slave:  write response valid
+//   s_bready   : input   1b        Master: ready to accept response
+//   s_bresp    : output  2b        Write response (always OKAY = 2'b00)
+//   s_arvalid  : input   1b        Master: read address valid
+//   s_arready  : output  1b        Slave:  ready to accept read address
+//   s_araddr   : input   32b       Read address (word-aligned)
+//   s_rvalid   : output  1b        Slave:  read data valid
+//   s_rready   : input   1b        Master: ready to accept read data
+//   s_rdata    : output  32b       Read data
+//   s_rresp    : output  2b        Read response (always OKAY = 2'b00)
+//   pixel_out  : output  8b signed INT8 pixel value (to compute core)
+//   weight_out : output  8b signed INT8 weight value (to compute core)
+//   valid_out  : output  1b        Start pulse to compute core (one cycle)
+//   done_in    : input   1b        Done signal from compute core
+// ============================================================
+
 module axi4lite_slave #(
     parameter DATA_WIDTH=8, ADDR_WIDTH=32, AXI_DW=32
 ) (
@@ -61,6 +116,7 @@ module axi4lite_slave #(
         else begin pixel_out<=reg_pixel[DATA_WIDTH-1:0];weight_out<=reg_weight[DATA_WIDTH-1:0]; end
     end
 endmodule
+
 module cnn_interface #(parameter DATA_WIDTH=8,ADDR_WIDTH=32,AXI_DW=32) (
     input  wire clk,rst,
     input  wire s_awvalid,output wire s_awready,input wire [ADDR_WIDTH-1:0] s_awaddr,
