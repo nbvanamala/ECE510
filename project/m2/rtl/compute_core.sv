@@ -1,3 +1,37 @@
+// ============================================================
+// compute_core.sv  —  Weight-Stationary Systolic Array Core
+// Project  : Edge CNN Accelerator for Industrial AI Applications
+// Course   : ECE510 Spring 2026
+// Author   : Naveen Babu Vanamala
+// File     : project/m2/rtl/compute_core.sv
+//
+// Description
+//   Top-level compute core. Instantiates NUM_PE=4 conv_pe units
+//   in parallel. Each PE holds one stationary INT8 weight loaded
+//   via the weight write port. The same pixel_in is broadcast to
+//   all PEs every clock cycle. All PE dot-product results are
+//   packed into a single wide output bus. result_valid pulses for
+//   one cycle when the dot-product is ready.
+//
+// Clock domain : Single clock (clk), rising-edge triggered.
+//                No clock-domain crossings.
+// Reset        : Synchronous, active-HIGH (rst).
+//                All registers cleared to 0 on rst=1.
+//
+// Port List
+//   clk         : input   1b        System clock, rising-edge triggered
+//   rst         : input   1b        Synchronous active-high reset
+//   pixel_in    : input   8b signed INT8 pixel broadcast to all PEs
+//   valid_in    : input   1b        pixel_in is valid this cycle
+//   weight_wr   : input   1b        Write-enable for weight memory
+//   weight_addr : input   2b        PE index to write (0 to NUM_PE-1)
+//   weight_din  : input   8b signed INT8 weight value to store
+//   result_data : output  128b      Packed 32b results [PE3|PE2|PE1|PE0]
+//   result_valid: output  1b        Pulses HIGH for one cycle when done
+//
+// Submodule dependency : conv_pe.sv (must be compiled together)
+// ============================================================
+
 module compute_core #(
     parameter NUM_PE      = 4,
     parameter DATA_WIDTH  = 8,
