@@ -1,15 +1,19 @@
-# Makefile — cocotb simulation for crossbar_mac.sv
-# Usage: make SIM=icarus   (requires iverilog installed)
-# Fallback: python crossbar_sim.py  (behavioral, no simulator needed)
+# Makefile — iverilog simulation for crossbar_mac.sv / crossbar_tb.sv
+# Usage: make        (compile + simulate)
+#        make clean  (remove build artifacts)
 
-SIM             = icarus
-TOPLEVEL_LANG   = systemverilog
-VERILOG_SOURCES = $(PWD)/crossbar_mac.sv
-TOPLEVEL        = crossbar_mac
-MODULE          = crossbar_tb
+SV_FILES = crossbar_mac.sv crossbar_tb.sv
+SIM_BIN  = crossbar_sim
 
-include $(shell cocotb-config --makefiles)/Makefile.sim
+.PHONY: all sim clean
 
-.PHONY: sim_py
-sim_py:
-	python crossbar_sim.py
+all: sim
+
+$(SIM_BIN): $(SV_FILES)
+	iverilog -g2012 -o $(SIM_BIN) $(SV_FILES)
+
+sim: $(SIM_BIN)
+	vvp $(SIM_BIN) | tee sim_log.txt
+
+clean:
+	rm -f $(SIM_BIN) crossbar_tb.vcd sim_log.txt
