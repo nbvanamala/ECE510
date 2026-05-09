@@ -7,12 +7,12 @@
 
 module crossbar_tb;
 
-    logic        clk;
-    logic        rst_n;
-    logic        load_weights;
-    logic signed [7:0]  in_vec   [0:3];
-    logic signed [1:0]  w_init   [0:3][0:3];
-    logic signed [11:0] out_vec  [0:3];
+    reg        clk;
+    reg        rst_n;
+    reg        load_weights;
+    reg signed [7:0]  in_vec   [0:3];
+    reg signed [1:0]  w_init   [0:3][0:3];
+    wire signed [11:0] out_vec  [0:3];
 
     crossbar_mac dut (
         .clk          (clk),
