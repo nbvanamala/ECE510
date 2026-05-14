@@ -1,0 +1,39 @@
+Reading OpenROAD database at '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.odb'…
+Reading library file at '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2.0
+[INFO] Setting input delay to: 2.0
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL          100783.3 u
+legalized HPWL         104369.1 u
+delta HPWL                    4 %
+
+[INFO DPL-0020] Mirrored 2276 instances
+[INFO DPL-0021] HPWL before          104369.1 u
+[INFO DPL-0022] HPWL after           100783.3 u
+[INFO DPL-0023] HPWL delta               -3.4 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               236     885.85
+  Tap cell                               1440    1801.73
+  Timing Repair Buffer                    515    2850.23
+  Inverter                                 61     228.97
+  Sequential cell                         434    8689.58
+  Multi-Input combinational cell         4383   31241.21
+  Total                                  7069   45697.58
+Writing OpenROAD database to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/33-openroad-detailedplacement/compute_core.odb'…
+Writing netlist to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/33-openroad-detailedplacement/compute_core.nl.v'…
+Writing powered netlist to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/33-openroad-detailedplacement/compute_core.pnl.v'…
+Writing layout to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/33-openroad-detailedplacement/compute_core.def'…
+Writing timing constraints to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/33-openroad-detailedplacement/compute_core.sdc'…

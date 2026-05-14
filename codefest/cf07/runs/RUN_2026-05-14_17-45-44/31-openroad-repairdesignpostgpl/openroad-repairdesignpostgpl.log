@@ -1,0 +1,108 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/27-openroad-globalplacement/compute_core.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2.0
+[INFO] Setting input delay to: 2.0
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 21 input buffers.
+[INFO RSZ-0028] Inserted 129 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |      5050
+      100 |      99 |       0 |            35 |      4950
+      200 |     199 |       0 |            58 |      4850
+      300 |     299 |       0 |            74 |      4750
+      400 |     395 |       0 |            84 |      4650
+      500 |     487 |       0 |            95 |      4550
+      600 |     582 |       0 |           109 |      4450
+      700 |     676 |       0 |           117 |      4350
+      800 |     775 |       0 |           126 |      4250
+      900 |     868 |       1 |           128 |      4150
+     1000 |     962 |       2 |           132 |      4050
+     1100 |    1054 |       2 |           134 |      3950
+     1200 |    1148 |       4 |           137 |      3850
+     1300 |    1246 |       4 |           140 |      3750
+     1400 |    1339 |       4 |           141 |      3650
+     1500 |    1430 |       4 |           141 |      3550
+     1600 |    1524 |       4 |           142 |      3450
+     1700 |    1616 |       4 |           142 |      3350
+     1800 |    1708 |       4 |           142 |      3250
+     1900 |    1799 |       4 |           143 |      3150
+     2000 |    1891 |       4 |           143 |      3050
+     2100 |    1987 |       5 |           144 |      2950
+     2200 |    2078 |       6 |           146 |      2850
+     2300 |    2172 |       8 |           148 |      2750
+     2400 |    2263 |      14 |           152 |      2650
+     2500 |    2362 |      20 |           155 |      2550
+     2600 |    2457 |      25 |           159 |      2450
+     2700 |    2556 |      26 |           161 |      2350
+     2800 |    2655 |      26 |           164 |      2250
+     2900 |    2756 |      27 |           168 |      2150
+     3000 |    2864 |      36 |           173 |      2050
+     3100 |    2961 |      42 |           187 |      1950
+     3200 |    3056 |      47 |           195 |      1850
+     3300 |    3154 |      53 |           203 |      1750
+     3400 |    3253 |      58 |           209 |      1650
+     3500 |    3346 |      58 |           238 |      1550
+     3600 |    3452 |      70 |           268 |      1450
+     3700 |    3560 |      82 |           303 |      1350
+     3800 |    3667 |      95 |           336 |      1250
+     3900 |    3773 |     108 |           370 |      1150
+     4000 |    3876 |     115 |           404 |      1050
+     4100 |    3981 |     123 |           444 |       950
+     4200 |    4087 |     131 |           484 |       850
+     4300 |    4187 |     131 |           484 |       750
+     4400 |    4287 |     138 |           509 |       650
+     4500 |    4377 |     138 |           520 |       550
+     4600 |    4477 |     138 |           520 |       450
+     4700 |    4595 |     157 |           527 |       350
+     4800 |    4713 |     175 |           534 |       250
+     4900 |    4813 |     175 |           534 |       150
+     5000 |    4942 |     205 |           547 |        50
+    final |    5114 |     365 |           561 |         0
+---------------------------------------------------------
+[INFO RSZ-0034] Found 493 slew violations.
+[INFO RSZ-0035] Found 75 fanout violations.
+[INFO RSZ-0038] Inserted 365 buffers in 561 nets.
+[INFO RSZ-0039] Resized 5114 instances.
+Placement Analysis
+---------------------------------
+total displacement      11457.8 u
+average displacement        1.6 u
+max displacement            9.5 u
+original HPWL           93374.4 u
+legalized HPWL         104369.1 u
+delta HPWL                   12 %
+
+[INFO DPL-0020] Mirrored 2276 instances
+[INFO DPL-0021] HPWL before          104369.1 u
+[INFO DPL-0022] HPWL after           100783.3 u
+[INFO DPL-0023] HPWL delta               -3.4 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               236     885.85
+  Tap cell                               1440    1801.73
+  Timing Repair Buffer                    515    2850.23
+  Inverter                                 61     228.97
+  Sequential cell                         434    8689.58
+  Multi-Input combinational cell         4383   31241.21
+  Total                                  7069   45697.58
+Writing OpenROAD database to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.odb'…
+Writing netlist to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.nl.v'…
+Writing powered netlist to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.pnl.v'…
+Writing layout to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.def'…
+Writing timing constraints to '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/31-openroad-repairdesignpostgpl/compute_core.sdc'…

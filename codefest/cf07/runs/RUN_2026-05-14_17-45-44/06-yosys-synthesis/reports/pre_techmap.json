@@ -1,0 +1,61 @@
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib ",
+   "modules": {
+      "\\compute_core": {
+         "num_wires":         4494,
+         "num_wire_bits":     5730,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5004,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_DFFE_PP_": 8,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_SDFFCE_PN0P_": 24,
+            "$_SDFFE_PP0P_": 272,
+            "$_SDFF_PP0_": 130,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073
+         }
+      }
+   },
+      "design": {
+         "num_wires":         4494,
+         "num_wire_bits":     5730,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5004,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_DFFE_PP_": 8,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_SDFFCE_PN0P_": 24,
+            "$_SDFFE_PP0P_": 272,
+            "$_SDFF_PP0_": 130,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073
+         }
+      }
+}
+

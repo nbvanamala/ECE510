@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_10-40-37/tmp/49d8b20a025149f4957f7ab5286c5ff0.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_10-40-37/tmp/49d8b20a025149f4957f7ab5286c5ff0.bb.v"

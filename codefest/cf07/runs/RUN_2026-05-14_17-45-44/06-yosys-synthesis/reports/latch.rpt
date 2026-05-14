@@ -1,0 +1,10 @@
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\compute_core.\pe_accum[0]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[1]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[2]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[3]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[0]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[1]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[2]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[3]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.

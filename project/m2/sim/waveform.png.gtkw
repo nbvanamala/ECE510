@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Sun May  3 06:57:54 2026
+[*]
+[dumpfile] "/home/vanamala/ECE510/project/m2/sim/compute_core.vcd"
+[dumpfile_mtime] "Sun May  3 05:28:31 2026"
+[dumpfile_size] 9251
+[savefile] "/home/vanamala/ECE510/project/m2/sim/waveform.png.gtkw"
+[timestart] 0
+[size] 1920 973
+[pos] -27 -24
+*0.000000 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_compute_core.
+[treeopen] tb_compute_core.dut.
+[sst_width] 297
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 287
+@28
+tb_compute_core.clk
+@22
+tb_compute_core.pixel_in[7:0]
+tb_compute_core.result_data[127:0]
+@28
+tb_compute_core.result_valid
+tb_compute_core.rst
+tb_compute_core.valid_in
+[pattern_trace] 1
+[pattern_trace] 0
