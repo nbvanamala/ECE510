@@ -1,45 +1,1619 @@
-﻿
+
  /----------------------------------------------------------------------------\
  |  yosys -- Yosys Open SYnthesis Suite                                       |
- |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
  |  Distributed under an ISC-like license, type "license" to see terms        |
  \----------------------------------------------------------------------------/
- Yosys 0.65 (git sha1 b85cad634, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.65]
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
 
--- Running command `read_json synth/synth_netlist.json; stat' --
+1. Executing Liberty frontend: /home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
 
-1. Executing JSON frontend.
-Importing module compute_core from JSON tree.
+2. Executing Verilog-2005 frontend: /home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv
+Parsing SystemVerilog input from `/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv' to AST representation.
+Storing AST representation for module `$abstract\conv_pe'.
+Successfully finished Verilog frontend.
 
-2. Printing statistics.
+3. Executing Verilog-2005 frontend: /home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv
+Parsing SystemVerilog input from `/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv' to AST representation.
+Storing AST representation for module `$abstract\compute_core'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+5. Executing AST frontend in derive mode using pre-parsed AST for module `\compute_core'.
+Generating RTLIL representation for module `\compute_core'.
+
+5.1. Analyzing design hierarchy..
+Top module:  \compute_core
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+
+5.2. Executing AST frontend in derive mode using pre-parsed AST for module `\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Generating RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Reprocessing module compute_core because instantiated module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe has become available.
+Generating RTLIL representation for module `\compute_core'.
+
+5.3. Analyzing design hierarchy..
+Top module:  \compute_core
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+
+5.4. Analyzing design hierarchy..
+Top module:  \compute_core
+Used module:     $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+
+5.5. Analyzing design hierarchy..
+Top module:  \compute_core
+Used module:     $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Removing unused module `$abstract\compute_core'.
+Removing unused module `$abstract\conv_pe'.
+Removed 2 unused modules.
+Renaming module compute_core to compute_core.
+
+6. Generating Graphviz representation of design.
+Writing dot description to `/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/hierarchy.dot'.
+Dumping module compute_core to page 1.
+
+7. Executing TRIBUF pass.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1. Analyzing design hierarchy..
+Top module:  \compute_core
+Used module:     $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+
+8.2. Analyzing design hierarchy..
+Top module:  \compute_core
+Used module:     $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Removed 0 unused modules.
+
+9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72 in module compute_core.
+Marked 2 switch rules as full_case in process $proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54 in module compute_core.
+Marked 2 switch rules as full_case in process $proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32 in module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+Removed a total of 0 dead cases.
+
+11. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 17 assignments to connections.
+
+12. Executing PROC_INIT pass (extract init attributes).
+
+13. Executing PROC_ARST pass (detect async resets in processes).
+
+14. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~6 debug messages>
+
+15. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+Creating decoders for process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+     1/6: $0\result_data[127:0] [127:96]
+     2/6: $0\result_data[127:0] [95:64]
+     3/6: $0\result_data[127:0] [63:32]
+     4/6: $0\result_data[127:0] [31:0]
+     5/6: $0\result_valid[0:0]
+     6/6: $1\k[31:0]
+Creating decoders for process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+     1/11: $2$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$71
+     2/11: $2$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_DATA[7:0]$70
+     3/11: $2$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_ADDR[1:0]$69
+     4/11: $1\wi[31:0]
+     5/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$65
+     6/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$64
+     7/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$63
+     8/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$62
+     9/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$68
+    10/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_DATA[7:0]$67
+    11/11: $1$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_ADDR[1:0]$66
+Creating decoders for process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+     1/4: $0\valid_out[0:0]
+     2/4: $0\tap_count[3:0]
+     3/4: $0\accum_reg[31:0]
+     4/4: $0\accum_out[31:0]
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\compute_core.\pe_accum[0]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[1]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[2]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_accum[3]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[0]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[1]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[2]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+No latch inferred for signal `\compute_core.\pe_valid[3]' from process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+
+17. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\compute_core.\result_data' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+  created $dff cell `$procdff$170' with positive edge clock.
+Creating register for signal `\compute_core.\result_valid' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+  created $dff cell `$procdff$171' with positive edge clock.
+Creating register for signal `\compute_core.\k' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+  created $dff cell `$procdff$172' with positive edge clock.
+Creating register for signal `\compute_core.\wi' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$173' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$174' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$175' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$176' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$177' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_ADDR' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$178' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_DATA' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$179' with positive edge clock.
+Creating register for signal `\compute_core.$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN' using process `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+  created $dff cell `$procdff$180' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\accum_out' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\valid_out' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\accum_reg' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\tap_count' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+  created $dff cell `$procdff$184' with positive edge clock.
+
+18. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+19. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:0$77'.
+Found and cleaned up 1 empty switch in `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+Removing empty process `compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:38$72'.
+Found and cleaned up 2 empty switches in `\compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+Removing empty process `compute_core.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:19$54'.
+Found and cleaned up 3 empty switches in `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+Removing empty process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:20$32'.
+Cleaned up 6 empty switches.
+
+20. Executing CHECK pass (checking for obvious problems).
+Checking module compute_core...
+Checking module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe...
+Found and reported 0 problems.
+
+21. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+Optimizing module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+
+22. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+<suppressed ~4 debug messages>
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 23 unused cells and 164 unused wires.
+<suppressed ~32 debug messages>
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+27. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$100.
+    dead port 1/2 on $mux $procmux$106.
+    dead port 1/2 on $mux $procmux$112.
+Removed 3 multiplexer ports.
+<suppressed ~25 debug messages>
+
+28. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+    Consolidated identical input bits for $mux cell $procmux$118:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0]
+      New connections: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [7:1] = { $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$52_EN[7:0]$58 [0] }
+    Consolidated identical input bits for $mux cell $procmux$121:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0]
+      New connections: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [7:1] = { $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$51_EN[7:0]$57 [0] }
+    Consolidated identical input bits for $mux cell $procmux$124:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0]
+      New connections: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [7:1] = { $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$50_EN[7:0]$56 [0] }
+    Consolidated identical input bits for $mux cell $procmux$127:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0]
+      New connections: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [7:1] = { $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:21$49_EN[7:0]$55 [0] }
+    Consolidated identical input bits for $mux cell $procmux$97:
+      Old ports: A=8'00000000, B=8'11111111, Y=$procmux$97_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$97_Y [0]
+      New connections: $procmux$97_Y [7:1] = { $procmux$97_Y [0] $procmux$97_Y [0] $procmux$97_Y [0] $procmux$97_Y [0] $procmux$97_Y [0] $procmux$97_Y [0] $procmux$97_Y [0] }
+  Optimizing cells in module \compute_core.
+    Consolidated identical input bits for $mux cell $procmux$130:
+      Old ports: A=$2$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$71, B=8'00000000, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61
+      New ports: A=$procmux$97_Y [0], B=1'0, Y=$0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0]
+      New connections: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [7:1] = { $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [0] }
+  Optimizing cells in module \compute_core.
+Performed a total of 6 changes.
+
+29. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+30. Executing OPT_DFF pass (perform DFF optimizations).
+
+31. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+32. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+33. Rerunning OPT passes. (Maybe there is more to do…)
+
+34. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+35. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+36. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+37. Executing OPT_DFF pass (perform DFF optimizations).
+
+38. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+39. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+40. Executing FSM pass (extract and optimize FSM).
+
+40.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+40.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+40.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+40.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+40.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+40.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+40.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+40.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+41. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+42. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+43. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+44. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+45. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+46. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$171 ($dff) from module compute_core (D = \pe_array[0].u_pe.valid_out, Q = \result_valid, rval = 1'0).
+Adding SRST signal on $procdff$170 ($dff) from module compute_core (D = { \pe_array[3].u_pe.accum_out \pe_array[2].u_pe.accum_out \pe_array[1].u_pe.accum_out \pe_array[0].u_pe.accum_out }, Q = \result_data, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $flatten\pe_array[3].u_pe.$procdff$184 ($dff) from module compute_core (D = $flatten\pe_array[3].u_pe.$procmux$149_Y, Q = \pe_array[3].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$196 ($sdff) from module compute_core (D = $flatten\pe_array[3].u_pe.$procmux$147_Y, Q = \pe_array[3].u_pe.tap_count).
+Adding SRST signal on $flatten\pe_array[3].u_pe.$procdff$183 ($dff) from module compute_core (D = $flatten\pe_array[3].u_pe.$procmux$157_Y, Q = \pe_array[3].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$198 ($sdff) from module compute_core (D = $flatten\pe_array[3].u_pe.$procmux$155_Y, Q = \pe_array[3].u_pe.accum_reg).
+Adding SRST signal on $flatten\pe_array[3].u_pe.$procdff$181 ($dff) from module compute_core (D = $flatten\pe_array[3].u_pe.$procmux$165_Y, Q = \pe_array[3].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$200 ($sdff) from module compute_core (D = $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34_Y, Q = \pe_array[3].u_pe.accum_out).
+Adding SRST signal on $flatten\pe_array[2].u_pe.$procdff$184 ($dff) from module compute_core (D = $flatten\pe_array[2].u_pe.$procmux$149_Y, Q = \pe_array[2].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$204 ($sdff) from module compute_core (D = $flatten\pe_array[2].u_pe.$procmux$147_Y, Q = \pe_array[2].u_pe.tap_count).
+Adding SRST signal on $flatten\pe_array[2].u_pe.$procdff$183 ($dff) from module compute_core (D = $flatten\pe_array[2].u_pe.$procmux$157_Y, Q = \pe_array[2].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$206 ($sdff) from module compute_core (D = $flatten\pe_array[2].u_pe.$procmux$155_Y, Q = \pe_array[2].u_pe.accum_reg).
+Adding SRST signal on $flatten\pe_array[2].u_pe.$procdff$181 ($dff) from module compute_core (D = $flatten\pe_array[2].u_pe.$procmux$165_Y, Q = \pe_array[2].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$208 ($sdff) from module compute_core (D = $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34_Y, Q = \pe_array[2].u_pe.accum_out).
+Adding SRST signal on $flatten\pe_array[1].u_pe.$procdff$184 ($dff) from module compute_core (D = $flatten\pe_array[1].u_pe.$procmux$149_Y, Q = \pe_array[1].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$212 ($sdff) from module compute_core (D = $flatten\pe_array[1].u_pe.$procmux$147_Y, Q = \pe_array[1].u_pe.tap_count).
+Adding SRST signal on $flatten\pe_array[1].u_pe.$procdff$183 ($dff) from module compute_core (D = $flatten\pe_array[1].u_pe.$procmux$157_Y, Q = \pe_array[1].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$214 ($sdff) from module compute_core (D = $flatten\pe_array[1].u_pe.$procmux$155_Y, Q = \pe_array[1].u_pe.accum_reg).
+Adding SRST signal on $flatten\pe_array[1].u_pe.$procdff$181 ($dff) from module compute_core (D = $flatten\pe_array[1].u_pe.$procmux$165_Y, Q = \pe_array[1].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$216 ($sdff) from module compute_core (D = $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34_Y, Q = \pe_array[1].u_pe.accum_out).
+Adding SRST signal on $flatten\pe_array[0].u_pe.$procdff$184 ($dff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$149_Y, Q = \pe_array[0].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$220 ($sdff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$147_Y, Q = \pe_array[0].u_pe.tap_count).
+Adding SRST signal on $flatten\pe_array[0].u_pe.$procdff$183 ($dff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$157_Y, Q = \pe_array[0].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$222 ($sdff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$155_Y, Q = \pe_array[0].u_pe.accum_reg).
+Adding SRST signal on $flatten\pe_array[0].u_pe.$procdff$182 ($dff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$139_Y, Q = \pe_array[0].u_pe.valid_out, rval = 1'0).
+Adding SRST signal on $flatten\pe_array[0].u_pe.$procdff$181 ($dff) from module compute_core (D = $flatten\pe_array[0].u_pe.$procmux$165_Y, Q = \pe_array[0].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$229 ($sdff) from module compute_core (D = $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34_Y, Q = \pe_array[0].u_pe.accum_out).
+
+47. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 35 unused cells and 32 unused wires.
+<suppressed ~36 debug messages>
+
+48. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+49. Rerunning OPT passes. (Maybe there is more to do…)
+
+50. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+51. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+52. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+53. Executing OPT_DFF pass (perform DFF optimizations).
+
+54. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+55. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+56. Executing WREDUCE pass (reducing word size of cells).
+Removed top 30 address bits (of 32) from memory init port compute_core.$auto$proc_memwr.cc:45:proc_memwr$185 (weight_mem).
+Removed top 30 address bits (of 32) from memory init port compute_core.$auto$proc_memwr.cc:45:proc_memwr$186 (weight_mem).
+Removed top 30 address bits (of 32) from memory init port compute_core.$auto$proc_memwr.cc:45:proc_memwr$187 (weight_mem).
+Removed top 30 address bits (of 32) from memory init port compute_core.$auto$proc_memwr.cc:45:proc_memwr$188 (weight_mem).
+Removed top 30 address bits (of 32) from memory read port compute_core.$memrd$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:33$73 (weight_mem).
+Removed top 30 address bits (of 32) from memory read port compute_core.$memrd$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:33$74 (weight_mem).
+Removed top 30 address bits (of 32) from memory read port compute_core.$memrd$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:33$75 (weight_mem).
+Removed top 30 address bits (of 32) from memory read port compute_core.$memrd$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:33$76 (weight_mem).
+Removed top 31 bits (of 32) from port B of cell compute_core.$flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 28 bits (of 32) from port Y of cell compute_core.$flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 16 bits (of 32) from port B of cell compute_core.$flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+Removed top 31 bits (of 32) from port B of cell compute_core.$flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 28 bits (of 32) from port Y of cell compute_core.$flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 16 bits (of 32) from port B of cell compute_core.$flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+Removed top 31 bits (of 32) from port B of cell compute_core.$flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 28 bits (of 32) from port Y of cell compute_core.$flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 16 bits (of 32) from port B of cell compute_core.$flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+Removed top 31 bits (of 32) from port B of cell compute_core.$flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 28 bits (of 32) from port Y of cell compute_core.$flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+Removed top 16 bits (of 32) from port B of cell compute_core.$flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+Removed top 28 bits (of 32) from wire compute_core.$flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36_Y.
+Removed top 3 bits (of 4) from wire compute_core.$flatten\pe_array[0].u_pe.$procmux$147_Y.
+Removed top 28 bits (of 32) from wire compute_core.$flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36_Y.
+Removed top 3 bits (of 4) from wire compute_core.$flatten\pe_array[1].u_pe.$procmux$147_Y.
+Removed top 28 bits (of 32) from wire compute_core.$flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36_Y.
+Removed top 3 bits (of 4) from wire compute_core.$flatten\pe_array[2].u_pe.$procmux$147_Y.
+Removed top 28 bits (of 32) from wire compute_core.$flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36_Y.
+Removed top 3 bits (of 4) from wire compute_core.$flatten\pe_array[3].u_pe.$procmux$147_Y.
+
+57. Executing PEEPOPT pass (run peephole optimizers).
+
+58. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+59. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module compute_core:
+  creating $macc model for $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+  creating $macc model for $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+  creating $macc model for $flatten\pe_array[0].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  creating $macc model for $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+  creating $macc model for $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+  creating $macc model for $flatten\pe_array[1].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  creating $macc model for $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+  creating $macc model for $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+  creating $macc model for $flatten\pe_array[2].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  creating $macc model for $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34 ($add).
+  creating $macc model for $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36 ($add).
+  creating $macc model for $flatten\pe_array[3].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  merging $macc model for $flatten\pe_array[3].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 into $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34.
+  merging $macc model for $flatten\pe_array[2].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 into $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34.
+  merging $macc model for $flatten\pe_array[1].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 into $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34.
+  merging $macc model for $flatten\pe_array[0].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 into $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34.
+  creating $alu model for $macc $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36.
+  creating $alu model for $macc $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36.
+  creating $alu model for $macc $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36.
+  creating $alu model for $macc $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36.
+  creating $macc cell for $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34: $auto$alumacc.cc:365:replace_macc$241
+  creating $macc cell for $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34: $auto$alumacc.cc:365:replace_macc$242
+  creating $macc cell for $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34: $auto$alumacc.cc:365:replace_macc$243
+  creating $macc cell for $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:27$34: $auto$alumacc.cc:365:replace_macc$244
+  creating $alu cell for $flatten\pe_array[0].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36: $auto$alumacc.cc:485:replace_alu$245
+  creating $alu cell for $flatten\pe_array[1].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36: $auto$alumacc.cc:485:replace_alu$248
+  creating $alu cell for $flatten\pe_array[3].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36: $auto$alumacc.cc:485:replace_alu$251
+  creating $alu cell for $flatten\pe_array[2].u_pe.$add$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:31$36: $auto$alumacc.cc:485:replace_alu$254
+  created 4 $alu and 4 $macc cells.
+
+60. Executing SHARE pass (SAT-based resource sharing).
+Found 4 cells in module compute_core that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\pe_array[3].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul):
+    Found cell that is never activated: $flatten\pe_array[3].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\pe_array[2].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul):
+    Found cell that is never activated: $flatten\pe_array[2].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\pe_array[1].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul):
+    Found cell that is never activated: $flatten\pe_array[1].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\pe_array[0].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul):
+    Found cell that is never activated: $flatten\pe_array[0].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31
+    Cell is never active. Sharing is pointless, we simply remove it.
+Removing 4 cells in module compute_core:
+  Removing cell $flatten\pe_array[0].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  Removing cell $flatten\pe_array[1].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  Removing cell $flatten\pe_array[2].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+  Removing cell $flatten\pe_array[3].u_pe.$mul$/home/vanamala/ECE510/codefest/cf07/hdl/conv_pe.sv:15$31 ($mul).
+
+61. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+62. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+63. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~13 debug messages>
+
+64. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+65. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+66. Executing OPT_DFF pass (perform DFF optimizations).
+
+67. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+68. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+69. Executing MEMORY pass.
+
+69.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+69.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 6 transformations.
+
+69.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing compute_core.weight_mem write port 0.
+  Analyzing compute_core.weight_mem write port 1.
+  Analyzing compute_core.weight_mem write port 2.
+  Analyzing compute_core.weight_mem write port 3.
+  Analyzing compute_core.weight_mem write port 4.
+
+69.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+69.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\weight_mem'[0] in module `\compute_core': no output FF found.
+Checking read port `\weight_mem'[1] in module `\compute_core': no output FF found.
+Checking read port `\weight_mem'[2] in module `\compute_core': no output FF found.
+Checking read port `\weight_mem'[3] in module `\compute_core': no output FF found.
+Checking read port address `\weight_mem'[0] in module `\compute_core': no address FF found.
+Checking read port address `\weight_mem'[1] in module `\compute_core': no address FF found.
+Checking read port address `\weight_mem'[2] in module `\compute_core': no address FF found.
+Checking read port address `\weight_mem'[3] in module `\compute_core': no address FF found.
+
+69.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+69.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory compute_core.weight_mem by address:
+  Merging ports 0, 1 (address 2'11).
+  Merging ports 0, 2 (address 2'10).
+Consolidating read ports of memory compute_core.weight_mem by address:
+Consolidating write ports of memory compute_core.weight_mem by address:
+  Merging ports 0, 1 (address 2'00).
+  Merging ports 0, 2 (address 2'00).
+Consolidating write ports of memory compute_core.weight_mem by address:
+Consolidating write ports of memory compute_core.weight_mem using sat-based resource sharing:
+  Checking group clocked with posedge \clk, width 8: ports 1, 2.
+  Common input cone for all EN signals: 3 cells.
+  Size of unconstrained SAT problem: 23 variables, 53 clauses
+  Merging port 2 into port 1.
+
+69.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+69.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+69.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+70. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+71. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+<suppressed ~8 debug messages>
+
+72. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+73. Executing OPT_DFF pass (perform DFF optimizations).
+
+74. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+75. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \weight_mem in module \compute_core:
+  created 4 $dff cells and 0 static cells of width 8.
+  read interface: 0 $dff and 3 $mux cells.
+  write interface: 8 write mux blocks.
+
+76. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+<suppressed ~13 debug messages>
+
+77. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+78. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $auto$memory_share.cc:453:consolidate_wr_using_sat$274: $0$memwr$\weight_mem$/home/vanamala/ECE510/codefest/cf07/hdl/synth_top.sv:23$53_EN[7:0]$61 [7] -> 1'1
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+79. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+80. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+81. Executing OPT_SHARE pass.
+
+82. Executing OPT_DFF pass (perform DFF optimizations).
+
+83. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 18 unused wires.
+<suppressed ~1 debug messages>
+
+84. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+<suppressed ~1 debug messages>
+
+85. Rerunning OPT passes. (Maybe there is more to do…)
+
+86. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~15 debug messages>
+
+87. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+88. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+89. Executing OPT_SHARE pass.
+
+90. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\weight_mem[3]$281 ($dff) from module compute_core (D = $auto$rtlil.cc:2628:Mux$272, Q = \weight_mem[3]).
+Adding EN signal on $memory\weight_mem[2]$279 ($dff) from module compute_core (D = $memory\weight_mem$wrmux[2][1][0]$y$331, Q = \weight_mem[2]).
+Adding EN signal on $memory\weight_mem[1]$277 ($dff) from module compute_core (D = $memory\weight_mem$wrmux[1][1][0]$y$319, Q = \weight_mem[1]).
+Adding EN signal on $memory\weight_mem[0]$275 ($dff) from module compute_core (D = $memory\weight_mem$wrmux[0][1][0]$y$307, Q = \weight_mem[0]).
+
+91. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 1 unused cells and 1 unused wires.
+<suppressed ~2 debug messages>
+
+92. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+<suppressed ~6 debug messages>
+
+93. Rerunning OPT passes. (Maybe there is more to do…)
+
+94. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+95. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+96. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+97. Executing OPT_SHARE pass.
+
+98. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$349 ($dffe) from module compute_core (D = $auto$rtlil.cc:2628:Mux$272, Q = \weight_mem[0], rval = 8'00000000).
+Adding SRST signal on $auto$ff.cc:266:slice$346 ($dffe) from module compute_core (D = $auto$rtlil.cc:2628:Mux$272, Q = \weight_mem[1], rval = 8'00000000).
+Adding SRST signal on $auto$ff.cc:266:slice$343 ($dffe) from module compute_core (D = $auto$rtlil.cc:2628:Mux$272, Q = \weight_mem[2], rval = 8'00000000).
+
+99. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 3 unused cells and 6 unused wires.
+<suppressed ~4 debug messages>
+
+100. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+101. Rerunning OPT passes. (Maybe there is more to do…)
+
+102. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~11 debug messages>
+
+103. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+104. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+105. Executing OPT_SHARE pass.
+
+106. Executing OPT_DFF pass (perform DFF optimizations).
+
+107. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+108. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+109. Executing TECHMAP pass (map to technology primitives).
+
+109.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+109.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $sdffce.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper maccmap for cells of type $macc.
+  add \pe_array[3].u_pe.accum_reg (32 bits, signed)
+  add \pixel_in * \weight_mem[3] (8x8 bits, signed)
+  add \pe_array[0].u_pe.accum_reg (32 bits, signed)
+  add \pixel_in * \weight_mem[0] (8x8 bits, signed)
+  add \pe_array[1].u_pe.accum_reg (32 bits, signed)
+  add \pixel_in * \weight_mem[1] (8x8 bits, signed)
+  add \pe_array[2].u_pe.accum_reg (32 bits, signed)
+  add \pixel_in * \weight_mem[2] (8x8 bits, signed)
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1338 debug messages>
+
+110. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+<suppressed ~1558 debug messages>
+
+111. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+<suppressed ~5544 debug messages>
+Removed a total of 1848 cells.
+
+112. Executing OPT_DFF pass (perform DFF optimizations).
+
+113. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 250 unused cells and 676 unused wires.
+<suppressed ~251 debug messages>
+
+114. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+115. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+116. Executing OPT_DFF pass (perform DFF optimizations).
+
+117. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+118. Executing ABC pass (technology mapping using ABC).
+
+118.1. Extracting gate netlist of module `\compute_core' to `<abc-temp-dir>/input.blif'..
+Extracted 4287 gates and 4486 wires to a netlist network with 197 inputs and 293 outputs.
+
+118.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+118.1.2. Re-integrating ABC results.
+ABC RESULTS:             ORNOT cells:      112
+ABC RESULTS:              NAND cells:      191
+ABC RESULTS:               NOR cells:      126
+ABC RESULTS:              XNOR cells:      425
+ABC RESULTS:               AND cells:      267
+ABC RESULTS:               XOR cells:     1073
+ABC RESULTS:               NOT cells:      310
+ABC RESULTS:                OR cells:      465
+ABC RESULTS:            ANDNOT cells:     1601
+ABC RESULTS:        internal signals:     3996
+ABC RESULTS:           input signals:      197
+ABC RESULTS:          output signals:      293
+Removing temp directory.
+
+119. Executing OPT pass (performing simple optimizations).
+
+119.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+119.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+119.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+119.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 903 unused wires.
+<suppressed ~1 debug messages>
+
+119.5. Finished fast OPT passes.
+
+120. Executing HIERARCHY pass (managing design hierarchy).
+
+120.1. Analyzing design hierarchy..
+Top module:  \compute_core
+
+120.2. Analyzing design hierarchy..
+Top module:  \compute_core
+Removed 0 unused modules.
+
+121. Executing CHECK pass (checking for obvious problems).
+Checking module compute_core...
+Found and reported 0 problems.
+
+122. Printing statistics.
 
 === compute_core ===
 
-        +----------Local Count, excluding submodules.
-        | 
-     3556 wires
-     5094 wire bits
-       59 public wires
-      853 public wire bits
-        9 ports
-      151 port bits
-     4039 cells
-       95   $_ANDNOT_
-      566   $_AND_
-        8   $_DFFE_PP_
-       15   $_MUX_
-     1446   $_NAND_
-       10   $_NOR_
-       11   $_NOT_
-       65   $_ORNOT_
-      152   $_OR_
-       24   $_SDFFCE_PN0P_
-      272   $_SDFFE_PP0P_
-      130   $_SDFF_PP0_
-      326   $_XNOR_
-      915   $_XOR_
-        4   $scopeinfo
+   Number of wires:               4527
+   Number of wire bits:           6127
+   Number of public wires:          59
+   Number of public wire bits:     853
+   Number of ports:                  9
+   Number of port bits:            151
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5008
+     $_ANDNOT_                    1601
+     $_AND_                        267
+     $_DFFE_PP_                      8
+     $_NAND_                       191
+     $_NOR_                        126
+     $_NOT_                        310
+     $_ORNOT_                      112
+     $_OR_                         465
+     $_SDFFCE_PN0P_                 24
+     $_SDFFE_PP0P_                 272
+     $_SDFF_PP0_                   130
+     $_XNOR_                       425
+     $_XOR_                       1073
+     $scopeinfo                      4
 
-End of script. Logfile hash: b7fee7a711, time: 0.42s, user: 0.42s, system: 0.00s
-Yosys 0.65 (git sha1 b85cad634, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.65]
-Time spent: 99% 2x read_json (0 sec), 0% 1x stat (0 sec), ...
+123. Generating Graphviz representation of design.
+Writing dot description to `/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module compute_core to page 1.
+
+124. Executing OPT pass (performing simple optimizations).
+
+124.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+124.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+124.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \compute_core..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+124.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \compute_core.
+Performed a total of 0 changes.
+
+124.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\compute_core'.
+Removed a total of 0 cells.
+
+124.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+124.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+
+124.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module compute_core.
+
+124.9. Finished OPT passes. (There is nothing left to do.)
+
+125. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 4 unused cells and 33 unused wires.
+<suppressed ~37 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib ",
+   "modules": {
+      "\\compute_core": {
+         "num_wires":         4494,
+         "num_wire_bits":     5730,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5004,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_DFFE_PP_": 8,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_SDFFCE_PN0P_": 24,
+            "$_SDFFE_PP0P_": 272,
+            "$_SDFF_PP0_": 130,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073
+         }
+      }
+   },
+      "design": {
+         "num_wires":         4494,
+         "num_wire_bits":     5730,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5004,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_DFFE_PP_": 8,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_SDFFCE_PN0P_": 24,
+            "$_SDFFE_PP0P_": 272,
+            "$_SDFF_PP0_": 130,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073
+         }
+      }
+}
+
+126. Printing statistics.
+
+=== compute_core ===
+
+   Number of wires:               4494
+   Number of wire bits:           5730
+   Number of public wires:          26
+   Number of public wire bits:     456
+   Number of ports:                  9
+   Number of port bits:            151
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5004
+     $_ANDNOT_                    1601
+     $_AND_                        267
+     $_DFFE_PP_                      8
+     $_NAND_                       191
+     $_NOR_                        126
+     $_NOT_                        310
+     $_ORNOT_                      112
+     $_OR_                         465
+     $_SDFFCE_PN0P_                 24
+     $_SDFFE_PP0P_                 272
+     $_SDFF_PP0_                   130
+     $_XNOR_                       425
+     $_XOR_                       1073
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_DFFE_PP_ is unknown!
+   Area for cell type $_SDFF_PP0_ is unknown!
+   Area for cell type $_SDFFE_PP0P_ is unknown!
+   Area for cell type $_SDFFCE_PN0P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+127. Executing TECHMAP pass (map to technology primitives).
+
+127.1. Executing Verilog-2005 frontend: /home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+127.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+128. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+129. Executing TECHMAP pass (map to technology primitives).
+
+129.1. Executing Verilog-2005 frontend: /home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/vanamala/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+129.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+130. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+131. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+131.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\compute_core':
+  mapped 434 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib ",
+   "modules": {
+      "\\compute_core": {
+         "num_wires":         5224,
+         "num_wire_bits":     6460,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5734,
+         "area":              9231.353600,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_MUX_": 730,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073,
+            "sky130_fd_sc_hd__dfxtp_2": 434
+         }
+      }
+   },
+      "design": {
+         "num_wires":         5224,
+         "num_wire_bits":     6460,
+         "num_pub_wires":     26,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         5734,
+         "area":              9231.353600,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1601,
+            "$_AND_": 267,
+            "$_MUX_": 730,
+            "$_NAND_": 191,
+            "$_NOR_": 126,
+            "$_NOT_": 310,
+            "$_ORNOT_": 112,
+            "$_OR_": 465,
+            "$_XNOR_": 425,
+            "$_XOR_": 1073,
+            "sky130_fd_sc_hd__dfxtp_2": 434
+         }
+      }
+}
+
+132. Printing statistics.
+
+=== compute_core ===
+
+   Number of wires:               5224
+   Number of wire bits:           6460
+   Number of public wires:          26
+   Number of public wire bits:     456
+   Number of ports:                  9
+   Number of port bits:            151
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               5734
+     $_ANDNOT_                    1601
+     $_AND_                        267
+     $_MUX_                        730
+     $_NAND_                       191
+     $_NOR_                        126
+     $_NOT_                        310
+     $_ORNOT_                      112
+     $_OR_                         465
+     $_XNOR_                       425
+     $_XOR_                       1073
+     sky130_fd_sc_hd__dfxtp_2      434
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\compute_core': 9231.353600
+     of which used for sequential elements: 9231.353600 (100.00%)
+
+[INFO] Using generated ABC script '/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/AREA_0.abc'…
+
+133. Executing ABC pass (technology mapping using ABC).
+
+133.1. Extracting gate netlist of module `\compute_core' to `/tmp/yosys-abc-IXwaZl/input.blif'..
+Extracted 5300 gates and 5627 wires to a netlist network with 326 inputs and 434 outputs.
+
+133.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-IXwaZl/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-IXwaZl/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-IXwaZl/input.blif 
+ABC: + read_lib -w /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.03 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.05 sec
+ABC: Memory =    9.54 MB. Time =     0.05 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =   4444 (  1.4 %)   Cap = 12.1 ff (  0.9 %)   Area =    43062.55 ( 97.1 %)   Delay =  6749.95 ps  (  3.5 %)               
+ABC: Path  0 --     299 : 0   18 pi                        A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  40.1 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --    3261 : 2   63 sky130_fd_sc_hd__nand2_2  A =   6.26  Df = 824.8 -213.9 ps  S =1165.6 ps  Cin =  4.4 ff  Cout = 233.1 ff  Cmax = 295.7 ff  G = 5046  
+ABC: Path  2 --    3312 : 3    2 sky130_fd_sc_hd__or3_2    A =   7.51  Df =1340.1 -226.0 ps  S =  94.1 ps  Cin =  1.5 ff  Cout =   7.0 ff  Cmax = 310.4 ff  G =  443  
+ABC: Path  3 --    3315 : 4    3 sky130_fd_sc_hd__a211o_2  A =  10.01  Df =1669.9 -410.0 ps  S =  65.6 ps  Cin =  2.4 ff  Cout =   9.6 ff  Cmax = 325.0 ff  G =  390  
+ABC: Path  4 --    3317 : 3    2 sky130_fd_sc_hd__a21o_2   A =   8.76  Df =1895.1 -288.4 ps  S =  50.7 ps  Cin =  2.4 ff  Cout =   7.0 ff  Cmax = 309.5 ff  G =  288  
+ABC: Path  5 --    3320 : 3    3 sky130_fd_sc_hd__a21o_2   A =   8.76  Df =2124.2 -221.6 ps  S =  69.6 ps  Cin =  2.4 ff  Cout =  11.4 ff  Cmax = 309.5 ff  G =  461  
+ABC: Path  6 --    3321 : 3    2 sky130_fd_sc_hd__and3_2   A =   7.51  Df =2343.4 -131.3 ps  S =  64.3 ps  Cin =  1.5 ff  Cout =   7.1 ff  Cmax = 309.5 ff  G =  454  
+ABC: Path  7 --    3324 : 4    5 sky130_fd_sc_hd__a211o_2  A =  10.01  Df =2695.5 -247.2 ps  S =  95.8 ps  Cin =  2.4 ff  Cout =  17.7 ff  Cmax = 325.0 ff  G =  728  
+ABC: Path  8 --    3326 : 3    2 sky130_fd_sc_hd__and3_2   A =   7.51  Df =2912.3 -135.7 ps  S =  60.4 ps  Cin =  1.5 ff  Cout =   6.3 ff  Cmax = 309.5 ff  G =  401  
+ABC: Path  9 --    3331 : 3    2 sky130_fd_sc_hd__or3_2    A =   7.51  Df =3400.7 -410.2 ps  S =  91.2 ps  Cin =  1.5 ff  Cout =   7.1 ff  Cmax = 310.4 ff  G =  447  
+ABC: Path 10 --    3375 : 3    2 sky130_fd_sc_hd__o21a_2   A =   8.76  Df =3531.4 -160.6 ps  S =  38.9 ps  Cin =  2.4 ff  Cout =   3.3 ff  Cmax = 294.8 ff  G =  131  
+ABC: Path 11 --    3466 : 4    2 sky130_fd_sc_hd__or4_2    A =   8.76  Df =4177.0 -360.1 ps  S = 108.2 ps  Cin =  1.5 ff  Cout =   5.2 ff  Cmax = 310.4 ff  G =  317  
+ABC: Path 12 --    3468 : 5    3 sky130_fd_sc_hd__o311a_2  A =  11.26  Df =4544.6 -561.0 ps  S =  69.5 ps  Cin =  2.4 ff  Cout =   8.2 ff  Cmax = 293.9 ff  G =  334  
+ABC: Path 13 --    3617 : 3    2 sky130_fd_sc_hd__and3b_2  A =  10.01  Df =4760.9 -122.4 ps  S =  50.0 ps  Cin =  1.5 ff  Cout =   4.1 ff  Cmax = 309.5 ff  G =  261  
+ABC: Path 14 --    3828 : 4    3 sky130_fd_sc_hd__o31a_2   A =  10.01  Df =5118.7 -319.7 ps  S =  69.9 ps  Cin =  2.3 ff  Cout =   9.5 ff  Cmax = 285.7 ff  G =  390  
+ABC: Path 15 --    3940 : 4    2 sky130_fd_sc_hd__a211o_2  A =  10.01  Df =5462.4 -527.8 ps  S =  57.1 ps  Cin =  2.4 ff  Cout =   6.1 ff  Cmax = 325.0 ff  G =  249  
+ABC: Path 16 --    3970 : 3    3 sky130_fd_sc_hd__a21oi_2  A =   8.76  Df =5623.1 -633.3 ps  S = 144.6 ps  Cin =  4.6 ff  Cout =   8.8 ff  Cmax = 128.2 ff  G =  181  
+ABC: Path 17 --    4003 : 2    2 sky130_fd_sc_hd__nor2_2   A =   6.26  Df =5690.9 -570.2 ps  S = 144.9 ps  Cin =  4.4 ff  Cout =  10.9 ff  Cmax = 141.9 ff  G =  239  
+ABC: Path 18 --    4027 : 4    1 sky130_fd_sc_hd__o211a_2  A =  10.01  Df =5914.9 -624.1 ps  S =  36.1 ps  Cin =  2.4 ff  Cout =   1.5 ff  Cmax = 268.3 ff  G =   59  
+ABC: Path 19 --    4028 : 2    2 sky130_fd_sc_hd__or2_2    A =   6.26  Df =6195.2 -268.6 ps  S =  65.6 ps  Cin =  1.5 ff  Cout =   6.6 ff  Cmax = 299.4 ff  G =  434  
+ABC: Path 20 --    4029 : 4    1 sky130_fd_sc_hd__o2bb2a_2 A =  11.26  Df =6449.6 -369.1 ps  S =  51.2 ps  Cin =  1.8 ff  Cout =   4.7 ff  Cmax = 294.8 ff  G =  252  
+ABC: Path 21 --    4030 : 2    1 sky130_fd_sc_hd__nor2_2   A =   6.26  Df =6750.0 -585.6 ps  S = 373.1 ps  Cin =  4.4 ff  Cout =  33.4 ff  Cmax = 141.9 ff  G =  756  
+ABC: Start-point = pi298 (\pe_array[1].u_pe.weight_in [1]).  End-point = po324 ($auto$rtlil.cc:2739:MuxGate$14708).
+ABC: netlist                       : i/o =  326/  434  lat =    0  nd =  4444  edge =  12351  area =43071.04  delay =21.00  lev = 21
+ABC: + write_blif /tmp/yosys-abc-IXwaZl/output.blif 
+
+133.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o41ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o311a_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:       56
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_2 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:       40
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:       33
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:       53
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       61
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a311o_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:       45
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:       40
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:       50
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:      161
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       54
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:      268
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:      225
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:      140
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:      112
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:      120
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_2 cells:       93
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:      241
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:      119
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:      142
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:      129
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:      135
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       61
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       79
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:      297
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:      458
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:      132
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:      409
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      275
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:      209
+ABC RESULTS:        internal signals:     4867
+ABC RESULTS:           input signals:      326
+ABC RESULTS:          output signals:      434
+Removing temp directory.
+
+134. Executing SETUNDEF pass (replace undef values with defined constants).
+
+135. Executing HILOMAP pass (mapping to constant drivers).
+
+136. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+137. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \compute_core..
+Removed 0 unused cells and 6330 unused wires.
+<suppressed ~1 debug messages>
+
+138. Executing INSBUF pass (insert buffer cells for connected wires).
+
+139. Executing CHECK pass (checking for obvious problems).
+Checking module compute_core...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vanamala/ECE510/codefest/cf07/runs/RUN_2026-05-14_17-45-44/tmp/ea687066f51d46cb8c7283ee9a86ad24.lib ",
+   "modules": {
+      "\\compute_core": {
+         "num_wires":         4758,
+         "num_wire_bits":     4900,
+         "num_pub_wires":     314,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4878,
+         "area":              52293.904000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 120,
+            "sky130_fd_sc_hd__a211oi_2": 50,
+            "sky130_fd_sc_hd__a21bo_2": 61,
+            "sky130_fd_sc_hd__a21boi_2": 14,
+            "sky130_fd_sc_hd__a21o_2": 268,
+            "sky130_fd_sc_hd__a21oi_2": 297,
+            "sky130_fd_sc_hd__a22o_2": 56,
+            "sky130_fd_sc_hd__a22oi_2": 40,
+            "sky130_fd_sc_hd__a2bb2o_2": 21,
+            "sky130_fd_sc_hd__a311o_2": 4,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 24,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 6,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__and2_2": 225,
+            "sky130_fd_sc_hd__and2b_2": 140,
+            "sky130_fd_sc_hd__and3_2": 241,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 53,
+            "sky130_fd_sc_hd__and4b_2": 1,
+            "sky130_fd_sc_hd__and4bb_2": 19,
+            "sky130_fd_sc_hd__dfxtp_2": 434,
+            "sky130_fd_sc_hd__inv_2": 61,
+            "sky130_fd_sc_hd__mux2_1": 13,
+            "sky130_fd_sc_hd__nand2_2": 275,
+            "sky130_fd_sc_hd__nand2b_2": 54,
+            "sky130_fd_sc_hd__nand3_2": 161,
+            "sky130_fd_sc_hd__nand3b_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 4,
+            "sky130_fd_sc_hd__nand4b_2": 1,
+            "sky130_fd_sc_hd__nor2_2": 409,
+            "sky130_fd_sc_hd__nor3_2": 119,
+            "sky130_fd_sc_hd__nor3b_2": 2,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__o211a_2": 209,
+            "sky130_fd_sc_hd__o211ai_2": 93,
+            "sky130_fd_sc_hd__o21a_2": 79,
+            "sky130_fd_sc_hd__o21ai_2": 142,
+            "sky130_fd_sc_hd__o21ba_2": 33,
+            "sky130_fd_sc_hd__o21bai_2": 40,
+            "sky130_fd_sc_hd__o22a_2": 7,
+            "sky130_fd_sc_hd__o2bb2a_2": 132,
+            "sky130_fd_sc_hd__o2bb2ai_2": 25,
+            "sky130_fd_sc_hd__o311a_2": 6,
+            "sky130_fd_sc_hd__o311ai_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 10,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__o32a_2": 3,
+            "sky130_fd_sc_hd__o41ai_2": 1,
+            "sky130_fd_sc_hd__or2_2": 112,
+            "sky130_fd_sc_hd__or3_2": 129,
+            "sky130_fd_sc_hd__or3b_2": 45,
+            "sky130_fd_sc_hd__or4_2": 3,
+            "sky130_fd_sc_hd__or4b_2": 7,
+            "sky130_fd_sc_hd__or4bb_2": 16,
+            "sky130_fd_sc_hd__xnor2_2": 458,
+            "sky130_fd_sc_hd__xor2_2": 135
+         }
+      }
+   },
+      "design": {
+         "num_wires":         4758,
+         "num_wire_bits":     4900,
+         "num_pub_wires":     314,
+         "num_pub_wire_bits": 456,
+         "num_ports":         9,
+         "num_port_bits":     151,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4878,
+         "area":              52293.904000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 120,
+            "sky130_fd_sc_hd__a211oi_2": 50,
+            "sky130_fd_sc_hd__a21bo_2": 61,
+            "sky130_fd_sc_hd__a21boi_2": 14,
+            "sky130_fd_sc_hd__a21o_2": 268,
+            "sky130_fd_sc_hd__a21oi_2": 297,
+            "sky130_fd_sc_hd__a22o_2": 56,
+            "sky130_fd_sc_hd__a22oi_2": 40,
+            "sky130_fd_sc_hd__a2bb2o_2": 21,
+            "sky130_fd_sc_hd__a311o_2": 4,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 24,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 6,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__and2_2": 225,
+            "sky130_fd_sc_hd__and2b_2": 140,
+            "sky130_fd_sc_hd__and3_2": 241,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 53,
+            "sky130_fd_sc_hd__and4b_2": 1,
+            "sky130_fd_sc_hd__and4bb_2": 19,
+            "sky130_fd_sc_hd__dfxtp_2": 434,
+            "sky130_fd_sc_hd__inv_2": 61,
+            "sky130_fd_sc_hd__mux2_1": 13,
+            "sky130_fd_sc_hd__nand2_2": 275,
+            "sky130_fd_sc_hd__nand2b_2": 54,
+            "sky130_fd_sc_hd__nand3_2": 161,
+            "sky130_fd_sc_hd__nand3b_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 4,
+            "sky130_fd_sc_hd__nand4b_2": 1,
+            "sky130_fd_sc_hd__nor2_2": 409,
+            "sky130_fd_sc_hd__nor3_2": 119,
+            "sky130_fd_sc_hd__nor3b_2": 2,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__o211a_2": 209,
+            "sky130_fd_sc_hd__o211ai_2": 93,
+            "sky130_fd_sc_hd__o21a_2": 79,
+            "sky130_fd_sc_hd__o21ai_2": 142,
+            "sky130_fd_sc_hd__o21ba_2": 33,
+            "sky130_fd_sc_hd__o21bai_2": 40,
+            "sky130_fd_sc_hd__o22a_2": 7,
+            "sky130_fd_sc_hd__o2bb2a_2": 132,
+            "sky130_fd_sc_hd__o2bb2ai_2": 25,
+            "sky130_fd_sc_hd__o311a_2": 6,
+            "sky130_fd_sc_hd__o311ai_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 10,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__o32a_2": 3,
+            "sky130_fd_sc_hd__o41ai_2": 1,
+            "sky130_fd_sc_hd__or2_2": 112,
+            "sky130_fd_sc_hd__or3_2": 129,
+            "sky130_fd_sc_hd__or3b_2": 45,
+            "sky130_fd_sc_hd__or4_2": 3,
+            "sky130_fd_sc_hd__or4b_2": 7,
+            "sky130_fd_sc_hd__or4bb_2": 16,
+            "sky130_fd_sc_hd__xnor2_2": 458,
+            "sky130_fd_sc_hd__xor2_2": 135
+         }
+      }
+}
+
+140. Printing statistics.
+
+=== compute_core ===
+
+   Number of wires:               4758
+   Number of wire bits:           4900
+   Number of public wires:         314
+   Number of public wire bits:     456
+   Number of ports:                  9
+   Number of port bits:            151
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4878
+     sky130_fd_sc_hd__a2111o_2       1
+     sky130_fd_sc_hd__a211o_2      120
+     sky130_fd_sc_hd__a211oi_2      50
+     sky130_fd_sc_hd__a21bo_2       61
+     sky130_fd_sc_hd__a21boi_2      14
+     sky130_fd_sc_hd__a21o_2       268
+     sky130_fd_sc_hd__a21oi_2      297
+     sky130_fd_sc_hd__a22o_2        56
+     sky130_fd_sc_hd__a22oi_2       40
+     sky130_fd_sc_hd__a2bb2o_2      21
+     sky130_fd_sc_hd__a311o_2        4
+     sky130_fd_sc_hd__a311oi_2       2
+     sky130_fd_sc_hd__a31o_2        24
+     sky130_fd_sc_hd__a31oi_2        2
+     sky130_fd_sc_hd__a32o_2         6
+     sky130_fd_sc_hd__a32oi_2        1
+     sky130_fd_sc_hd__and2_2       225
+     sky130_fd_sc_hd__and2b_2      140
+     sky130_fd_sc_hd__and3_2       241
+     sky130_fd_sc_hd__and3b_2        5
+     sky130_fd_sc_hd__and4_2        53
+     sky130_fd_sc_hd__and4b_2        1
+     sky130_fd_sc_hd__and4bb_2      19
+     sky130_fd_sc_hd__dfxtp_2      434
+     sky130_fd_sc_hd__inv_2         61
+     sky130_fd_sc_hd__mux2_1        13
+     sky130_fd_sc_hd__nand2_2      275
+     sky130_fd_sc_hd__nand2b_2      54
+     sky130_fd_sc_hd__nand3_2      161
+     sky130_fd_sc_hd__nand3b_2       2
+     sky130_fd_sc_hd__nand4_2        4
+     sky130_fd_sc_hd__nand4b_2       1
+     sky130_fd_sc_hd__nor2_2       409
+     sky130_fd_sc_hd__nor3_2       119
+     sky130_fd_sc_hd__nor3b_2        2
+     sky130_fd_sc_hd__nor4_2         4
+     sky130_fd_sc_hd__o211a_2      209
+     sky130_fd_sc_hd__o211ai_2      93
+     sky130_fd_sc_hd__o21a_2        79
+     sky130_fd_sc_hd__o21ai_2      142
+     sky130_fd_sc_hd__o21ba_2       33
+     sky130_fd_sc_hd__o21bai_2      40
+     sky130_fd_sc_hd__o22a_2         7
+     sky130_fd_sc_hd__o2bb2a_2     132
+     sky130_fd_sc_hd__o2bb2ai_2     25
+     sky130_fd_sc_hd__o311a_2        6
+     sky130_fd_sc_hd__o311ai_2       1
+     sky130_fd_sc_hd__o31a_2        10
+     sky130_fd_sc_hd__o31ai_2        2
+     sky130_fd_sc_hd__o32a_2         3
+     sky130_fd_sc_hd__o41ai_2        1
+     sky130_fd_sc_hd__or2_2        112
+     sky130_fd_sc_hd__or3_2        129
+     sky130_fd_sc_hd__or3b_2        45
+     sky130_fd_sc_hd__or4_2          3
+     sky130_fd_sc_hd__or4b_2         7
+     sky130_fd_sc_hd__or4bb_2       16
+     sky130_fd_sc_hd__xnor2_2      458
+     sky130_fd_sc_hd__xor2_2       135
+
+   Chip area for module '\compute_core': 52293.904000
+     of which used for sequential elements: 9231.353600 (17.65%)
+
+141. Executing Verilog backend.
+Dumping module `\compute_core'.
+
+142. Executing JSON backend.
