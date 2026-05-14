@@ -19,4 +19,3 @@ nominal corner, WNS -3.17 ns slow-slow corner (ss_100C_1v60).
 
 4. **Keep INT8 precision.** 53,346 µm² is well within sky130A capacity.
    No precision reduction needed.
-EOF\
