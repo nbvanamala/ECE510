@@ -1,0 +1,45 @@
+﻿
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.65 (git sha1 b85cad634, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.65]
+
+-- Running command `read_json synth/synth_netlist.json; stat' --
+
+1. Executing JSON frontend.
+Importing module compute_core from JSON tree.
+
+2. Printing statistics.
+
+=== compute_core ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     3556 wires
+     5094 wire bits
+       59 public wires
+      853 public wire bits
+        9 ports
+      151 port bits
+     4039 cells
+       95   $_ANDNOT_
+      566   $_AND_
+        8   $_DFFE_PP_
+       15   $_MUX_
+     1446   $_NAND_
+       10   $_NOR_
+       11   $_NOT_
+       65   $_ORNOT_
+      152   $_OR_
+       24   $_SDFFCE_PN0P_
+      272   $_SDFFE_PP0P_
+      130   $_SDFF_PP0_
+      326   $_XNOR_
+      915   $_XOR_
+        4   $scopeinfo
+
+End of script. Logfile hash: b7fee7a711, time: 0.42s, user: 0.42s, system: 0.00s
+Yosys 0.65 (git sha1 b85cad634, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.65]
+Time spent: 99% 2x read_json (0 sec), 0% 1x stat (0 sec), ...

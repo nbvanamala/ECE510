@@ -1,0 +1,19 @@
+metric,value,unit,notes
+tool,Yosys 0.65 (yowasp),,generic gate synthesis
+design,compute_core,,4x INT8 PE systolic array
+clock_period,10.0,ns,100 MHz target
+design__instance__count,4039,cells,generic gate library (not sky130 μm²)
+design__ff__count,434,flip-flops,SDFF + SDFFE + SDFFCE cells
+design__comb__count,3601,combinational cells,
+cell__nand2__count,1446,,dominant logic cell
+cell__xor2__count,915,,arithmetic (multiplier/accumulator)
+cell__xnor2__count,326,,arithmetic
+cell__and2__count,566,,
+cell__or2__count,152,,
+cell__sdffe__count,272,,enabled DFF (accumulator pipeline)
+cell__sdff__count,130,,plain DFF
+cell__sdffce__count,24,,clock-enabled DFF with clear
+timing__setup__ws_estimate,7.16,ns,analytical sky130HD estimate (no OpenSTA)
+timing__critical_path_estimate,2.84,ns,8x8 MAC + 32b accumulate
+timing__max_freq_estimate,352,MHz,1/2.84ns
+synthesis__warning__count,0,,no warnings from Yosys
