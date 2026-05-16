@@ -21,7 +21,8 @@ accumulating 9 INT8 MACs per output channel.
 | Core utilization | 51.4% |
 | Flip-flops | 434 |
 | WNS nominal corner | +2.32 ns |
-| WNS slow-slow corner | -3.17 ns |
+| WNS nom_ss corner (nom_ss_100C_1v60) | -3.01 ns |
+| WNS overall worst (max_ss_100C_1v60) | -3.17 ns |
 | Setup violations (ss) | 170 endpoints |
 | DRC | Passed |
 | LVS | Passed |
@@ -29,7 +30,7 @@ accumulating 9 INT8 MACs per output channel.
 ## Scope Adjustments for M3
 
 1. **Add SDC file** — fix generic fallback timing constraint issue.
-2. **Pipeline critical path** — address -3.17 ns ss corner violation.
+2. **Pipeline critical path** — address -3.01 ns nom_ss violation (worst -3.17 ns at max_ss).
 3. **Keep 100 MHz clock target** — nominal corner closes cleanly.
 4. **Keep INT8 precision** — 53,346 µm² is within sky130A capacity.
 5. **Interface unchanged** — AXI4-Lite remains as planned.
