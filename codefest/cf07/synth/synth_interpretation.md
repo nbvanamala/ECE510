@@ -9,8 +9,9 @@
 
 Clock target: **10 ns (100 MHz)**. In the nominal corner (nom_tt_025C_1v80),
 worst-case setup slack (WNS) is **+2.32 ns** — timing closes cleanly. However,
-in the slow-slow corner (nom_ss_100C_1v60), WNS is **-3.17 ns** with 170
-violating endpoints and TNS of -271 ns. The design passes timing at typical
+in the slow-slow corner (nom_ss_100C_1v60), WNS is **-3.01 ns** with 170
+violating endpoints and TNS of -271 ns. The overall worst-case WNS across all
+corners is **-3.17 ns** (max_ss_100C_1v60). The design passes timing at typical
 conditions but fails at slow process and low voltage.
 
 ### (b) Critical Path
@@ -34,7 +35,9 @@ Top three contributors by instance count:
 ### (d) Violations and Warnings
 
 Setup violations in all three slow-slow corners (ss_100C_1v60): WNS ranges
-from -2.85 ns to -3.17 ns with 168-172 failing endpoints. Antenna violations:
-3 pin violations and 3 net violations. No hold violations in any corner.
-Key warning: no SDC file provided — OpenLane used generic fallback constraints.
-DRC passed. LVS passed.
+from -2.85 ns to -3.17 ns with 168-172 failing endpoints. Max fanout
+violations: **15 nets** exceed drive strength limits in every corner
+(design__max_fanout_violation__count = 15) — these nets require buffer
+insertion or logic restructuring. Antenna violations: 3 pin violations and
+3 net violations. No hold violations in any corner. Key warning: no SDC file
+provided — OpenLane used generic fallback constraints. DRC passed. LVS passed.
