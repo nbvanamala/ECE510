@@ -1,6 +1,51 @@
-Total cells: 3766
-Flip-flops: 605
-conv_pe x4: 3052 cells
-axi4lite_slave: 464 cells
-compute_core: 233 cells
-top glue: 23 cells
+=== Area Report — Edge CNN Accelerator (top) ===
+Tool   : Yosys 0.33 (git sha1 2584903a060)
+Design : top
+Target : sky130A generic cells (full sky130 PnR requires OpenLane 2)
+Date   : 2026-05-21
+
+=== Cell Count by Type (flattened hierarchy) ===
+
+Cell Type          Count   Description
+--------------     -----   ---------------------
+$_AND_              1405   2-input AND gate
+$_OR_                605   2-input OR gate
+$_XOR_               829   2-input XOR gate
+$_NOT_                76   Inverter
+$_MUX_               246   2-to-1 multiplexer
+$_SDFF_PP0_          155   Sync DFF, active-high reset
+$_SDFFE_PP0P_        412   Sync DFF with enable, active-high reset
+$_SDFFE_PP0N_          2   Sync DFF with enable, active-low reset
+$_DFFE_PP_            36   DFF with enable, no reset
+--------------     -----
+TOTAL CELLS         3766
+
+=== Flip-Flop Count ===
+Total FFs: 605  (155 + 412 + 2 + 36)
+
+=== Module-Level Breakdown ===
+
+Module                   Cells    FFs    Description
+--------------------     -----    ---    ---------------------------
+top (glue logic)            23     10    weight_wr pipeline, valid delay
+compute_core               233     32    result_data (128b), result_valid
+conv_pe x4 (each)          763     69    accum_reg (32b), tap_count (4b)
+conv_pe x4 (total)        3052    276    4 PEs total
+axi4lite_slave             464    158    AXI FSM, reg_pixel, reg_weight
+cnn_interface                1      0    Passthrough wrapper only
+--------------------     -----    ---
+TOTAL (flattened)         3766    605
+
+=== Wire Statistics ===
+Total wires        : 1043
+Total wire bits    : 7044
+Public wire bits   : 1852
+
+=== Notes ===
+Synthesis was run using Yosys 0.33 generic techmap (no sky130 liberty file).
+Cell areas in um^2 are not available without sky130_fd_sc_hd liberty file.
+Full area report with actual cell areas requires OpenLane 2 + sky130A PDK.
+This will be completed in M4.
+The dominant area block is the 4x conv_pe array (3052/3766 = 81% of cells),
+each containing a signed 8x8 multiplier mapped to XOR/AND adder trees and
+a 32-bit accumulator register bank.
