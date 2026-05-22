@@ -1,3 +1,43 @@
+// ============================================================
+// top.sv - Integrated Top Module
+// Project : Edge CNN Accelerator for Industrial AI Applications
+// Course  : ECE510 Spring 2026
+// Author  : Naveen Babu Vanamala
+//
+// Port List:
+//   clk        : input   1b    System clock, rising-edge triggered
+//   rst        : input   1b    Synchronous active-high reset
+//   s_awvalid  : input   1b    AXI4-Lite write address valid
+//   s_awready  : output  1b    AXI4-Lite write address ready
+//   s_awaddr   : input   32b   AXI4-Lite write address
+//   s_wvalid   : input   1b    AXI4-Lite write data valid
+//   s_wready   : output  1b    AXI4-Lite write data ready
+//   s_wdata    : input   32b   AXI4-Lite write data
+//   s_wstrb    : input   4b    AXI4-Lite write strobes
+//   s_bvalid   : output  1b    AXI4-Lite write response valid
+//   s_bready   : input   1b    AXI4-Lite write response ready
+//   s_bresp    : output  2b    AXI4-Lite write response (OKAY=00)
+//   s_arvalid  : input   1b    AXI4-Lite read address valid
+//   s_arready  : output  1b    AXI4-Lite read address ready
+//   s_araddr   : input   32b   AXI4-Lite read address
+//   s_rvalid   : output  1b    AXI4-Lite read data valid
+//   s_rready   : input   1b    AXI4-Lite read data ready
+//   s_rdata    : output  32b   AXI4-Lite read data
+//   s_rresp    : output  2b    AXI4-Lite read response (OKAY=00)
+//   result_out : output  128b  Packed PE results [PE3|PE2|PE1|PE0]
+//
+// Glue Logic:
+//   1. weight_wr/weight_addr counter: The AXI bus has no PE address
+//      concept. A 2-bit counter w_addr_ctr increments each time a
+//      write to WEIGHT_IN (0x04) completes. weight_wr_raw fires on
+//      the W-data phase, then weight_wr_r is delayed one cycle to
+//      align with the registered weight_out output of the interface.
+//   2. valid_in_delayed: interface valid_out fires on the CTRL write
+//      cycle but pixel_out settles one cycle later. A one-cycle
+//      register delays valid_in to align with the settled pixel value.
+//   3. done_in: directly wired from compute_core result_valid.
+//      Single clock domain, no FIFO or CDC needed.
+// ============================================================
 `timescale 1ns/1ps
 module top #(parameter NUM_PE=4,parameter DATA_WIDTH=8,parameter ACCUM_WIDTH=32,parameter KERNEL_SIZE=9,parameter ADDR_WIDTH=32,parameter AXI_DW=32)(input wire clk,input wire rst,input wire s_awvalid,output wire s_awready,input wire [31:0] s_awaddr,input wire s_wvalid,output wire s_wready,input wire [31:0] s_wdata,input wire [3:0] s_wstrb,output wire s_bvalid,input wire s_bready,output wire [1:0] s_bresp,input wire s_arvalid,output wire s_arready,input wire [31:0] s_araddr,output wire s_rvalid,input wire s_rready,output wire [31:0] s_rdata,output wire [1:0] s_rresp,output wire [127:0] result_out);
 wire signed [7:0] w_pixel_out,w_weight_out;
