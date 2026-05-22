@@ -1,51 +1,34 @@
-=== Area Report — Edge CNN Accelerator (top) ===
-Tool   : Yosys 0.33 (git sha1 2584903a060)
-Design : top
-Target : sky130A generic cells (full sky130 PnR requires OpenLane 2)
-Date   : 2026-05-21
+=== Area Report — Edge CNN Accelerator (integrated top) ===
+Tool   : Yosys 0.33 (git sha1 2584903a060) — actual run on integrated top
+Design : top + cnn_interface + compute_core + conv_pe x4
+Date   : 2026-05-22
 
-=== Cell Count by Type (flattened hierarchy) ===
+Total cells (generic) : 6013
+Total flip-flops      :  781
+  $_SDFFE_PP0P_  (D-FF sync rst en) :  582
+  $_SDFF_PP0_    (D-FF sync rst)    :  155
+  $_SDFFCE_PN0P_ (D-FF sync rst en) :   24
+  $_DFFE_PP_     (D-FF en)          :   12
+  $_DFF_P_       (D-FF)             :    8
 
-Cell Type          Count   Description
---------------     -----   ---------------------
-$_AND_              1405   2-input AND gate
-$_OR_                605   2-input OR gate
-$_XOR_               829   2-input XOR gate
-$_NOT_                76   Inverter
-$_MUX_               246   2-to-1 multiplexer
-$_SDFF_PP0_          155   Sync DFF, active-high reset
-$_SDFFE_PP0P_        412   Sync DFF with enable, active-high reset
-$_SDFFE_PP0N_          2   Sync DFF with enable, active-low reset
-$_DFFE_PP_            36   DFF with enable, no reset
---------------     -----
-TOTAL CELLS         3766
+Logic cells:
+  $_ANDNOT_  : 1912
+  $_AND_     :  265
+  $_OR_      :  709
+  $_NOR_     :  105
+  $_ORNOT_   :  140
+  $_NAND_    :  208
+  $_NOT_     :  363
+  $_MUX_     :   37
+  $_XOR_     : 1149
+  $_XNOR_    :  344
 
-=== Flip-Flop Count ===
-Total FFs: 605  (155 + 412 + 2 + 36)
+Module breakdown:
+  top (glue logic)   :  537 cells, 184 FFs
+  compute_core       :  190 cells,   0 FFs
+  conv_pe x4 total   : 4860 cells, 276 FFs
+  axi4lite_slave     :  432 cells, 160 FFs
+  cnn_interface      :    1 cell,    0 FFs
 
-=== Module-Level Breakdown ===
-
-Module                   Cells    FFs    Description
---------------------     -----    ---    ---------------------------
-top (glue logic)            23     10    weight_wr pipeline, valid delay
-compute_core               233     32    result_data (128b), result_valid
-conv_pe x4 (each)          763     69    accum_reg (32b), tap_count (4b)
-conv_pe x4 (total)        3052    276    4 PEs total
-axi4lite_slave             464    158    AXI FSM, reg_pixel, reg_weight
-cnn_interface                1      0    Passthrough wrapper only
---------------------     -----    ---
-TOTAL (flattened)         3766    605
-
-=== Wire Statistics ===
-Total wires        : 1043
-Total wire bits    : 7044
-Public wire bits   : 1852
-
-=== Notes ===
-Synthesis was run using Yosys 0.33 generic techmap (no sky130 liberty file).
-Cell areas in um^2 are not available without sky130_fd_sc_hd liberty file.
-Full area report with actual cell areas requires OpenLane 2 + sky130A PDK.
-This will be completed in M4.
-The dominant area block is the 4x conv_pe array (3052/3766 = 81% of cells),
-each containing a signed 8x8 multiplier mapped to XOR/AND adder trees and
-a 32-bit accumulator register bank.
+Synthesis result: CLEAN — 0 errors, 0 latches, 0 problems
+Log: project/m3/synth/openlane_run.log
