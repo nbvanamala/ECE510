@@ -1,0 +1,6 @@
+{
+  "DESIGN_NAME": "top",
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10,
+  "PDK": "sky130A"
+}

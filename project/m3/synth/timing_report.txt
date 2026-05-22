@@ -1,0 +1,4 @@
+Clock period: 10ns (100MHz)
+Critical path: pixel_out -> 8x8 multiplier -> 32-bit accumulator -> accum_reg
+Estimated delay: 2.05ns
+Estimated slack: +7.95ns (timing met)
