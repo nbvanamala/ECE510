@@ -1,0 +1,8 @@
+VCD info: dumpfile crossbar_tb.vcd opened for output.
+--- Test: in=[10,20,30,40] ---
+out[0]: got=-40  expected=-40  PASS
+out[1]: got=0  expected=0  PASS
+out[2]: got=-20  expected=-20  PASS
+out[3]: got=-20  expected=-20  PASS
+ALL PASS
+crossbar_tb.sv:102: $finish called at 36000 (1ps)

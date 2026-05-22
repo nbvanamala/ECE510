@@ -1,0 +1,26 @@
+VCD info: dumpfile interface.vcd opened for output.
+
+[TC1] Reset check
+  PASS     valid_out_rst  0x00000000
+  PASS      s_bvalid_rst  0x00000000
+  PASS      s_rvalid_rst  0x00000000
+
+[TC2] Write PIXEL_IN=0x42 read back
+  PASS   PIXEL_IN_rdback  0x00000042
+  PASS    pixel_out_port  0x00000042
+
+[TC3] Write WEIGHT_IN=0x07 read back
+  PASS  WEIGHT_IN_rdback  0x00000007
+
+[TC4] Write CTRL=0x01 read back
+  PASS       CTRL_rdback  0x00000001
+  INFO  valid_out pulsed during CTRL write (confirmed in VCD)
+
+[TC5] Fresh reset then done_in -> read STATUS=1
+  PASS       STATUS_done  0x00000001
+
+========================================
+  Total: 9   Passed: 9   Failed: 0
+  RESULT: PASS
+========================================
+../tb/tb_interface.sv:80: $finish called at 606000 (1ps)

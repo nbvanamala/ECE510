@@ -1,0 +1,10 @@
+VCD info: dumpfile compute_core.vcd opened for output.
+PASS  [Reset] result_valid=0, result_data=0
+PASS  [All-ones 9*(1*1)=9] pe0=9 (expected 9)
+PASS  [Representative 9*(3*7)=189] pe0=189 (expected 189)
+PASS  [Negative 9*(5*-3)=-135] pe0=-135 (expected -135)
+------------------------------------
+Tests passed: 4 / 4
+PASS
+------------------------------------
+../tb/tb_compute_core.sv:53: $finish called at 586000 (1ps)
