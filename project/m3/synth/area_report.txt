@@ -1,0 +1,6 @@
+Total cells: 3766
+Flip-flops: 605
+conv_pe x4: 3052 cells
+axi4lite_slave: 464 cells
+compute_core: 233 cells
+top glue: 23 cells
