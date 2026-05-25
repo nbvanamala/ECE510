@@ -44,3 +44,17 @@ Estimated power is 0.57 mW at 100 MHz, 1.8V based on manual switching activity e
 ## Scope Status
 
 Scope is unchanged from M2. The full design including the AXI4-Lite interface and the 4-PE weight-stationary systolic array synthesized without errors. No scope reduction was needed. The M1 dominant kernel (Conv2D im2col, 80.6% of runtime) is directly exercised by the 9-tap co-simulation test vector. M4 will complete the full OpenLane 2 flow and benchmark the accelerator against the M1 CPU baseline to quantify the speedup of the weight-stationary systolic array.
+
+## OpenLane 2 Full Flow Attempt
+
+The full OpenLane 2.3.10 flow was attempted on 2026-05-24. The flow failed at
+Stage 5 (Yosys.JsonHeader) with the error: "yosys: invalid option -- 'y'".
+This is a known incompatibility between OpenLane 2.3.10 and the system Yosys
+0.33. OpenLane 2.3.10 requires Yosys 0.40+ for its JsonHeader step. The Ubuntu
+24 apt repository only provides Yosys 0.33 as the latest version. Installing
+a newer Yosys requires building from source which is outside M3 scope.
+
+The Yosys 0.33 standalone synthesis (synth.ys) completed successfully with
+4305 cells, 0 errors, and 0 latches. The full OpenLane PnR flow
+(placement, routing, STA, power) will be completed in M4 after resolving
+the Yosys version conflict by building Yosys 0.40+ from source.
