@@ -1,5 +1,5 @@
 # Synthesis Notes and Scope Status — Milestone 3
-## Edge CNN Accelerator for Industrial AI Applications
+## Edge CNN Accelerator Using a Weight-Stationary Systolic Array
 ## ECE510 Spring 2026 | Naveen Babu Vanamala
 
 ## What Was Synthesized
