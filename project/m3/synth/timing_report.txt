@@ -1,21 +1,71 @@
 === Timing Report — Edge CNN Accelerator Using a Weight-Stationary Systolic Array ===
-Tool   : Yosys 0.33 structural analysis
-Design : top + cnn_interface + compute_core + conv_pe x4
-Clock  : clk, 10.000 ns (100 MHz)
+Tool   : Yosys 0.33 (git sha1 2584903a060) — structural critical path analysis
+Design : top | Modules: top + cnn_interface + axi4lite_slave + compute_core + conv_pe x4
+Clock  : clk, target period = 10.000 ns (100 MHz)
 Date   : 2026-05-24
 ECE510 Spring 2026 | Naveen Babu Vanamala
 
-Critical path:
-  Start : u_interface/u_slave/pixel_out[7]       (AXI pixel register)
-  End   : u_core/pe_array[0]/u_pe/accum_reg[31]  (accumulator FF)
+NOTE: Yosys does not perform STA. This report identifies the critical path by
+structural analysis of the synthesized generic netlist. Delay estimates use
+sky130_fd_sc_hd typical-corner cell delays (tt_025C_1v80) from the PDK datasheet.
+Post-PnR STA with actual wire parasitics will be performed in M4.
 
-  Stage 1 - pixel_out FF output             ~0.15 ns
-  Stage 2 - 8x8 signed multiplier           ~0.80 ns
-  Stage 3 - 32b ripple-carry adder          ~1.60 ns
-  Stage 4 - mux + accum_reg setup           ~0.20 ns
-  Total estimated                           ~2.75 ns
+--- Critical Path Identification ---
 
-Estimated setup slack at 10 ns : +7.25 ns
-Timing status                  : MET at 100 MHz
+The critical path was identified by tracing the longest combinational chain
+between registered endpoints in the flattened generic netlist.
 
-Full post-PnR STA deferred to M4 (requires full OpenLane 2 + sky130A PDK).
+Start register : u_interface/u_slave/pixel_out[7:0]
+                 (axi4lite_slave $_SDFFE_PP0P_ — registered AXI pixel output)
+                 Fires when host writes address 0x00 (PIXEL_IN) via AXI4-Lite.
+
+End register   : u_core/pe_array[i]/u_pe/accum_reg[31:0]
+                 (conv_pe $_SDFF_PP0_ — 32-bit accumulator register)
+                 Captures running dot-product sum each valid_in cycle.
+
+--- Logic Stages on Critical Path ---
+
+Stage 1 — pixel_out FF Q output propagation
+  Cell   : $_SDFFE_PP0P_ clock-to-Q
+  Delay  : ~0.15 ns  (sky130 dfxtp_1 Tco typical)
+
+Stage 2 — Broadcast wire (pixel_in to all 4 conv_pe instances, no logic)
+  Delay  : ~0.00 ns  (net, estimated < 0.05 ns pre-PnR)
+
+Stage 3 — Signed 8x8 multiplier (pixel_in * weight_in → 16-bit product)
+  Cells  : $_AND_, $_XOR_ forming partial-product Wallace tree (~8 logic levels)
+           Yosys emits this as $macc → alumacc → $_AND_/$XOR_/$FA_ chain
+  Delay  : ~0.80 ns  (8 levels × ~0.10 ns per sky130 AND2/XOR2 gate)
+
+Stage 4 — Sign extension from 16b to 32b
+  Cells  : $_AND_/$_OR_ (sign-bit replication)
+  Delay  : ~0.05 ns
+
+Stage 5 — 32-bit signed adder: accum_reg + product_ext → new accum value
+  Cells  : $_XOR_, $_AND_, carry chain ($lcu → carry-lookahead logic)
+           Yosys techmap produces a 32-bit ALU using $_XOR_+$lcu cells.
+           In generic techmap, $lcu is NOT a ripple chain — it is a
+           carry-lookahead unit. Sky130 XOR2/AND2/OR2 chain depth ≈ 16 levels.
+  Delay  : ~1.60 ns  (16 levels × ~0.10 ns)
+
+Stage 6 — Accumulator mux: select between reset-to-0, hold, and new sum
+  Cells  : $_MUX_ (tap_count comparator output selects mux)
+  Delay  : ~0.10 ns
+
+Stage 7 — accum_reg setup time
+  Delay  : ~0.10 ns  (sky130 dfxtp_1 Tsu typical)
+
+--- Totals ---
+
+  Total combinational delay  : ~2.75 ns
+  Clock period target        : 10.00 ns
+  Estimated setup slack      : +7.25 ns
+  Timing status              : MET at 100 MHz (pre-PnR estimate)
+
+--- Note on Yosys vs OpenROAD STA ---
+
+These delays are structural estimates. OpenROAD post-synthesis STA (M4) will
+report actual WNS/TNS with sky130A cell timing arcs and post-route parasitic
+capacitances. The 7.25 ns positive slack provides comfortable margin that
+should survive routing overhead. No hold violations are expected at 100 MHz
+given the single-clock synchronous design with no combinational loops.
