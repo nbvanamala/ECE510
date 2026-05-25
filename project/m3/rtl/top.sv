@@ -1,3 +1,37 @@
+// ============================================================
+// top.sv — Integrated Top Module
+// Project : Edge CNN Accelerator Using a Weight-Stationary Systolic Array
+// Course  : ECE510 Spring 2026
+// Author  : Naveen Babu Vanamala
+//
+// Port List:
+//   clk        : input   1b     System clock, rising-edge
+//   rst        : input   1b     Synchronous active-high reset
+//   s_awvalid  : input   1b     AXI write address valid
+//   s_awready  : output  1b     AXI write address ready
+//   s_awaddr   : input  32b     AXI write address
+//   s_wvalid   : input   1b     AXI write data valid
+//   s_wready   : output  1b     AXI write data ready
+//   s_wdata    : input  32b     AXI write data
+//   s_wstrb    : input   4b     AXI write byte strobes
+//   s_bvalid   : output  1b     AXI write response valid
+//   s_bready   : input   1b     AXI write response ready
+//   s_bresp    : output  2b     AXI write response (OKAY)
+//   s_arvalid  : input   1b     AXI read address valid
+//   s_arready  : output  1b     AXI read address ready
+//   s_araddr   : input  32b     AXI read address
+//   s_rvalid   : output  1b     AXI read data valid
+//   s_rready   : input   1b     AXI read data ready
+//   s_rdata    : output 32b     AXI read data
+//   s_rresp    : output  2b     AXI read response (OKAY)
+//   result_out : output 128b    Packed PE results [PE3|PE2|PE1|PE0]
+//
+// Glue Logic:
+//   1. weight_wr_raw->weight_wr_r: 1-cycle delay for weight_out settling
+//   2. valid_in_delayed: 1-cycle delay for pixel_out settling
+//   3. reg_result[0:3]: result capture at 0x10-0x1C
+//   4. reg_done: sticky DONE flag at 0x20
+// ============================================================
 `timescale 1ns/1ps
 module top #(
 parameter NUM_PE=4,parameter DATA_WIDTH=8,parameter ACCUM_WIDTH=32,
