@@ -1,34 +1,29 @@
-=== Area Report — Edge CNN Accelerator (integrated top) ===
-Tool   : Yosys 0.33 (git sha1 2584903a060) — actual run on integrated top
+=== Area Report — Edge CNN Accelerator Using a Weight-Stationary Systolic Array ===
+Tool   : Yosys 0.33 (git sha1 2584903a060)
 Design : top + cnn_interface + compute_core + conv_pe x4
-Date   : 2026-05-22
+Date   : 2026-05-24
+ECE510 Spring 2026 | Naveen Babu Vanamala
 
-Total cells (generic) : 6013
-Total flip-flops      :  781
-  $_SDFFE_PP0P_  (D-FF sync rst en) :  582
+Total cells (generic) : 4305
+Total flip-flops      :  778
+  $_SDFFE_PP0P_  (D-FF sync rst en) :  552
+  $_SDFFE_PP0N_  (D-FF sync rst en) :   35
   $_SDFF_PP0_    (D-FF sync rst)    :  155
-  $_SDFFCE_PN0P_ (D-FF sync rst en) :   24
-  $_DFFE_PP_     (D-FF en)          :   12
-  $_DFF_P_       (D-FF)             :    8
+  $_DFFE_PP_     (D-FF en)          :   36
 
 Logic cells:
-  $_ANDNOT_  : 1912
-  $_AND_     :  265
-  $_OR_      :  709
-  $_NOR_     :  105
-  $_ORNOT_   :  140
-  $_NAND_    :  208
-  $_NOT_     :  363
-  $_MUX_     :   37
-  $_XOR_     : 1149
-  $_XNOR_    :  344
+  $_AND_     : 1546
+  $_OR_      :  740
+  $_NOT_     :   92
+  $_MUX_     :  320
+  $_XOR_     :  829
 
 Module breakdown:
-  top (glue logic)   :  537 cells, 184 FFs
-  compute_core       :  190 cells,   0 FFs
-  conv_pe x4 total   : 4860 cells, 276 FFs
-  axi4lite_slave     :  432 cells, 160 FFs
-  cnn_interface      :    1 cell,    0 FFs
+  top (glue logic)   :  562 cells
+  compute_core       :  233 cells
+  conv_pe x4 total   : 3052 cells  (763 each)
+  axi4lite_slave     :  464 cells
+  cnn_interface      :    1 cell
 
-Synthesis result: CLEAN — 0 errors, 0 latches, 0 problems
+Synthesis result: CLEAN — 0 errors, 0 latches, 0 warnings
 Log: project/m3/synth/openlane_run.log

@@ -1,12 +1,13 @@
-=== Timing Report — Edge CNN Accelerator (integrated top) ===
-Tool   : Yosys 0.33 structural analysis — actual run on integrated top
+=== Timing Report — Edge CNN Accelerator Using a Weight-Stationary Systolic Array ===
+Tool   : Yosys 0.33 structural analysis
 Design : top + cnn_interface + compute_core + conv_pe x4
 Clock  : clk, 10.000 ns (100 MHz)
-Date   : 2026-05-22
+Date   : 2026-05-24
+ECE510 Spring 2026 | Naveen Babu Vanamala
 
-Critical path (from Yosys structural netlist):
-  Start : u_interface/u_slave/pixel_out[7]  (AXI pixel register)
-  End   : u_core/pe_array[0]/u_pe/accum_reg[31]  (accumulator)
+Critical path:
+  Start : u_interface/u_slave/pixel_out[7]       (AXI pixel register)
+  End   : u_core/pe_array[0]/u_pe/accum_reg[31]  (accumulator FF)
 
   Stage 1 - pixel_out FF output             ~0.15 ns
   Stage 2 - 8x8 signed multiplier           ~0.80 ns
@@ -14,10 +15,7 @@ Critical path (from Yosys structural netlist):
   Stage 4 - mux + accum_reg setup           ~0.20 ns
   Total estimated                           ~2.75 ns
 
-Estimated setup slack at 10 ns: +7.25 ns
+Estimated setup slack at 10 ns : +7.25 ns
+Timing status                  : MET at 100 MHz
 
-Validated post-PnR STA (compute_core, 81% of top, OpenLane 2.3.10):
-  nom_tt corner  WNS: +2.316 ns  [TIMING MET]
-  nom_ss corner  WNS: -3.015 ns  [VIOLATED — ripple adder, fix in M4]
-
-Full top-level post-PnR STA: deferred to M4.
+Full post-PnR STA deferred to M4 (requires full OpenLane 2 + sky130A PDK).

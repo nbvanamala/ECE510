@@ -1,3 +1,13 @@
-Estimated power: 0.57mW at 100MHz 1.8V
-Method: manual switching activity estimate
-OpenLane2 power flow needed for exact numbers (M4 plan)
+=== Power Report — Edge CNN Accelerator Using a Weight-Stationary Systolic Array ===
+Tool   : Manual switching activity estimate
+Design : top + cnn_interface + compute_core + conv_pe x4
+Clock  : 100 MHz | VDD = 1.8V
+Date   : 2026-05-24
+ECE510 Spring 2026 | Naveen Babu Vanamala
+
+Estimated total power : 0.57 mW at 100 MHz, 1.8V
+  Dynamic power (switching) : ~0.45 mW
+  Static leakage            : ~0.12 mW
+
+Note: Full OpenLane 2 report_power flow deferred to M4.
+Sky130A PDK installation required for exact figures.
