@@ -1,0 +1,10 @@
+read_verilog -sv ../../rtl/top.sv
+read_verilog -sv ../../../m2/rtl/conv_pe.sv
+read_verilog -sv ../../../m2/rtl/compute_core.sv
+read_verilog -sv ../../../m2/rtl/interface.sv
+hierarchy -check -top top
+synth -top top
+opt -full
+opt_clean -purge
+stat
+write_verilog -noattr synth_top.v
