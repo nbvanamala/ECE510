@@ -1578,6 +1578,6 @@ Optimizing module top.
      $_XOR_                        829
 
 Warnings: 1 unique messages, 1 total
-End of script. Logfile hash: 6404fef3bd, CPU: user 0.88s system 0.00s, MEM: 23.69 MB peak
+End of script. Logfile hash: 6404fef3bd, CPU: user 0.74s system 0.01s, MEM: 23.77 MB peak
 Yosys 0.33 (git sha1 2584903a060)
-Time spent: 28% 19x opt_expr (0 sec), 16% 16x opt_merge (0 sec), ...
+Time spent: 28% 19x opt_expr (0 sec), 17% 16x opt_merge (0 sec), ...
