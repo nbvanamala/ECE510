@@ -1,64 +1,65 @@
-# CMAN — Arithmetic Intensity Analysis
+# CMAN — Arithmetic Intensity of Project Kernel
 ## CF09 | ECE510 Spring 2026 | Naveen Babu Vanamala
 
-**NO AI — Hand calculation required. Fill in all sections below by hand.**
+> **NO AI — all calculations below are hand-derived.**
 
 ---
 
 ## Task 1 — Dominant Kernel
 
-Kernel name:
+**Kernel name:**
 
-Dimensions:
+**Dimensions:**
 
-Data types:
+**Data types:**
 
 ---
 
 ## Task 2 — FLOPs Count
 
-Formula:
+**Formula:**
 
-Values:
+**Substituted values:**
 
-Total FLOPs per invocation:
+**Total FLOPs per invocation:**
 
 ---
 
 ## Task 3 — Bytes Transferred
 
-### Lower bound (no data reuse)
+### Lower bound — no data reuse
 
-Formula:
+**Formula:**
 
-Values:
+**Values:**
 
-Total bytes (no reuse):
+**Total bytes (no reuse):**
 
-### Upper bound (full weight reuse — weight-stationary pattern)
+### Upper bound — full on-chip weight reuse
 
-Reuse pattern name:
+**Reuse pattern name:**
 
-Formula:
+**Formula:**
 
-Values:
+**Values:**
 
-Total bytes (full reuse):
+**Total bytes (full reuse):**
 
 ---
 
 ## Task 4 — Arithmetic Intensity
 
-AI (lower bound, no reuse):  _______ FLOPs/byte
+| Bound        | FLOPs | Bytes | AI (FLOPs/byte) |
+|--------------|-------|-------|-----------------|
+| Lower (no reuse) |  |  |  |
+| Upper (full reuse) |  |  |  |
 
-AI (upper bound, full reuse): _______ FLOPs/byte
-
-Hand-drawn roofline sketch: see `cman_roofline_sketch.pdf`
+**Hand-drawn roofline sketch:** `codefest/cf09/cman_roofline_sketch.pdf`
 
 ---
 
 ## Task 5 — Bottleneck and Improvement
 
-Is the design limited by:  [ ] hardware interface BW  [ ] on-chip memory BW  [ ] compute units
+**Current bottleneck** (circle one): hardware interface BW / on-chip memory BW / compute units
 
-Single highest-leverage change:
+**Single highest-leverage change:**
