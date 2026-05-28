@@ -1,0 +1,1 @@
+openroad -exit -no_splash -metrics /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/13-openroad-floorplan/or_metrics_out.json /nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/openroad/floorplan.tcl

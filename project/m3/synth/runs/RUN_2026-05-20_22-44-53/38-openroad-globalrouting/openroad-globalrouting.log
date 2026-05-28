@@ -1,0 +1,188 @@
+Reading OpenROAD database at '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.odb'…
+Reading library file at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2.0
+[INFO] Setting input delay to: 2.0
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting signal min routing layer to: met1 and clock min routing layer to met1. 
+[INFO] Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+-congestion_iterations 50 -verbose
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 30%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0019] Found 31 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 17
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0004] Blockages: 4814
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal      24508         11862          51.60%
+met2       Vertical        18678         12084          35.30%
+met3       Horizontal      12254          8272          32.50%
+met4       Vertical         7536          4634          38.51%
+met5       Horizontal       2444          1122          54.09%
+---------------------------------------------------------------
+
+[INFO GRT-0197] Via related to pin nodes: 11096
+[INFO GRT-0198] Via related Steiner nodes: 200
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 13753
+[INFO GRT-0112] Final usage 3D: 48411
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1                  0             0            0.00%             0 /  0 /  0
+met1             11862          3544           29.88%             0 /  0 /  0
+met2             12084          3400           28.14%             0 /  0 /  0
+met3              8272            87            1.05%             0 /  0 /  0
+met4              4634           121            2.61%             0 /  0 /  0
+met5              1122             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total            37974          7152           18.83%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 80357 um
+[INFO GRT-0014] Routed nets: 2251
+%OL_CREATE_REPORT antenna.rpt
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+Net: net41
+  Pin:   _1757_/A0 (sky130_fd_sc_hd__mux2_1)
+    Layer: mcon
+      Partial area ratio:    0.23
+      Required ratio:    3.00 (Gate area) 
+      Cumulative area ratio:    0.23
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met1
+      Partial area ratio:    5.56
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:    5.56
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:   26.37
+      Required ratio:  400.00 (Side area) 
+      Cumulative area ratio:   26.37
+      Required ratio:    0.00 (Cumulative side area) 
+
+    Layer: via
+      Partial area ratio:    0.27
+      Required ratio:    6.00 (Gate area) 
+      Cumulative area ratio:    0.50
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met2
+      Partial area ratio:   14.30
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:   19.86
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:   70.78
+      Required ratio: 2736.24 (Side area) 
+      Cumulative area ratio:   97.15
+      Required ratio:    0.00 (Cumulative side area) 
+
+
+  Pin:   _1822_/A0 (sky130_fd_sc_hd__mux2_1)
+    Layer: mcon
+      Partial area ratio:    0.23
+      Required ratio:    3.00 (Gate area) 
+      Cumulative area ratio:    0.23
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met1
+      Partial area ratio:   96.93
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:   96.93
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:  482.33
+      Required ratio:  400.00 (Side area) (VIOLATED)
+      Cumulative area ratio:  482.33
+      Required ratio:    0.00 (Cumulative side area) 
+
+    Layer: via
+      Partial area ratio:    0.54
+      Required ratio:    6.00 (Gate area) 
+      Cumulative area ratio:    0.77
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met2
+      Partial area ratio:   14.30
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:  111.23
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:   70.78
+      Required ratio: 2736.24 (Side area) 
+      Cumulative area ratio:  553.11
+      Required ratio:    0.00 (Cumulative side area) 
+
+
+  Pin:   _1887_/A1 (sky130_fd_sc_hd__mux2_1)
+    Layer: mcon
+      Partial area ratio:    0.23
+      Required ratio:    3.00 (Gate area) 
+      Cumulative area ratio:    0.23
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met1
+      Partial area ratio:    5.56
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:    5.56
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:   26.37
+      Required ratio:  400.00 (Side area) 
+      Cumulative area ratio:   26.37
+      Required ratio:    0.00 (Cumulative side area) 
+
+    Layer: via
+      Partial area ratio:    0.27
+      Required ratio:    6.00 (Gate area) 
+      Cumulative area ratio:    0.50
+      Required ratio:    0.00 (Cumulative area) 
+
+    Layer: met2
+      Partial area ratio:   14.30
+      Required ratio:    0.00 (Gate area) 
+      Cumulative area ratio:   19.86
+      Required ratio:    0.00 (Cumulative area) 
+      Partial area ratio:   70.78
+      Required ratio: 2736.24 (Side area) 
+      Cumulative area ratio:   97.15
+      Required ratio:    0.00 (Cumulative side area) 
+
+
+
+[INFO ANT-0002] Found 1 net violations.
+[INFO ANT-0001] Found 1 pin violations.
+%OL_END_REPORT
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               166     623.10
+  Tap cell                                722     903.37
+  Clock buffer                             34     495.48
+  Timing Repair Buffer                    410    3151.77
+  Inverter                                 23      86.33
+  Clock inverter                           21     237.73
+  Sequential cell                         316    6329.82
+  Multi-Input combinational cell         1424   11337.12
+  Total                                  3116   23164.72
+Writing OpenROAD database to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/38-openroad-globalrouting/cnn_top.odb'…
+Writing layout to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/38-openroad-globalrouting/cnn_top.def'…

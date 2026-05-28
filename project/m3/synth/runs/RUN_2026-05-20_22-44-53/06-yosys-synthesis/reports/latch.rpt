@@ -1,0 +1,10 @@
+
+18. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[0]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[1]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[2]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[3]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[0]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[1]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[2]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[3]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.

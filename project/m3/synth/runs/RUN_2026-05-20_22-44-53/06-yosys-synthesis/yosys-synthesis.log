@@ -1,0 +1,2121 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv
+Parsing SystemVerilog input from `/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv' to AST representation.
+Storing AST representation for module `$abstract\conv_pe'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv
+Parsing SystemVerilog input from `/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv' to AST representation.
+Storing AST representation for module `$abstract\compute_core'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv
+Parsing SystemVerilog input from `/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv' to AST representation.
+Storing AST representation for module `$abstract\axi4lite_slave'.
+Storing AST representation for module `$abstract\cnn_interface'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv
+Parsing SystemVerilog input from `/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv' to AST representation.
+Storing AST representation for module `$abstract\cnn_top'.
+Successfully finished Verilog frontend.
+
+6. Executing HIERARCHY pass (managing design hierarchy).
+
+7. Executing AST frontend in derive mode using pre-parsed AST for module `\cnn_top'.
+Generating RTLIL representation for module `\cnn_top'.
+
+7.1. Analyzing design hierarchy..
+Top module:  \cnn_top
+Parameter \NUM_PE = 4
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+
+7.2. Executing AST frontend in derive mode using pre-parsed AST for module `\compute_core'.
+Parameter \NUM_PE = 4
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Generating RTLIL representation for module `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core'.
+Parameter \DATA_WIDTH = 8
+Parameter \ADDR_WIDTH = 32
+Parameter \AXI_DW = 32
+
+7.3. Executing AST frontend in derive mode using pre-parsed AST for module `\cnn_interface'.
+Parameter \DATA_WIDTH = 8
+Parameter \ADDR_WIDTH = 32
+Parameter \AXI_DW = 32
+Generating RTLIL representation for module `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface'.
+
+7.4. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Parameter \DATA_WIDTH = 8
+Parameter \ADDR_WIDTH = 32
+Parameter \AXI_DW = 32
+
+7.5. Executing AST frontend in derive mode using pre-parsed AST for module `\axi4lite_slave'.
+Parameter \DATA_WIDTH = 8
+Parameter \ADDR_WIDTH = 32
+Parameter \AXI_DW = 32
+Generating RTLIL representation for module `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+
+7.6. Executing AST frontend in derive mode using pre-parsed AST for module `\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Generating RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Reprocessing module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core because instantiated module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe has become available.
+Generating RTLIL representation for module `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core'.
+
+7.7. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Used module:         $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+Parameter \DATA_WIDTH = 8
+Parameter \ACCUM_WIDTH = 32
+Parameter \KERNEL_SIZE = 9
+Found cached RTLIL representation for module `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe'.
+
+7.8. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:         $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Used module:         $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave
+
+7.9. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:         $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Used module:         $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave
+Removing unused module `$abstract\cnn_top'.
+Removing unused module `$abstract\cnn_interface'.
+Removing unused module `$abstract\axi4lite_slave'.
+Removing unused module `$abstract\compute_core'.
+Removing unused module `$abstract\conv_pe'.
+Removed 5 unused modules.
+Renaming module cnn_top to cnn_top.
+
+8. Generating Graphviz representation of design.
+Writing dot description to `/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/hierarchy.dot'.
+Dumping module cnn_top to page 1.
+
+9. Executing TRIBUF pass.
+
+10. Executing HIERARCHY pass (managing design hierarchy).
+
+10.1. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:         $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Used module:         $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave
+
+10.2. Analyzing design hierarchy..
+Top module:  \cnn_top
+Used module:     $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core
+Used module:         $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe
+Used module:     $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface
+Used module:         $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave
+Removed 0 unused modules.
+
+11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+12. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3 in module cnn_top.
+Marked 4 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3 in module cnn_top.
+Marked 1 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44 in module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+Marked 3 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41 in module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+Marked 1 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:113$40 in module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+Marked 2 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36 in module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+Marked 2 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46 in module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+Marked 1 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86 in module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.
+Marked 2 switch rules as full_case in process $proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68 in module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.
+Removed a total of 1 dead cases.
+
+13. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 9 redundant assignments.
+Promoted 17 assignments to connections.
+
+14. Executing PROC_INIT pass (extract init attributes).
+
+15. Executing PROC_ARST pass (detect async resets in processes).
+
+16. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~28 debug messages>
+
+17. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+     1/8: $0\done_r[0:0]
+     2/8: $0\valid_in_r[0:0]
+     3/8: $0\weight_wr_r[0:0]
+     4/8: $0\result_latch[31:0]
+     5/8: $0\pixel_cnt[3:0]
+     6/8: $0\weight_addr_lat[1:0]
+     7/8: $0\w_load_cnt[1:0]
+     8/8: $0\state[1:0]
+Creating decoders for process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44'.
+     1/2: $0\weight_out[7:0]
+     2/2: $0\pixel_out[7:0]
+Creating decoders for process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+     1/5: $0\rd_state[1:0]
+     2/5: $0\s_rresp[1:0]
+     3/5: $0\s_rdata[31:0]
+     4/5: $0\s_rvalid[0:0]
+     5/5: $0\s_arready[0:0]
+Creating decoders for process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:113$40'.
+     1/1: $0\reg_status[31:0]
+Creating decoders for process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+     1/10: $0\valid_out[0:0]
+     2/10: $0\wr_addr_lat[31:0]
+     3/10: $0\wr_state[1:0]
+     4/10: $0\reg_ctrl[31:0]
+     5/10: $0\reg_weight[31:0]
+     6/10: $0\reg_pixel[31:0]
+     7/10: $0\s_bresp[1:0]
+     8/10: $0\s_bvalid[0:0]
+     9/10: $0\s_wready[0:0]
+    10/10: $0\s_awready[0:0]
+Creating decoders for process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+     1/4: $0\valid_out[0:0]
+     2/4: $0\tap_count[3:0]
+     3/4: $0\accum_reg[31:0]
+     4/4: $0\accum_out[31:0]
+Creating decoders for process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+Creating decoders for process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+     1/6: $0\result_data[127:0] [127:96]
+     2/6: $0\result_data[127:0] [95:64]
+     3/6: $0\result_data[127:0] [63:32]
+     4/6: $0\result_data[127:0] [31:0]
+     5/6: $0\result_valid[0:0]
+     6/6: $1\k[31:0]
+Creating decoders for process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+     1/11: $2$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$85
+     2/11: $2$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_DATA[7:0]$84
+     3/11: $2$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_ADDR[1:0]$83
+     4/11: $1\wi[31:0]
+     5/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$79
+     6/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$78
+     7/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$77
+     8/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$76
+     9/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$82
+    10/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_DATA[7:0]$81
+    11/11: $1$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_ADDR[1:0]$80
+
+18. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[0]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[1]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[2]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_accum[3]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[0]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[1]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[2]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+No latch inferred for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\pe_valid[3]' from process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+
+19. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\cnn_top.\state' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$456' with positive edge clock.
+Creating register for signal `\cnn_top.\w_load_cnt' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$457' with positive edge clock.
+Creating register for signal `\cnn_top.\weight_addr_lat' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$458' with positive edge clock.
+Creating register for signal `\cnn_top.\pixel_cnt' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$459' with positive edge clock.
+Creating register for signal `\cnn_top.\weight_wr_r' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$460' with positive edge clock.
+Creating register for signal `\cnn_top.\valid_in_r' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$461' with positive edge clock.
+Creating register for signal `\cnn_top.\result_latch' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$462' with positive edge clock.
+Creating register for signal `\cnn_top.\done_r' using process `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+  created $dff cell `$procdff$463' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\pixel_out' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44'.
+  created $dff cell `$procdff$464' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\weight_out' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44'.
+  created $dff cell `$procdff$465' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_arready' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+  created $dff cell `$procdff$466' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_rvalid' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+  created $dff cell `$procdff$467' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_rdata' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+  created $dff cell `$procdff$468' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_rresp' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+  created $dff cell `$procdff$469' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\rd_state' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+  created $dff cell `$procdff$470' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\reg_status' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:113$40'.
+  created $dff cell `$procdff$471' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_awready' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$472' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_wready' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$473' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_bvalid' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$474' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\s_bresp' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$475' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\valid_out' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$476' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\reg_pixel' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$477' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\reg_weight' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$478' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\reg_ctrl' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$479' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\wr_state' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$480' with positive edge clock.
+Creating register for signal `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.\wr_addr_lat' using process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+  created $dff cell `$procdff$481' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\valid_out' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+  created $dff cell `$procdff$482' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\accum_out' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+  created $dff cell `$procdff$483' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\accum_reg' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+  created $dff cell `$procdff$484' with positive edge clock.
+Creating register for signal `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.\tap_count' using process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+  created $dff cell `$procdff$485' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\result_data' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+  created $dff cell `$procdff$486' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\result_valid' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+  created $dff cell `$procdff$487' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\k' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+  created $dff cell `$procdff$488' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.\wi' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$489' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$490' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$491' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$492' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$493' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_ADDR' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$494' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_DATA' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$495' with positive edge clock.
+Creating register for signal `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN' using process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+  created $dff cell `$procdff$496' with positive edge clock.
+
+20. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+21. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 7 empty switches in `\cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+Removing empty process `cnn_top.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:99$3'.
+Found and cleaned up 1 empty switch in `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44'.
+Removing empty process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:154$44'.
+Found and cleaned up 5 empty switches in `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+Removing empty process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:121$41'.
+Found and cleaned up 2 empty switches in `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:113$40'.
+Removing empty process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:113$40'.
+Found and cleaned up 7 empty switches in `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+Removing empty process `$paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.$proc$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:63$36'.
+Found and cleaned up 3 empty switches in `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+Removing empty process `$paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:20$46'.
+Removing empty process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:0$91'.
+Found and cleaned up 1 empty switch in `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+Removing empty process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:72$86'.
+Found and cleaned up 2 empty switches in `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+Removing empty process `$paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.$proc$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:53$68'.
+Cleaned up 28 empty switches.
+
+22. Executing CHECK pass (checking for obvious problems).
+Checking module cnn_top...
+Checking module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave...
+Checking module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface...
+Checking module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe...
+Checking module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core...
+Found and reported 0 problems.
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~4 debug messages>
+Optimizing module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+<suppressed ~11 debug messages>
+Optimizing module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface.
+Optimizing module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+Optimizing module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.
+
+24. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\axi4lite_slave.
+Deleting now unused module $paramod$7f664eff1b7125291bc8997e6858d8d037aeb7dc\cnn_interface.
+Deleting now unused module $paramod$a0d06c10564c794e40c4430a399b86a8efa3d147\conv_pe.
+Deleting now unused module $paramod$63cdde2bb8767312450e04905cc5a763ea768b64\compute_core.
+<suppressed ~7 debug messages>
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+26. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 23 unused cells and 251 unused wires.
+<suppressed ~30 debug messages>
+
+27. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+28. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+<suppressed ~84 debug messages>
+Removed a total of 28 cells.
+
+29. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\u_core.$procmux$418.
+    dead port 1/2 on $mux $flatten\u_core.$procmux$424.
+    dead port 1/2 on $mux $flatten\u_core.$procmux$430.
+Removed 3 multiplexer ports.
+<suppressed ~51 debug messages>
+
+30. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$415:
+      Old ports: A=8'00000000, B=8'11111111, Y=$flatten\u_core.$procmux$415_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\u_core.$procmux$415_Y [0]
+      New connections: $flatten\u_core.$procmux$415_Y [7:1] = { $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] $flatten\u_core.$procmux$415_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$442:
+      Old ports: A=8'00000000, B=8'11111111, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70
+      New ports: A=1'0, B=1'1, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0]
+      New connections: $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [7:1] = { $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$64_EN[7:0]$70 [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$445:
+      Old ports: A=8'00000000, B=8'11111111, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69
+      New ports: A=1'0, B=1'1, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0]
+      New connections: $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [7:1] = { $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$63_EN[7:0]$69 [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$436:
+      Old ports: A=8'00000000, B=8'11111111, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72
+      New ports: A=1'0, B=1'1, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0]
+      New connections: $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [7:1] = { $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$66_EN[7:0]$72 [0] }
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$439:
+      Old ports: A=8'00000000, B=8'11111111, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71
+      New ports: A=1'0, B=1'1, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0]
+      New connections: $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [7:1] = { $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:55$65_EN[7:0]$71 [0] }
+  Optimizing cells in module \cnn_top.
+    Consolidated identical input bits for $mux cell $flatten\u_core.$procmux$448:
+      Old ports: A=$flatten\u_core.$2$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$85, B=8'00000000, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75
+      New ports: A=$flatten\u_core.$procmux$415_Y [0], B=1'0, Y=$flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0]
+      New connections: $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [7:1] = { $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] $flatten\u_core.$0$memwr$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:57$67_EN[7:0]$75 [0] }
+  Optimizing cells in module \cnn_top.
+Performed a total of 6 changes.
+
+31. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+32. Executing OPT_DFF pass (perform DFF optimizations).
+
+33. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 0 unused cells and 37 unused wires.
+<suppressed ~3 debug messages>
+
+34. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+35. Rerunning OPT passes. (Maybe there is more to do…)
+
+36. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~49 debug messages>
+
+37. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+38. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+39. Executing OPT_DFF pass (perform DFF optimizations).
+
+40. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+41. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+42. Executing FSM pass (extract and optimize FSM).
+
+42.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register cnn_top.state.
+Found FSM state register cnn_top.u_intf.u_slave.rd_state.
+Not marking cnn_top.u_intf.u_slave.reg_status as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking cnn_top.u_intf.u_slave.s_bresp as FSM state register:
+    Register is connected to module port.
+    Users of register don't seem to benefit from recoding.
+Not marking cnn_top.u_intf.u_slave.s_rresp as FSM state register:
+    Register is connected to module port.
+    Users of register don't seem to benefit from recoding.
+Found FSM state register cnn_top.u_intf.u_slave.wr_state.
+
+42.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\cnn_top'.
+  found $dff cell for state register: $procdff$456
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $procmux$123_CMP
+  found ctrl input: $procmux$105_CMP
+  found ctrl input: $procmux$115_CMP
+  found ctrl input: \u_core.result_valid
+  found state code: 2'11
+  found ctrl input: \u_intf.u_slave.valid_out
+  found ctrl input: $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:139$6_Y
+  found state code: 2'10
+  found ctrl input: $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:124$4_Y
+  found state code: 2'01
+  found state code: 2'00
+  found ctrl output: $procmux$115_CMP
+  found ctrl output: $procmux$105_CMP
+  found ctrl output: $procmux$123_CMP
+  ctrl inputs: { \u_core.result_valid \u_intf.u_slave.valid_out $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:139$6_Y $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:124$4_Y \rst }
+  ctrl outputs: { $procmux$105_CMP $procmux$115_CMP $procmux$123_CMP $0\state[1:0] }
+  transition:       2'00 5'-0--0 ->       2'00 5'01000
+  transition:       2'00 5'-1-00 ->       2'00 5'01000
+  transition:       2'00 5'-1-10 ->       2'01 5'01001
+  transition:       2'00 5'----1 ->       2'00 5'01000
+  transition:       2'10 5'0---0 ->       2'10 5'00110
+  transition:       2'10 5'1---0 ->       2'11 5'00111
+  transition:       2'10 5'----1 ->       2'00 5'00100
+  transition:       2'01 5'-0--0 ->       2'01 5'10001
+  transition:       2'01 5'-10-0 ->       2'01 5'10001
+  transition:       2'01 5'-11-0 ->       2'10 5'10010
+  transition:       2'01 5'----1 ->       2'00 5'10000
+  transition:       2'11 5'----0 ->       2'11 5'00011
+  transition:       2'11 5'----1 ->       2'00 5'00000
+Extracting FSM `\u_intf.u_slave.rd_state' from module `\cnn_top'.
+  found $dff cell for state register: $flatten\u_intf.\u_slave.$procdff$470
+  root of input selection tree: $flatten\u_intf.\u_slave.$0\rd_state[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $flatten\u_intf.\u_slave.$procmux$192_CMP
+  found ctrl input: $flatten\u_intf.\u_slave.$procmux$195_CMP
+  found state code: 2'00
+  found ctrl input: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:144$43_Y
+  found ctrl input: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:128$42_Y
+  found state code: 2'01
+  found ctrl output: $flatten\u_intf.\u_slave.$procmux$192_CMP
+  found ctrl output: $flatten\u_intf.\u_slave.$procmux$195_CMP
+  ctrl inputs: { $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:144$43_Y $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:128$42_Y \rst }
+  ctrl outputs: { $flatten\u_intf.\u_slave.$procmux$195_CMP $flatten\u_intf.\u_slave.$procmux$192_CMP $flatten\u_intf.\u_slave.$0\rd_state[1:0] }
+  transition:       2'00 3'-00 ->       2'00 4'1000
+  transition:       2'00 3'-10 ->       2'01 4'1001
+  transition:       2'00 3'--1 ->       2'00 4'1000
+  transition:       2'01 3'0-0 ->       2'01 4'0101
+  transition:       2'01 3'1-0 ->       2'00 4'0100
+  transition:       2'01 3'--1 ->       2'00 4'0100
+Extracting FSM `\u_intf.u_slave.wr_state' from module `\cnn_top'.
+  found $dff cell for state register: $flatten\u_intf.\u_slave.$procdff$480
+  root of input selection tree: $flatten\u_intf.\u_slave.$0\wr_state[1:0]
+  found reset state: 2'00 (guessed from mux tree)
+  found ctrl input: \rst
+  found ctrl input: $flatten\u_intf.\u_slave.$procmux$276_CMP
+  found ctrl input: $flatten\u_intf.\u_slave.$procmux$258_CMP
+  found ctrl input: $flatten\u_intf.\u_slave.$procmux$268_CMP
+  found state code: 2'00
+  found ctrl input: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:98$39_Y
+  found ctrl input: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:82$38_Y
+  found state code: 2'10
+  found ctrl input: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:74$37_Y
+  found state code: 2'01
+  found ctrl output: $flatten\u_intf.\u_slave.$procmux$258_CMP
+  found ctrl output: $flatten\u_intf.\u_slave.$procmux$268_CMP
+  found ctrl output: $flatten\u_intf.\u_slave.$procmux$276_CMP
+  ctrl inputs: { $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:98$39_Y $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:82$38_Y $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:74$37_Y \rst }
+  ctrl outputs: { $flatten\u_intf.\u_slave.$procmux$276_CMP $flatten\u_intf.\u_slave.$procmux$268_CMP $flatten\u_intf.\u_slave.$procmux$258_CMP $flatten\u_intf.\u_slave.$0\wr_state[1:0] }
+  transition:       2'00 4'--00 ->       2'00 5'01000
+  transition:       2'00 4'--10 ->       2'01 5'01001
+  transition:       2'00 4'---1 ->       2'00 5'01000
+  transition:       2'10 4'0--0 ->       2'10 5'10010
+  transition:       2'10 4'1--0 ->       2'00 5'10000
+  transition:       2'10 4'---1 ->       2'00 5'10000
+  transition:       2'01 4'-0-0 ->       2'01 5'00101
+  transition:       2'01 4'-1-0 ->       2'10 5'00110
+  transition:       2'01 4'---1 ->       2'00 5'00100
+
+42.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\u_intf.u_slave.wr_state$518' from module `\cnn_top'.
+Optimizing FSM `$fsm$\u_intf.u_slave.rd_state$514' from module `\cnn_top'.
+Optimizing FSM `$fsm$\state$509' from module `\cnn_top'.
+
+42.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 27 unused cells and 27 unused wires.
+<suppressed ~28 debug messages>
+
+42.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$509' from module `\cnn_top'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+Optimizing FSM `$fsm$\u_intf.u_slave.rd_state$514' from module `\cnn_top'.
+  Removing unused output signal $flatten\u_intf.\u_slave.$0\rd_state[1:0] [0].
+  Removing unused output signal $flatten\u_intf.\u_slave.$0\rd_state[1:0] [1].
+Optimizing FSM `$fsm$\u_intf.u_slave.wr_state$518' from module `\cnn_top'.
+  Removing unused output signal $flatten\u_intf.\u_slave.$0\wr_state[1:0] [0].
+  Removing unused output signal $flatten\u_intf.\u_slave.$0\wr_state[1:0] [1].
+
+42.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$509' from module `\cnn_top' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> ---1
+  10 -> --1-
+  01 -> -1--
+  11 -> 1---
+Recoding FSM `$fsm$\u_intf.u_slave.rd_state$514' from module `\cnn_top' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> -1
+  01 -> 1-
+Recoding FSM `$fsm$\u_intf.u_slave.wr_state$518' from module `\cnn_top' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+
+42.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$509' from module `cnn_top':
+-------------------------------------
+
+  Information on FSM $fsm$\state$509 (\state):
+
+  Number of input signals:    5
+  Number of output signals:   3
+  Number of state bits:       4
+
+  Input signals:
+    0: \rst
+    1: $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:124$4_Y
+    2: $eq$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:139$6_Y
+    3: \u_intf.u_slave.valid_out
+    4: \u_core.result_valid
+
+  Output signals:
+    0: $procmux$123_CMP
+    1: $procmux$115_CMP
+    2: $procmux$105_CMP
+
+  State encoding:
+    0:     4'---1  <RESET STATE>
+    1:     4'--1-
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 5'-1-00   ->     0 3'010
+      1:     0 5'-0--0   ->     0 3'010
+      2:     0 5'----1   ->     0 3'010
+      3:     0 5'-1-10   ->     2 3'010
+      4:     1 5'----1   ->     0 3'001
+      5:     1 5'0---0   ->     1 3'001
+      6:     1 5'1---0   ->     3 3'001
+      7:     2 5'----1   ->     0 3'100
+      8:     2 5'-11-0   ->     1 3'100
+      9:     2 5'-10-0   ->     2 3'100
+     10:     2 5'-0--0   ->     2 3'100
+     11:     3 5'----1   ->     0 3'000
+     12:     3 5'----0   ->     3 3'000
+
+-------------------------------------
+
+FSM `$fsm$\u_intf.u_slave.rd_state$514' from module `cnn_top':
+-------------------------------------
+
+  Information on FSM $fsm$\u_intf.u_slave.rd_state$514 (\u_intf.u_slave.rd_state):
+
+  Number of input signals:    3
+  Number of output signals:   2
+  Number of state bits:       2
+
+  Input signals:
+    0: \rst
+    1: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:128$42_Y
+    2: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:144$43_Y
+
+  Output signals:
+    0: $flatten\u_intf.\u_slave.$procmux$192_CMP
+    1: $flatten\u_intf.\u_slave.$procmux$195_CMP
+
+  State encoding:
+    0:       2'-1  <RESET STATE>
+    1:       2'1-
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 3'-00   ->     0 2'10
+      1:     0 3'--1   ->     0 2'10
+      2:     0 3'-10   ->     1 2'10
+      3:     1 3'1-0   ->     0 2'01
+      4:     1 3'--1   ->     0 2'01
+      5:     1 3'0-0   ->     1 2'01
+
+-------------------------------------
+
+FSM `$fsm$\u_intf.u_slave.wr_state$518' from module `cnn_top':
+-------------------------------------
+
+  Information on FSM $fsm$\u_intf.u_slave.wr_state$518 (\u_intf.u_slave.wr_state):
+
+  Number of input signals:    4
+  Number of output signals:   3
+  Number of state bits:       3
+
+  Input signals:
+    0: \rst
+    1: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:74$37_Y
+    2: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:82$38_Y
+    3: $flatten\u_intf.\u_slave.$and$/mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:98$39_Y
+
+  Output signals:
+    0: $flatten\u_intf.\u_slave.$procmux$258_CMP
+    1: $flatten\u_intf.\u_slave.$procmux$268_CMP
+    2: $flatten\u_intf.\u_slave.$procmux$276_CMP
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 4'--00   ->     0 3'010
+      1:     0 4'---1   ->     0 3'010
+      2:     0 4'--10   ->     2 3'010
+      3:     1 4'1--0   ->     0 3'100
+      4:     1 4'---1   ->     0 3'100
+      5:     1 4'0--0   ->     1 3'100
+      6:     2 4'---1   ->     0 3'001
+      7:     2 4'-1-0   ->     1 3'001
+      8:     2 4'-0-0   ->     2 3'001
+
+-------------------------------------
+
+42.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$509' from module `\cnn_top'.
+Mapping FSM `$fsm$\u_intf.u_slave.rd_state$514' from module `\cnn_top'.
+Mapping FSM `$fsm$\u_intf.u_slave.wr_state$518' from module `\cnn_top'.
+
+43. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~12 debug messages>
+
+44. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+45. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~46 debug messages>
+
+46. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+47. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+48. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$463 ($dff) from module cnn_top (D = $procmux$93_Y, Q = \done_r, rval = 1'0).
+Adding SRST signal on $procdff$462 ($dff) from module cnn_top (D = $procmux$122_Y, Q = \result_latch, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$631 ($sdff) from module cnn_top (D = \u_core.result_data [31:0], Q = \result_latch).
+Adding SRST signal on $procdff$461 ($dff) from module cnn_top (D = $procmux$102_Y, Q = \valid_in_r, rval = 1'0).
+Adding SRST signal on $procdff$460 ($dff) from module cnn_top (D = $procmux$102_Y, Q = \weight_wr_r, rval = 1'0).
+Adding SRST signal on $procdff$459 ($dff) from module cnn_top (D = $procmux$134_Y, Q = \pixel_cnt, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$645 ($sdff) from module cnn_top (D = $procmux$130_Y, Q = \pixel_cnt).
+Adding SRST signal on $procdff$458 ($dff) from module cnn_top (D = $procmux$144_Y, Q = \weight_addr_lat, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$649 ($sdff) from module cnn_top (D = \w_load_cnt, Q = \weight_addr_lat).
+Adding SRST signal on $procdff$457 ($dff) from module cnn_top (D = $procmux$157_Y, Q = \w_load_cnt, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$653 ($sdff) from module cnn_top (D = $procmux$153_Y, Q = \w_load_cnt).
+Adding EN signal on $flatten\u_intf.\u_slave.$procdff$481 ($dff) from module cnn_top (D = \s_awaddr, Q = \u_intf.u_slave.wr_addr_lat).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$479 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$292_Y, Q = \u_intf.u_slave.reg_ctrl, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$662 ($sdff) from module cnn_top (D = \s_wdata, Q = \u_intf.u_slave.reg_ctrl).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$478 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$304_Y, Q = \u_intf.u_slave.reg_weight, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$666 ($sdff) from module cnn_top (D = \s_wdata, Q = \u_intf.u_slave.reg_weight).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$477 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$317_Y, Q = \u_intf.u_slave.reg_pixel, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$670 ($sdff) from module cnn_top (D = \s_wdata, Q = \u_intf.u_slave.reg_pixel).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$476 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$251_Y, Q = \u_intf.u_slave.valid_out, rval = 1'0).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$475 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$326_Y, Q = \u_intf.u_slave.s_bresp, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$683 ($sdff) from module cnn_top (D = 2'00, Q = \u_intf.u_slave.s_bresp).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$474 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$334_Y, Q = \u_intf.u_slave.s_bvalid, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$687 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$334_Y, Q = \u_intf.u_slave.s_bvalid).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$473 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$346_Y, Q = \u_intf.u_slave.s_wready, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$697 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$346_Y, Q = \u_intf.u_slave.s_wready).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$472 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$359_Y, Q = \u_intf.u_slave.s_awready, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$705 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$357_Y, Q = \u_intf.u_slave.s_awready).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$471 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$244_Y, Q = \u_intf.u_slave.reg_status, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$707 ($sdff) from module cnn_top (D = 1, Q = \u_intf.u_slave.reg_status).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$469 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$203_Y, Q = \u_intf.u_slave.s_rresp, rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$709 ($sdff) from module cnn_top (D = 2'00, Q = \u_intf.u_slave.s_rresp).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$468 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$219_Y, Q = \u_intf.u_slave.s_rdata, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$713 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$211_Y, Q = \u_intf.u_slave.s_rdata).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$467 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$227_Y, Q = \u_intf.u_slave.s_rvalid, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$717 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$227_Y, Q = \u_intf.u_slave.s_rvalid).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$466 ($dff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$239_Y, Q = \u_intf.u_slave.s_arready, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$727 ($sdff) from module cnn_top (D = $flatten\u_intf.\u_slave.$procmux$237_Y, Q = \u_intf.u_slave.s_arready).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$465 ($dff) from module cnn_top (D = \u_intf.u_slave.reg_weight [7:0], Q = \u_intf.u_slave.weight_out, rval = 8'00000000).
+Adding SRST signal on $flatten\u_intf.\u_slave.$procdff$464 ($dff) from module cnn_top (D = \u_intf.u_slave.reg_pixel [7:0], Q = \u_intf.u_slave.pixel_out, rval = 8'00000000).
+Adding SRST signal on $flatten\u_core.\pe_array[3].u_pe.$procdff$485 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$procmux$375_Y, Q = \u_core.pe_array[3].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$731 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$procmux$373_Y, Q = \u_core.pe_array[3].u_pe.tap_count).
+Adding SRST signal on $flatten\u_core.\pe_array[3].u_pe.$procdff$484 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$procmux$383_Y, Q = \u_core.pe_array[3].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$733 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$procmux$381_Y, Q = \u_core.pe_array[3].u_pe.accum_reg).
+Adding SRST signal on $flatten\u_core.\pe_array[3].u_pe.$procdff$483 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$procmux$391_Y, Q = \u_core.pe_array[3].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$735 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[3].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48_Y, Q = \u_core.pe_array[3].u_pe.accum_out).
+Adding SRST signal on $flatten\u_core.\pe_array[2].u_pe.$procdff$485 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$procmux$375_Y, Q = \u_core.pe_array[2].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$739 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$procmux$373_Y, Q = \u_core.pe_array[2].u_pe.tap_count).
+Adding SRST signal on $flatten\u_core.\pe_array[2].u_pe.$procdff$484 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$procmux$383_Y, Q = \u_core.pe_array[2].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$741 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$procmux$381_Y, Q = \u_core.pe_array[2].u_pe.accum_reg).
+Adding SRST signal on $flatten\u_core.\pe_array[2].u_pe.$procdff$483 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$procmux$391_Y, Q = \u_core.pe_array[2].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$743 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[2].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48_Y, Q = \u_core.pe_array[2].u_pe.accum_out).
+Adding SRST signal on $flatten\u_core.\pe_array[1].u_pe.$procdff$485 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$procmux$375_Y, Q = \u_core.pe_array[1].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$747 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$procmux$373_Y, Q = \u_core.pe_array[1].u_pe.tap_count).
+Adding SRST signal on $flatten\u_core.\pe_array[1].u_pe.$procdff$484 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$procmux$383_Y, Q = \u_core.pe_array[1].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$749 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$procmux$381_Y, Q = \u_core.pe_array[1].u_pe.accum_reg).
+Adding SRST signal on $flatten\u_core.\pe_array[1].u_pe.$procdff$483 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$procmux$391_Y, Q = \u_core.pe_array[1].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$751 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[1].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48_Y, Q = \u_core.pe_array[1].u_pe.accum_out).
+Adding SRST signal on $flatten\u_core.\pe_array[0].u_pe.$procdff$485 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$375_Y, Q = \u_core.pe_array[0].u_pe.tap_count, rval = 4'0000).
+Adding EN signal on $auto$ff.cc:266:slice$755 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$373_Y, Q = \u_core.pe_array[0].u_pe.tap_count).
+Adding SRST signal on $flatten\u_core.\pe_array[0].u_pe.$procdff$484 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$383_Y, Q = \u_core.pe_array[0].u_pe.accum_reg, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$757 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$381_Y, Q = \u_core.pe_array[0].u_pe.accum_reg).
+Adding SRST signal on $flatten\u_core.\pe_array[0].u_pe.$procdff$483 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$391_Y, Q = \u_core.pe_array[0].u_pe.accum_out, rval = 0).
+Adding EN signal on $auto$ff.cc:266:slice$759 ($sdff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48_Y, Q = \u_core.pe_array[0].u_pe.accum_out).
+Adding SRST signal on $flatten\u_core.\pe_array[0].u_pe.$procdff$482 ($dff) from module cnn_top (D = $flatten\u_core.\pe_array[0].u_pe.$procmux$365_Y, Q = \u_core.pe_array[0].u_pe.valid_out, rval = 1'0).
+Adding SRST signal on $flatten\u_core.$procdff$487 ($dff) from module cnn_top (D = \u_core.pe_array[0].u_pe.valid_out, Q = \u_core.result_valid, rval = 1'0).
+Adding SRST signal on $flatten\u_core.$procdff$486 ($dff) from module cnn_top (D = { \u_core.pe_array[3].u_pe.accum_out \u_core.pe_array[2].u_pe.accum_out \u_core.pe_array[1].u_pe.accum_out \u_core.pe_array[0].u_pe.accum_out }, Q = \u_core.result_data, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$710 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$710 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 2 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 3 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 4 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 5 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 6 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 7 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 8 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 9 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 10 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 11 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 12 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 13 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 14 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 15 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 16 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 17 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 18 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 19 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 20 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 21 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 22 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 23 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 24 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 25 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 26 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 27 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 28 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 29 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 30 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 31 on $auto$ff.cc:266:slice$708 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 0 on $auto$ff.cc:266:slice$684 ($sdffe) from module cnn_top.
+Setting constant 0-bit at position 1 on $auto$ff.cc:266:slice$684 ($sdffe) from module cnn_top.
+
+49. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 94 unused cells and 112 unused wires.
+<suppressed ~95 debug messages>
+
+50. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~3 debug messages>
+
+51. Rerunning OPT passes. (Maybe there is more to do…)
+
+52. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+53. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+54. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+55. Executing OPT_DFF pass (perform DFF optimizations).
+
+56. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+57. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+58. Rerunning OPT passes. (Maybe there is more to do…)
+
+59. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+60. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+61. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+62. Executing OPT_DFF pass (perform DFF optimizations).
+
+63. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+64. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+65. Executing WREDUCE pass (reducing word size of cells).
+Removed top 30 address bits (of 32) from memory init port cnn_top.$flatten\u_core.$auto$proc_memwr.cc:45:proc_memwr$497 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory init port cnn_top.$flatten\u_core.$auto$proc_memwr.cc:45:proc_memwr$498 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory init port cnn_top.$flatten\u_core.$auto$proc_memwr.cc:45:proc_memwr$499 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory init port cnn_top.$flatten\u_core.$auto$proc_memwr.cc:45:proc_memwr$500 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory read port cnn_top.$flatten\u_core.$memrd$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:67$87 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory read port cnn_top.$flatten\u_core.$memrd$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:67$88 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory read port cnn_top.$flatten\u_core.$memrd$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:67$89 (u_core.weight_mem).
+Removed top 30 address bits (of 32) from memory read port cnn_top.$flatten\u_core.$memrd$\weight_mem$/mnt/c/Users/navee/ECE510/project/m2/rtl/compute_core.sv:67$90 (u_core.weight_mem).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5 ($add).
+Removed top 30 bits (of 32) from port Y of cell cnn_top.$add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5 ($add).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:143$7 ($add).
+Removed top 28 bits (of 32) from port Y of cell cnn_top.$add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:143$7 ($add).
+Removed top 28 bits (of 32) from FF cell cnn_top.$auto$ff.cc:266:slice$657 ($dffe).
+Removed top 1 bits (of 5) from port B of cell cnn_top.$flatten\u_intf.\u_slave.$procmux$213_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell cnn_top.$flatten\u_intf.\u_slave.$procmux$214_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell cnn_top.$flatten\u_intf.\u_slave.$procmux$215_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell cnn_top.$flatten\u_intf.\u_slave.$procmux$301_CMP0 ($eq).
+Removed top 16 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[3].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48 ($add).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[3].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 28 bits (of 32) from port Y of cell cnn_top.$flatten\u_core.\pe_array[3].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 16 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[2].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48 ($add).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[2].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 28 bits (of 32) from port Y of cell cnn_top.$flatten\u_core.\pe_array[2].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 16 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[1].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48 ($add).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[1].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 28 bits (of 32) from port Y of cell cnn_top.$flatten\u_core.\pe_array[1].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 16 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48 ($add).
+Removed top 31 bits (of 32) from port B of cell cnn_top.$flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 28 bits (of 32) from port Y of cell cnn_top.$flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+Removed top 96 bits (of 128) from FF cell cnn_top.$auto$ff.cc:266:slice$769 ($sdff).
+Removed top 30 bits (of 32) from wire cnn_top.$add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5_Y.
+Removed top 28 bits (of 32) from wire cnn_top.$flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50_Y.
+Removed top 28 bits (of 32) from wire cnn_top.$flatten\u_core.\pe_array[1].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50_Y.
+Removed top 28 bits (of 32) from wire cnn_top.$flatten\u_core.\pe_array[2].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50_Y.
+Removed top 28 bits (of 32) from wire cnn_top.$flatten\u_core.\pe_array[3].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50_Y.
+Removed top 96 bits (of 128) from wire cnn_top.result_data_w.
+
+66. Executing PEEPOPT pass (run peephole optimizers).
+
+67. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 33 unused cells and 45 unused wires.
+<suppressed ~55 debug messages>
+
+68. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module cnn_top:
+  creating $macc model for $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5 ($add).
+  creating $macc model for $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:143$7 ($add).
+  creating $macc model for $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48 ($add).
+  creating $macc model for $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50 ($add).
+  creating $macc model for $flatten\u_core.\pe_array[0].u_pe.$mul$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:15$45 ($mul).
+  merging $macc model for $flatten\u_core.\pe_array[0].u_pe.$mul$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:15$45 into $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48.
+  creating $alu model for $macc $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50.
+  creating $alu model for $macc $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:143$7.
+  creating $alu model for $macc $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5.
+  creating $macc cell for $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:27$48: $auto$alumacc.cc:365:replace_macc$777
+  creating $alu cell for $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:128$5: $auto$alumacc.cc:485:replace_alu$778
+  creating $alu cell for $add$/mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:143$7: $auto$alumacc.cc:485:replace_alu$781
+  creating $alu cell for $flatten\u_core.\pe_array[0].u_pe.$add$/mnt/c/Users/navee/ECE510/project/m2/rtl/conv_pe.sv:31$50: $auto$alumacc.cc:485:replace_alu$784
+  created 3 $alu and 1 $macc cells.
+
+69. Executing SHARE pass (SAT-based resource sharing).
+
+70. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+71. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+72. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+73. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+74. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+75. Executing OPT_DFF pass (perform DFF optimizations).
+
+76. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 1 unused cells and 2 unused wires.
+<suppressed ~3 debug messages>
+
+77. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+78. Rerunning OPT passes. (Maybe there is more to do…)
+
+79. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~18 debug messages>
+
+80. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+81. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+82. Executing OPT_DFF pass (perform DFF optimizations).
+
+83. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+84. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+85. Executing MEMORY pass.
+
+85.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+85.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 6 transformations.
+
+85.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing cnn_top.u_core.weight_mem write port 0.
+  Analyzing cnn_top.u_core.weight_mem write port 1.
+  Analyzing cnn_top.u_core.weight_mem write port 2.
+  Analyzing cnn_top.u_core.weight_mem write port 3.
+  Analyzing cnn_top.u_core.weight_mem write port 4.
+
+85.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+85.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\u_core.weight_mem'[0] in module `\cnn_top': no output FF found.
+Checking read port address `\u_core.weight_mem'[0] in module `\cnn_top': no address FF found.
+
+85.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+85.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating write ports of memory cnn_top.u_core.weight_mem by address:
+  Merging ports 0, 1 (address 2'00).
+  Merging ports 0, 2 (address 2'00).
+Consolidating write ports of memory cnn_top.u_core.weight_mem by address:
+Consolidating write ports of memory cnn_top.u_core.weight_mem using sat-based resource sharing:
+  Checking group clocked with posedge \clk, width 8: ports 1, 2.
+  Common input cone for all EN signals: 3 cells.
+  Size of unconstrained SAT problem: 23 variables, 53 clauses
+  Merging port 2 into port 1.
+
+85.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+85.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+85.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+86. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+87. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~77 debug messages>
+
+88. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+89. Executing OPT_DFF pass (perform DFF optimizations).
+
+90. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 0 unused cells and 17 unused wires.
+<suppressed ~1 debug messages>
+
+91. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \u_core.weight_mem in module \cnn_top:
+  created 4 $dff cells and 0 static cells of width 8.
+  read interface: 0 $dff and 3 $mux cells.
+  write interface: 8 write mux blocks.
+
+92. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~15 debug messages>
+
+93. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+94. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port B of cell $auto$memory_share.cc:453:consolidate_wr_using_sat$796: $auto$rtlil.cc:2497:ReduceOr$790 -> 1'1
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+95. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+96. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+97. Executing OPT_SHARE pass.
+
+98. Executing OPT_DFF pass (perform DFF optimizations).
+
+99. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 14 unused cells and 31 unused wires.
+<suppressed ~18 debug messages>
+
+100. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~1 debug messages>
+
+101. Rerunning OPT passes. (Maybe there is more to do…)
+
+102. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~9 debug messages>
+
+103. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+104. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+105. Executing OPT_SHARE pass.
+
+106. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\u_core.weight_mem[0]$797 ($dff) from module cnn_top (D = $memory\u_core.weight_mem$wrmux[0][1][0]$y$829, Q = \u_core.weight_mem[0]).
+
+107. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+108. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~2 debug messages>
+
+109. Rerunning OPT passes. (Maybe there is more to do…)
+
+110. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~9 debug messages>
+
+111. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+112. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+113. Executing OPT_SHARE pass.
+
+114. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:266:slice$864 ($dffe) from module cnn_top (D = \u_intf.u_slave.weight_out, Q = \u_core.weight_mem[0], rval = 8'00000000).
+
+115. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 2 unused cells and 3 unused wires.
+<suppressed ~3 debug messages>
+
+116. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+117. Rerunning OPT passes. (Maybe there is more to do…)
+
+118. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+119. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+120. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+121. Executing OPT_SHARE pass.
+
+122. Executing OPT_DFF pass (perform DFF optimizations).
+
+123. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+124. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+125. Executing TECHMAP pass (map to technology primitives).
+
+125.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+125.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $dffe.
+Using template $paramod$59b03ae2620a41577de8da5f5c97b2919e82362b\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $sdffce.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper maccmap for cells of type $macc.
+  add \u_core.pe_array[0].u_pe.accum_reg (32 bits, signed)
+  add \u_intf.u_slave.pixel_out * \u_core.weight_mem[0] (8x8 bits, signed)
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~951 debug messages>
+
+126. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~557 debug messages>
+
+127. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+<suppressed ~1644 debug messages>
+Removed a total of 548 cells.
+
+128. Executing OPT_DFF pass (perform DFF optimizations).
+
+129. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 73 unused cells and 437 unused wires.
+<suppressed ~74 debug messages>
+
+130. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+131. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+132. Executing OPT_DFF pass (perform DFF optimizations).
+
+133. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+134. Executing ABC pass (technology mapping using ABC).
+
+134.1. Extracting gate netlist of module `\cnn_top' to `<abc-temp-dir>/input.blif'..
+Extracted 1451 gates and 1674 wires to a netlist network with 221 inputs and 139 outputs.
+
+134.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+134.1.2. Re-integrating ABC results.
+ABC RESULTS:               MUX cells:        4
+ABC RESULTS:               NOT cells:       65
+ABC RESULTS:              XNOR cells:       51
+ABC RESULTS:             ORNOT cells:       48
+ABC RESULTS:              NAND cells:       64
+ABC RESULTS:                OR cells:      289
+ABC RESULTS:               NOR cells:       39
+ABC RESULTS:               AND cells:       60
+ABC RESULTS:               XOR cells:      293
+ABC RESULTS:            ANDNOT cells:      529
+ABC RESULTS:        internal signals:     1314
+ABC RESULTS:           input signals:      221
+ABC RESULTS:          output signals:      139
+Removing temp directory.
+
+135. Executing OPT pass (performing simple optimizations).
+
+135.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+<suppressed ~2 debug messages>
+
+135.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+135.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+135.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 0 unused cells and 657 unused wires.
+<suppressed ~1 debug messages>
+
+135.5. Finished fast OPT passes.
+
+136. Executing HIERARCHY pass (managing design hierarchy).
+
+136.1. Analyzing design hierarchy..
+Top module:  \cnn_top
+
+136.2. Analyzing design hierarchy..
+Top module:  \cnn_top
+Removed 0 unused modules.
+
+137. Executing CHECK pass (checking for obvious problems).
+Checking module cnn_top...
+Found and reported 0 problems.
+
+138. Printing statistics.
+
+=== cnn_top ===
+
+   Number of wires:               1505
+   Number of wire bits:           2721
+   Number of public wires:         120
+   Number of public wire bits:    1119
+   Number of ports:                 19
+   Number of port bits:            148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1765
+     $_ANDNOT_                     529
+     $_AND_                         60
+     $_DFFE_PP_                      4
+     $_DFF_P_                        8
+     $_MUX_                          4
+     $_NAND_                        64
+     $_NOR_                         39
+     $_NOT_                         65
+     $_ORNOT_                       48
+     $_OR_                         289
+     $_SDFFCE_PN0P_                  8
+     $_SDFFE_PP0P_                 242
+     $_SDFF_PP0_                    54
+     $_XNOR_                        51
+     $_XOR_                        293
+     $scopeinfo                      7
+
+139. Generating Graphviz representation of design.
+Writing dot description to `/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module cnn_top to page 1.
+
+140. Executing OPT pass (performing simple optimizations).
+
+140.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+140.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+140.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cnn_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+140.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cnn_top.
+Performed a total of 0 changes.
+
+140.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cnn_top'.
+Removed a total of 0 cells.
+
+140.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+140.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+
+140.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cnn_top.
+
+140.9. Finished OPT passes. (There is nothing left to do.)
+
+141. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 7 unused cells and 76 unused wires.
+<suppressed ~83 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/tmp/c8966165510549709840b0d7a5aaf6f6.lib ",
+   "modules": {
+      "\\cnn_top": {
+         "num_wires":         1429,
+         "num_wire_bits":     2089,
+         "num_pub_wires":     44,
+         "num_pub_wire_bits": 487,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1758,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 529,
+            "$_AND_": 60,
+            "$_DFFE_PP_": 4,
+            "$_DFF_P_": 8,
+            "$_MUX_": 4,
+            "$_NAND_": 64,
+            "$_NOR_": 39,
+            "$_NOT_": 65,
+            "$_ORNOT_": 48,
+            "$_OR_": 289,
+            "$_SDFFCE_PN0P_": 8,
+            "$_SDFFE_PP0P_": 242,
+            "$_SDFF_PP0_": 54,
+            "$_XNOR_": 51,
+            "$_XOR_": 293
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1429,
+         "num_wire_bits":     2089,
+         "num_pub_wires":     44,
+         "num_pub_wire_bits": 487,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1758,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 529,
+            "$_AND_": 60,
+            "$_DFFE_PP_": 4,
+            "$_DFF_P_": 8,
+            "$_MUX_": 4,
+            "$_NAND_": 64,
+            "$_NOR_": 39,
+            "$_NOT_": 65,
+            "$_ORNOT_": 48,
+            "$_OR_": 289,
+            "$_SDFFCE_PN0P_": 8,
+            "$_SDFFE_PP0P_": 242,
+            "$_SDFF_PP0_": 54,
+            "$_XNOR_": 51,
+            "$_XOR_": 293
+         }
+      }
+}
+
+142. Printing statistics.
+
+=== cnn_top ===
+
+   Number of wires:               1429
+   Number of wire bits:           2089
+   Number of public wires:          44
+   Number of public wire bits:     487
+   Number of ports:                 19
+   Number of port bits:            148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1758
+     $_ANDNOT_                     529
+     $_AND_                         60
+     $_DFFE_PP_                      4
+     $_DFF_P_                        8
+     $_MUX_                          4
+     $_NAND_                        64
+     $_NOR_                         39
+     $_NOT_                         65
+     $_ORNOT_                       48
+     $_OR_                         289
+     $_SDFFCE_PN0P_                  8
+     $_SDFFE_PP0P_                 242
+     $_SDFF_PP0_                    54
+     $_XNOR_                        51
+     $_XOR_                        293
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFF_P_ is unknown!
+   Area for cell type $_DFFE_PP_ is unknown!
+   Area for cell type $_SDFF_PP0_ is unknown!
+   Area for cell type $_SDFFE_PP0P_ is unknown!
+   Area for cell type $_SDFFCE_PN0P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+143. Executing TECHMAP pass (map to technology primitives).
+
+143.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+143.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+144. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+145. Executing TECHMAP pass (map to technology primitives).
+
+145.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+145.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+146. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+147. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+147.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\cnn_top':
+  mapped 316 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/tmp/c8966165510549709840b0d7a5aaf6f6.lib ",
+   "modules": {
+      "\\cnn_top": {
+         "num_wires":         1987,
+         "num_wire_bits":     2647,
+         "num_pub_wires":     44,
+         "num_pub_wire_bits": 487,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2316,
+         "area":              6721.446400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 529,
+            "$_AND_": 60,
+            "$_MUX_": 562,
+            "$_NAND_": 64,
+            "$_NOR_": 39,
+            "$_NOT_": 65,
+            "$_ORNOT_": 48,
+            "$_OR_": 289,
+            "$_XNOR_": 51,
+            "$_XOR_": 293,
+            "sky130_fd_sc_hd__dfxtp_2": 316
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1987,
+         "num_wire_bits":     2647,
+         "num_pub_wires":     44,
+         "num_pub_wire_bits": 487,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2316,
+         "area":              6721.446400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 529,
+            "$_AND_": 60,
+            "$_MUX_": 562,
+            "$_NAND_": 64,
+            "$_NOR_": 39,
+            "$_NOT_": 65,
+            "$_ORNOT_": 48,
+            "$_OR_": 289,
+            "$_XNOR_": 51,
+            "$_XOR_": 293,
+            "sky130_fd_sc_hd__dfxtp_2": 316
+         }
+      }
+}
+
+148. Printing statistics.
+
+=== cnn_top ===
+
+   Number of wires:               1987
+   Number of wire bits:           2647
+   Number of public wires:          44
+   Number of public wire bits:     487
+   Number of ports:                 19
+   Number of port bits:            148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2316
+     $_ANDNOT_                     529
+     $_AND_                         60
+     $_MUX_                        562
+     $_NAND_                        64
+     $_NOR_                         39
+     $_NOT_                         65
+     $_ORNOT_                       48
+     $_OR_                         289
+     $_XNOR_                        51
+     $_XOR_                        293
+     sky130_fd_sc_hd__dfxtp_2      316
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\cnn_top': 6721.446400
+     of which used for sequential elements: 6721.446400 (100.00%)
+
+[INFO] Using generated ABC script '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/AREA_0.abc'…
+
+149. Executing ABC pass (technology mapping using ABC).
+
+149.1. Extracting gate netlist of module `\cnn_top' to `/tmp/yosys-abc-I0f46J/input.blif'..
+Extracted 2000 gates and 2365 wires to a netlist network with 363 inputs and 316 outputs.
+
+149.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-I0f46J/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-I0f46J/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-I0f46J/input.blif 
+ABC: + read_lib -w /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/tmp/c8966165510549709840b0d7a5aaf6f6.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.07 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/tmp/c8966165510549709840b0d7a5aaf6f6.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.09 sec
+ABC: Memory =    9.54 MB. Time =     0.09 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =   1443 (  1.6 %)   Cap = 13.0 ff (  2.6 %)   Area =    13919.60 ( 90.0 %)   Delay =  6985.31 ps  ( 11.9 %)               
+ABC: Path  0 --     352 : 0   17 pi                         A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  50.3 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --    1322 : 3   27 sky130_fd_sc_hd__and3_2    A =   7.51  Df = 452.3 -111.1 ps  S = 431.4 ps  Cin =  1.5 ff  Cout =  86.5 ff  Cmax = 309.5 ff  G = 5464  
+ABC: Path  2 --    1367 : 2   22 sky130_fd_sc_hd__nor2_2    A =   6.26  Df =1713.3 -822.5 ps  S =1745.2 ps  Cin =  4.4 ff  Cout = 169.0 ff  Cmax = 141.9 ff  G = 3736  
+ABC: Path  3 --    1368 : 2    2 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =2227.5-1074.0 ps  S = 206.0 ps  Cin =  8.5 ff  Cout =   6.3 ff  Cmax = 121.8 ff  G =   70  
+ABC: Path  4 --    1370 : 3    1 sky130_fd_sc_hd__and3_2    A =   7.51  Df =2510.1-1150.2 ps  S =  53.2 ps  Cin =  1.5 ff  Cout =   4.7 ff  Cmax = 309.5 ff  G =  298  
+ABC: Path  5 --    1371 : 2    2 sky130_fd_sc_hd__nor2_2    A =   6.26  Df =2639.8 -146.4 ps  S = 144.8 ps  Cin =  4.4 ff  Cout =  10.9 ff  Cmax = 141.9 ff  G =  237  
+ABC: Path  6 --    1372 : 2    2 sky130_fd_sc_hd__xor2_2    A =  16.27  Df =2873.6 -216.2 ps  S = 211.3 ps  Cin =  8.6 ff  Cout =  13.6 ff  Cmax = 130.0 ff  G =  153  
+ABC: Path  7 --    1392 : 2    2 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =3093.4 -223.6 ps  S = 191.8 ps  Cin =  8.5 ff  Cout =  10.7 ff  Cmax = 121.8 ff  G =  121  
+ABC: Path  8 --    1395 : 2    2 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =3331.3 -240.4 ps  S = 223.7 ps  Cin =  8.5 ff  Cout =  13.5 ff  Cmax = 121.8 ff  G =  154  
+ABC: Path  9 --    1396 : 2    2 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =3530.7 -285.7 ps  S = 140.7 ps  Cin =  8.5 ff  Cout =   6.3 ff  Cmax = 121.8 ff  G =   70  
+ABC: Path 10 --    1398 : 3    1 sky130_fd_sc_hd__and3_2    A =   7.51  Df =3731.0 -306.1 ps  S =  36.7 ps  Cin =  1.5 ff  Cout =   1.5 ff  Cmax = 309.5 ff  G =   94  
+ABC: Path 11 --    1399 : 2    3 sky130_fd_sc_hd__or2_2     A =   6.26  Df =4045.4 -120.7 ps  S =  96.5 ps  Cin =  1.5 ff  Cout =  16.5 ff  Cmax = 299.4 ff  G = 1085  
+ABC: Path 12 --    1523 : 4    1 sky130_fd_sc_hd__o31a_2    A =  10.01  Df =4402.4 -324.7 ps  S =  55.2 ps  Cin =  2.3 ff  Cout =   4.7 ff  Cmax = 285.7 ff  G =  185  
+ABC: Path 13 --    1524 : 3    2 sky130_fd_sc_hd__nor3_2    A =  10.01  Df =4571.3 -450.2 ps  S = 211.3 ps  Cin =  4.4 ff  Cout =   9.2 ff  Cmax =  92.5 ff  G =  200  
+ABC: Path 14 --    1678 : 5    4 sky130_fd_sc_hd__o2111ai_2 A =  15.01  Df =4760.1  -19.0 ps  S = 235.2 ps  Cin =  4.3 ff  Cout =  11.6 ff  Cmax = 129.1 ff  G =  254  
+ABC: Path 15 --    1834 : 5    2 sky130_fd_sc_hd__a2111o_2  A =  12.51  Df =5256.4 -333.1 ps  S =  66.0 ps  Cin =  2.4 ff  Cout =   4.0 ff  Cmax = 324.1 ff  G =  162  
+ABC: Path 16 --    1922 : 5    2 sky130_fd_sc_hd__a2111o_2  A =  12.51  Df =5687.3 -635.6 ps  S =  72.9 ps  Cin =  2.4 ff  Cout =   6.0 ff  Cmax = 324.1 ff  G =  242  
+ABC: Path 17 --    1966 : 5    2 sky130_fd_sc_hd__a311oi_2  A =  15.01  Df =5929.5 -788.2 ps  S = 245.3 ps  Cin =  4.3 ff  Cout =   6.7 ff  Cmax =  84.2 ff  G =  146  
+ABC: Path 18 --    1985 : 3    3 sky130_fd_sc_hd__o21ai_2   A =   8.76  Df =6039.2 -720.0 ps  S = 138.9 ps  Cin =  4.5 ff  Cout =   8.1 ff  Cmax = 139.2 ff  G =  171  
+ABC: Path 19 --    1998 : 3    2 sky130_fd_sc_hd__and3_2    A =   7.51  Df =6240.0 -726.1 ps  S =  49.5 ps  Cin =  1.5 ff  Cout =   4.0 ff  Cmax = 309.5 ff  G =  256  
+ABC: Path 20 --    2000 : 3    1 sky130_fd_sc_hd__or3b_2    A =   8.76  Df =6680.5 -390.3 ps  S =  68.4 ps  Cin =  1.5 ff  Cout =   1.4 ff  Cmax = 269.2 ff  G =   88  
+ABC: Path 21 --    2001 : 3    1 sky130_fd_sc_hd__a21bo_2   A =  10.01  Df =6985.3 -410.6 ps  S = 187.4 ps  Cin =  2.0 ff  Cout =  33.4 ff  Cmax = 288.4 ff  G = 1644  
+ABC: Start-point = pi351 (\pixel_from_intf [7]).  End-point = po246 ($auto$rtlil.cc:2739:MuxGate$6828).
+ABC: netlist                       : i/o =  363/  316  lat =    0  nd =  1443  edge =   3834  area =13922.62  delay =21.00  lev = 21
+ABC: + write_blif /tmp/yosys-abc-I0f46J/output.blif 
+
+149.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:       31
+ABC RESULTS:   sky130_fd_sc_hd__o2111a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       22
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a41o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       64
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       92
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:       38
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:      102
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:      153
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       14
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:       79
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      113
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:       58
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       38
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       69
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:      208
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:      111
+ABC RESULTS:        internal signals:     1686
+ABC RESULTS:           input signals:      363
+ABC RESULTS:          output signals:      316
+Removing temp directory.
+
+150. Executing SETUNDEF pass (replace undef values with defined constants).
+
+151. Executing HILOMAP pass (mapping to constant drivers).
+
+152. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+153. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cnn_top..
+Removed 59 unused cells and 2646 unused wires.
+<suppressed ~120 debug messages>
+
+154. Executing INSBUF pass (insert buffer cells for connected wires).
+
+155. Executing CHECK pass (checking for obvious problems).
+Checking module cnn_top...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/tmp/c8966165510549709840b0d7a5aaf6f6.lib ",
+   "modules": {
+      "\\cnn_top": {
+         "num_wires":         1741,
+         "num_wire_bits":     1870,
+         "num_pub_wires":     298,
+         "num_pub_wire_bits": 427,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1763,
+         "area":              20656.060800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 2,
+            "sky130_fd_sc_hd__a211o_2": 5,
+            "sky130_fd_sc_hd__a211oi_2": 1,
+            "sky130_fd_sc_hd__a21bo_2": 14,
+            "sky130_fd_sc_hd__a21boi_2": 8,
+            "sky130_fd_sc_hd__a21o_2": 38,
+            "sky130_fd_sc_hd__a21oi_2": 69,
+            "sky130_fd_sc_hd__a221o_2": 31,
+            "sky130_fd_sc_hd__a221oi_2": 1,
+            "sky130_fd_sc_hd__a22o_2": 79,
+            "sky130_fd_sc_hd__a22oi_2": 24,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 22,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 4,
+            "sky130_fd_sc_hd__a41o_2": 1,
+            "sky130_fd_sc_hd__and2_2": 208,
+            "sky130_fd_sc_hd__and2b_2": 24,
+            "sky130_fd_sc_hd__and3_2": 38,
+            "sky130_fd_sc_hd__and3b_2": 3,
+            "sky130_fd_sc_hd__and4_2": 7,
+            "sky130_fd_sc_hd__and4bb_2": 1,
+            "sky130_fd_sc_hd__conb_1": 4,
+            "sky130_fd_sc_hd__dfxtp_2": 316,
+            "sky130_fd_sc_hd__inv_2": 23,
+            "sky130_fd_sc_hd__mux2_1": 102,
+            "sky130_fd_sc_hd__nand2_2": 113,
+            "sky130_fd_sc_hd__nand2b_2": 19,
+            "sky130_fd_sc_hd__nand3_2": 13,
+            "sky130_fd_sc_hd__nand3b_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 111,
+            "sky130_fd_sc_hd__nor3_2": 6,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 1,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 1,
+            "sky130_fd_sc_hd__o2111ai_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 58,
+            "sky130_fd_sc_hd__o21a_2": 13,
+            "sky130_fd_sc_hd__o21ai_2": 17,
+            "sky130_fd_sc_hd__o21ba_2": 12,
+            "sky130_fd_sc_hd__o21bai_2": 10,
+            "sky130_fd_sc_hd__o221a_2": 10,
+            "sky130_fd_sc_hd__o22a_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 2,
+            "sky130_fd_sc_hd__o31a_2": 5,
+            "sky130_fd_sc_hd__o32a_2": 4,
+            "sky130_fd_sc_hd__or2_2": 92,
+            "sky130_fd_sc_hd__or3_2": 7,
+            "sky130_fd_sc_hd__or3b_2": 5,
+            "sky130_fd_sc_hd__or4_2": 2,
+            "sky130_fd_sc_hd__or4b_2": 3,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 153,
+            "sky130_fd_sc_hd__xor2_2": 64
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1741,
+         "num_wire_bits":     1870,
+         "num_pub_wires":     298,
+         "num_pub_wire_bits": 427,
+         "num_ports":         19,
+         "num_port_bits":     148,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1763,
+         "area":              20656.060800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 2,
+            "sky130_fd_sc_hd__a211o_2": 5,
+            "sky130_fd_sc_hd__a211oi_2": 1,
+            "sky130_fd_sc_hd__a21bo_2": 14,
+            "sky130_fd_sc_hd__a21boi_2": 8,
+            "sky130_fd_sc_hd__a21o_2": 38,
+            "sky130_fd_sc_hd__a21oi_2": 69,
+            "sky130_fd_sc_hd__a221o_2": 31,
+            "sky130_fd_sc_hd__a221oi_2": 1,
+            "sky130_fd_sc_hd__a22o_2": 79,
+            "sky130_fd_sc_hd__a22oi_2": 24,
+            "sky130_fd_sc_hd__a311oi_2": 2,
+            "sky130_fd_sc_hd__a31o_2": 22,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 4,
+            "sky130_fd_sc_hd__a41o_2": 1,
+            "sky130_fd_sc_hd__and2_2": 208,
+            "sky130_fd_sc_hd__and2b_2": 24,
+            "sky130_fd_sc_hd__and3_2": 38,
+            "sky130_fd_sc_hd__and3b_2": 3,
+            "sky130_fd_sc_hd__and4_2": 7,
+            "sky130_fd_sc_hd__and4bb_2": 1,
+            "sky130_fd_sc_hd__conb_1": 4,
+            "sky130_fd_sc_hd__dfxtp_2": 316,
+            "sky130_fd_sc_hd__inv_2": 23,
+            "sky130_fd_sc_hd__mux2_1": 102,
+            "sky130_fd_sc_hd__nand2_2": 113,
+            "sky130_fd_sc_hd__nand2b_2": 19,
+            "sky130_fd_sc_hd__nand3_2": 13,
+            "sky130_fd_sc_hd__nand3b_2": 2,
+            "sky130_fd_sc_hd__nand4_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 111,
+            "sky130_fd_sc_hd__nor3_2": 6,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 1,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 1,
+            "sky130_fd_sc_hd__o2111ai_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 58,
+            "sky130_fd_sc_hd__o21a_2": 13,
+            "sky130_fd_sc_hd__o21ai_2": 17,
+            "sky130_fd_sc_hd__o21ba_2": 12,
+            "sky130_fd_sc_hd__o21bai_2": 10,
+            "sky130_fd_sc_hd__o221a_2": 10,
+            "sky130_fd_sc_hd__o22a_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 2,
+            "sky130_fd_sc_hd__o31a_2": 5,
+            "sky130_fd_sc_hd__o32a_2": 4,
+            "sky130_fd_sc_hd__or2_2": 92,
+            "sky130_fd_sc_hd__or3_2": 7,
+            "sky130_fd_sc_hd__or3b_2": 5,
+            "sky130_fd_sc_hd__or4_2": 2,
+            "sky130_fd_sc_hd__or4b_2": 3,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 153,
+            "sky130_fd_sc_hd__xor2_2": 64
+         }
+      }
+}
+
+156. Printing statistics.
+
+=== cnn_top ===
+
+   Number of wires:               1741
+   Number of wire bits:           1870
+   Number of public wires:         298
+   Number of public wire bits:     427
+   Number of ports:                 19
+   Number of port bits:            148
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1763
+     sky130_fd_sc_hd__a2111o_2       2
+     sky130_fd_sc_hd__a211o_2        5
+     sky130_fd_sc_hd__a211oi_2       1
+     sky130_fd_sc_hd__a21bo_2       14
+     sky130_fd_sc_hd__a21boi_2       8
+     sky130_fd_sc_hd__a21o_2        38
+     sky130_fd_sc_hd__a21oi_2       69
+     sky130_fd_sc_hd__a221o_2       31
+     sky130_fd_sc_hd__a221oi_2       1
+     sky130_fd_sc_hd__a22o_2        79
+     sky130_fd_sc_hd__a22oi_2       24
+     sky130_fd_sc_hd__a311oi_2       2
+     sky130_fd_sc_hd__a31o_2        22
+     sky130_fd_sc_hd__a31oi_2        2
+     sky130_fd_sc_hd__a32o_2         4
+     sky130_fd_sc_hd__a41o_2         1
+     sky130_fd_sc_hd__and2_2       208
+     sky130_fd_sc_hd__and2b_2       24
+     sky130_fd_sc_hd__and3_2        38
+     sky130_fd_sc_hd__and3b_2        3
+     sky130_fd_sc_hd__and4_2         7
+     sky130_fd_sc_hd__and4bb_2       1
+     sky130_fd_sc_hd__conb_1         4
+     sky130_fd_sc_hd__dfxtp_2      316
+     sky130_fd_sc_hd__inv_2         23
+     sky130_fd_sc_hd__mux2_1       102
+     sky130_fd_sc_hd__nand2_2      113
+     sky130_fd_sc_hd__nand2b_2      19
+     sky130_fd_sc_hd__nand3_2       13
+     sky130_fd_sc_hd__nand3b_2       2
+     sky130_fd_sc_hd__nand4_2        6
+     sky130_fd_sc_hd__nor2_2       111
+     sky130_fd_sc_hd__nor3_2         6
+     sky130_fd_sc_hd__nor3b_2        1
+     sky130_fd_sc_hd__nor4_2         1
+     sky130_fd_sc_hd__nor4b_2        1
+     sky130_fd_sc_hd__o2111a_2       1
+     sky130_fd_sc_hd__o2111ai_2      1
+     sky130_fd_sc_hd__o211a_2       58
+     sky130_fd_sc_hd__o21a_2        13
+     sky130_fd_sc_hd__o21ai_2       17
+     sky130_fd_sc_hd__o21ba_2       12
+     sky130_fd_sc_hd__o21bai_2      10
+     sky130_fd_sc_hd__o221a_2       10
+     sky130_fd_sc_hd__o22a_2         1
+     sky130_fd_sc_hd__o2bb2a_2       2
+     sky130_fd_sc_hd__o31a_2         5
+     sky130_fd_sc_hd__o32a_2         4
+     sky130_fd_sc_hd__or2_2         92
+     sky130_fd_sc_hd__or3_2          7
+     sky130_fd_sc_hd__or3b_2         5
+     sky130_fd_sc_hd__or4_2          2
+     sky130_fd_sc_hd__or4b_2         3
+     sky130_fd_sc_hd__or4bb_2        1
+     sky130_fd_sc_hd__xnor2_2      153
+     sky130_fd_sc_hd__xor2_2        64
+
+   Chip area for module '\cnn_top': 20656.060800
+     of which used for sequential elements: 6721.446400 (32.54%)
+
+157. Executing Verilog backend.
+Dumping module `\cnn_top'.
+
+158. Executing JSON backend.

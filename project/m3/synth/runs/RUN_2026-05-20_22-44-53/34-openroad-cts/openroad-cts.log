@@ -1,0 +1,121 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/33-openroad-detailedplacement/cnn_top.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2.0
+[INFO] Setting input delay to: 2.0
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO] Configuring cts characterization…
+[INFO] Performing clock tree synthesis…
+[INFO] Looking for the following net(s): clk
+[INFO] Running Clock Tree Synthesis…
+[INFO CTS-0050] Root buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0051] Sink buffer is sky130_fd_sc_hd__clkbuf_8.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    sky130_fd_sc_hd__clkbuf_2
+                    sky130_fd_sc_hd__clkbuf_4
+                    sky130_fd_sc_hd__clkbuf_8
+[INFO CTS-0049] Characterization buffer is sky130_fd_sc_hd__clkbuf_8.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 316 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0200] 0 placement blockages have been identified.
+[INFO CTS-0201] 0 placed hard macros will be treated like blockages.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 316.
+[INFO CTS-0029]  Sinks will be clustered in groups of up to 25 and with maximum cluster diameter of 50.0 um.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 13600  dbu (13 um).
+[INFO CTS-0204] A clustering solution was found from clustering size of 25 and clustering diameter of 50.
+[INFO CTS-0205] Better solution may be possible if either -sink_clustering_size, -sink_clustering_max_diameter, or both options are omitted to enable automatic clustering.
+[INFO CTS-0019]  Total number of sinks after clustering: 27.
+[INFO CTS-0024]  Normalized sink region: [(5.83713, 2.3511), (16.0749, 15.887)].
+[INFO CTS-0025]     Width:  10.2377.
+[INFO CTS-0026]     Height: 13.5359.
+ Level 1
+    Direction: Vertical
+    Sinks per sub-region: 14
+    Sub-region size: 10.2377 X 6.7679
+[INFO CTS-0034]     Segment length (rounded): 4.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 27.
+[INFO CTS-0018]     Created 30 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 3.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 3.
+[INFO CTS-0015]     Created 30 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 4:1, 5:1, 6:1, 7:2, 10:2, 11:2, 12:4, 13:8, 14:3, 15:2, 16:3..
+[INFO CTS-0017]     Max level of the clock tree: 1.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 341
+[INFO CTS-0100]  Leaf buffers 27
+[INFO CTS-0101]  Average sink wire length 310.19 um
+[INFO CTS-0102]  Path depth 2 - 3
+[INFO CTS-0207]  Leaf load cells 25
+[INFO] Repairing long wires on clock nets…
+[INFO RSZ-0058] Using max wire length 6335um.
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               166     623.10
+  Tap cell                                722     903.37
+  Clock buffer                             34     495.48
+  Timing Repair Buffer                    219    1189.89
+  Inverter                                 23      86.33
+  Clock inverter                           21     237.73
+  Sequential cell                         316    6328.57
+  Multi-Input combinational cell         1424   10741.55
+  Total                                  2925   20606.01
+Writing OpenROAD database to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.odb'…
+Writing netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.nl.v'…
+Writing powered netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.pnl.v'…
+Writing layout to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.def'…
+Writing timing constraints to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.sdc'…
+[INFO] Legalizing…
+Placement Analysis
+---------------------------------
+total displacement        284.2 u
+average displacement        0.1 u
+max displacement            7.9 u
+original HPWL           42101.1 u
+legalized HPWL          43350.8 u
+delta HPWL                    3 %
+
+[INFO DPL-0020] Mirrored 714 instances
+[INFO DPL-0021] HPWL before           43350.8 u
+[INFO DPL-0022] HPWL after            42196.4 u
+[INFO DPL-0023] HPWL delta               -2.7 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               166     623.10
+  Tap cell                                722     903.37
+  Clock buffer                             34     495.48
+  Timing Repair Buffer                    219    1189.89
+  Inverter                                 23      86.33
+  Clock inverter                           21     237.73
+  Sequential cell                         316    6328.57
+  Multi-Input combinational cell         1424   10741.55
+  Total                                  2925   20606.01
+Writing OpenROAD database to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.odb'…
+Writing netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.nl.v'…
+Writing powered netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.pnl.v'…
+Writing layout to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.def'…
+Writing timing constraints to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.sdc'…
+%OL_CREATE_REPORT cts.rpt
+[INFO CTS-0003] Total number of Clock Roots: 1.
+[INFO CTS-0004] Total number of Buffers Inserted: 30.
+[INFO CTS-0005] Total number of Clock Subnets: 30.
+[INFO CTS-0006] Total number of Sinks: 316.
+%OL_END_REPORT

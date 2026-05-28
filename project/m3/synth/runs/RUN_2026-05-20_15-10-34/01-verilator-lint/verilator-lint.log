@@ -1,0 +1,25 @@
+%Warning-WIDTHEXPAND: /mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:124:40: Operator EQ expects 32 or 3 bits on the LHS, but LHS's VARREF 'w_load_cnt' generates 2 bits.
+                                                                            : ... note: In instance 'cnn_top'
+  124 |                         if (w_load_cnt == NUM_PE - 1) begin
+      |                                        ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.020
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /mnt/c/Users/navee/ECE510/project/m3/rtl/top.sv:96:35: Bits of signal are not used: 'result_data_w'[127:32]
+                                                                            : ... note: In instance 'cnn_top'
+   96 |     wire [NUM_PE*ACCUM_WIDTH-1:0] result_data_w;
+      |                                   ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:40:35: Signal is not used: 's_wstrb'
+                                                                                  : ... note: In instance 'cnn_top.u_intf.u_slave'
+   40 |     input  wire [AXI_DW/8-1:0]    s_wstrb,
+      |                                   ^~~~~~~
+%Warning-UNUSEDSIGNAL: /mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:46:36: Bits of signal are not used: 's_araddr'[31:5]
+                                                                                  : ... note: In instance 'cnn_top.u_intf.u_slave'
+   46 |     input  wire [ADDR_WIDTH-1:0]   s_araddr,
+      |                                    ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:59:26: Bits of signal are not used: 'wr_addr_lat'[31:4]
+                                                                                  : ... note: In instance 'cnn_top.u_intf.u_slave'
+   59 |     reg [ADDR_WIDTH-1:0] wr_addr_lat;
+      |                          ^~~~~~~~~~~
+%Warning-CASEINCOMPLETE: /mnt/c/Users/navee/ECE510/project/m3/rtl/interface.sv:84:25: Case values incompletely covered (example pattern 0x1)
+   84 |                         case (wr_addr_lat[3:0])
+      |                         ^~~~

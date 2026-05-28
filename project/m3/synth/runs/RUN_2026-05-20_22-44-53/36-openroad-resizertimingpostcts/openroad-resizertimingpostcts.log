@@ -1,0 +1,133 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/34-openroad-cts/cnn_top.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2.0
+[INFO] Setting input delay to: 2.0
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0094] Found 30 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 30 out of 30 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |    WNS   |   TNS      |  Viol  | Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |            | Endpts | Endpt
+---------------------------------------------------------------------------------------------------
+        0 |       0 |       0 |        0 |      0 |     0 |   -3.220 |      -41.1 |     30 | _3132_/D
+       10 |       0 |       9 |        0 |      0 |     0 |   -2.543 |      -28.7 |     30 | _3132_/D
+       20 |       0 |      19 |        0 |      0 |     0 |   -2.035 |      -18.4 |     30 | _3132_/D
+       30 |       0 |      25 |        4 |      0 |     3 |   -2.033 |      -17.7 |     30 | _3132_/D
+       40 |       0 |      32 |        4 |      0 |     6 |   -1.817 |      -13.2 |     30 | _3132_/D
+       50 |       0 |      42 |        4 |      0 |     6 |   -1.778 |      -12.6 |     30 | _3132_/D
+       60 |       0 |      49 |        4 |      0 |     9 |   -1.655 |      -10.4 |     30 | _3132_/D
+       70 |       0 |      53 |        4 |      0 |    15 |   -1.677 |      -10.8 |     30 | _3132_/D
+       80 |       0 |      60 |       10 |      0 |    16 |   -1.405 |       -6.9 |     30 | _3132_/D
+       90 |       0 |      68 |       12 |      0 |    17 |   -1.374 |       -6.4 |     30 | _3132_/D
+      100 |       0 |      75 |       18 |      0 |    18 |   -1.326 |       -5.8 |     30 | _3132_/D
+      110 |       0 |      82 |       18 |      0 |    21 |   -1.384 |       -6.6 |     30 | _3132_/D
+      120 |       0 |      88 |       20 |      0 |    24 |   -1.296 |       -5.5 |     30 | _3132_/D
+      130 |       0 |      95 |       27 |      0 |    25 |   -1.220 |       -4.7 |     30 | _3132_/D
+      140 |       0 |      99 |       27 |      0 |    31 |   -1.144 |       -4.3 |     30 | _3132_/D
+      150 |       0 |     106 |       31 |      0 |    32 |   -1.154 |       -4.4 |     30 | _3132_/D
+      160 |       0 |     114 |       31 |      0 |    34 |   -1.142 |       -4.3 |     30 | _3132_/D
+      170 |       0 |     121 |       33 |      0 |    36 |   -1.096 |       -3.8 |     30 | _3132_/D
+      180 |       0 |     127 |       33 |      1 |    39 |   -1.075 |       -4.9 |     30 | _3132_/D
+      182 |       0 |     128 |       34 |      1 |    39 |   -0.984 |       -3.9 |     30 | _3132_/D
+      186 |       0 |     128 |       36 |      1 |    40 |   -0.983 |       -3.8 |     30 | _3132_/D
+      190 |       0 |     130 |       36 |      1 |    41 |   -0.994 |       -3.8 |     30 | _3132_/D
+      191 |       0 |     128 |       36 |      1 |    40 |   -0.983 |       -3.8 |     30 | _3132_/D
+      194 |       0 |     128 |       36 |      1 |    40 |   -0.983 |       -3.8 |     30 | _3132_/D
+      200 |       0 |     129 |       36 |      1 |    44 |   -0.983 |       -3.9 |     30 | _3132_/D
+      200 |       0 |     129 |       36 |      1 |    41 |   -0.983 |       -3.8 |     30 | _3132_/D
+      202 |       0 |     129 |       36 |      1 |    41 |   -0.983 |       -3.8 |     30 | _3132_/D
+      210 |       0 |     132 |       36 |      1 |    45 |   -0.997 |       -3.7 |     30 | _3132_/D
+      211 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     30 | _3132_/D
+      216 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     30 | _3132_/D
+      220 |       0 |     130 |       36 |      1 |    44 |   -0.983 |       -3.7 |     30 | _3132_/D
+      221 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     30 | _3132_/D
+      224 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     30 | _3132_/D
+      225 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     29 | _3132_/D
+      226 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     28 | _3132_/D
+      227 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     27 | _3132_/D
+      228 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     26 | _3132_/D
+      229 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     25 | _3132_/D
+      230 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     25 | _3132_/D
+      230 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     24 | _3132_/D
+      231 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     23 | _3132_/D
+      232 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     22 | _3132_/D
+      233 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     21 | _3132_/D
+      234 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     20 | _3132_/D
+      235 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     19 | _3132_/D
+      236 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     18 | _3132_/D
+      237 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     17 | _3132_/D
+      238 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     16 | _3132_/D
+      239 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     15 | _3132_/D
+      240 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     15 | _3132_/D
+      240 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     14 | _3132_/D
+      241 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     13 | _3132_/D
+      242 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     12 | _3132_/D
+      243 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     11 | _3132_/D
+      244 |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     245* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     246* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     247* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     248* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     249* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     250* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     250* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     251* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     252* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     253* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+     254* |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+    final |       0 |     129 |       36 |      1 |    42 |   -0.983 |       -3.6 |     10 | _3132_/D
+---------------------------------------------------------------------------------------------------
+[INFO RSZ-0040] Inserted 22 buffers.
+[INFO RSZ-0041] Resized 129 instances.
+[INFO RSZ-0043] Swapped pins on 42 instances.
+[INFO RSZ-0049] Cloned 1 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0046] Found 184 endpoints with hold violations.
+Iteration | Resized | Buffers | Cloned Gates |   WNS   |   TNS   | Endpoint
+---------------------------------------------------------------------------
+        0 |       0 |       0 |            0 |   0.019 |   0.000 | _3100_/D
+    final |       0 |     168 |            0 |   0.100 |   0.000 | _2913_/D
+---------------------------------------------------------------------------
+[INFO RSZ-0032] Inserted 168 hold buffers.
+Placement Analysis
+---------------------------------
+total displacement       1338.1 u
+average displacement        0.4 u
+max displacement           11.9 u
+original HPWL           43096.3 u
+legalized HPWL          45453.2 u
+delta HPWL                    5 %
+
+[INFO DPL-0020] Mirrored 878 instances
+[INFO DPL-0021] HPWL before           45453.2 u
+[INFO DPL-0022] HPWL after            43850.4 u
+[INFO DPL-0023] HPWL delta               -3.5 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               166     623.10
+  Tap cell                                722     903.37
+  Clock buffer                             34     495.48
+  Timing Repair Buffer                    410    3151.77
+  Inverter                                 23      86.33
+  Clock inverter                           21     237.73
+  Sequential cell                         316    6329.82
+  Multi-Input combinational cell         1424   11337.12
+  Total                                  3116   23164.72
+Writing OpenROAD database to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.odb'…
+Writing netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.nl.v'…
+Writing powered netlist to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.pnl.v'…
+Writing layout to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.def'…
+Writing timing constraints to '/mnt/c/Users/navee/ECE510/project/m3/synth/runs/RUN_2026-05-20_22-44-53/36-openroad-resizertimingpostcts/cnn_top.sdc'…
