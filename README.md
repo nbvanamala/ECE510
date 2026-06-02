@@ -12,6 +12,13 @@
 **Design justification report:** [`project/m4/report/design_justification.pdf`](project/m4/report/design_justification.pdf)  
 **M4 file catalog:** [`project/m4/README.md`](project/m4/README.md)
 
+> **Grader note — git tag:** The submission tag `m4-submission` is pushed to
+> this repository. Because zip downloads strip `.git` metadata, the tag cannot
+> be seen in a zip; it is visible on GitHub at:
+> **https://github.com/nbvanamala/ECE510/tree/m4-submission**  
+> Graded commit: `ec0d3241c65070669b5d8a870e7e89c95950d633`  
+> To verify locally: `git clone https://github.com/nbvanamala/ECE510.git && git checkout m4-submission`
+
 ### Key results (M4)
 | Metric | Value |
 |--------|-------|
