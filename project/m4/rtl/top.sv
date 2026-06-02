@@ -1,6 +1,6 @@
 // ============================================================
 // top.sv — Integrated Top Module
-// Project : Edge CNN Accelerator Using a Weight-Stationary Systolic Array
+// Project : Edge CNN Accelerator Using a Weight-Stationary Parallel PE Array
 // Course  : ECE510 Spring 2026
 // Author  : Naveen Babu Vanamala
 //

@@ -50,16 +50,18 @@ TOTAL               1.778056e-03 W    5.319614e-04 W    1.118749e-08 W    2.3100
 
 --- Energy per Inference ---
 
-  Accelerator throughput   :  60.0 MFLOPs/s  (120 cycles/patch × 900 patches × 100 MHz)
-  Runtime per 32×32 image  :  1.08 ms
-  Energy per image         :  2.310 mW × 1.08 ms  =  2.49 µJ/image
-  SW baseline energy       :  28 W × 10.966 ms    =  0.307 J/image  (i7-1165G7 TDP)
-  Energy reduction         :  0.307 J / 2.49 µJ   ≈  123,000×
+  Accelerator throughput   :  47.7 MFLOPs/s  (151 cycles/patch × 900 patches, measured cosim)
+  Runtime per 32×32 image  :  1.359 ms  (900 × 1510 ns)
+  Energy per image         :  2.310 mW × 1.359 ms  =  3.14 µJ/image
+  SW baseline energy       :  28 W × 10.966 ms     =  0.307 J/image  (i7-1165G7 TDP)
+  Energy reduction         :  0.307 J / 3.14 µJ    ≈  97,800×
 
   Note: The SW energy uses i7 TDP (worst case); actual per-operation CPU
   energy is lower. The hardware figure is also pre-route and without
-  measured activity. The order-of-magnitude (100,000×) energy advantage
+  measured activity. The order-of-magnitude (97,800×) energy advantage
   reflects the fundamental benefit of custom ASIC versus a general-purpose CPU.
+  Throughput and runtime are measured from project/m4/sim/final_run.log
+  (TIMING SUMMARY: 151 cycles/patch at 100 MHz).
 
 Source: project/m3/synth/runs/RUN_2026-05-20_22-44-53/42-openroad-stamidpnr-3/power.rpt
         and or_metrics_out.json

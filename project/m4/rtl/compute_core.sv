@@ -1,5 +1,5 @@
 // ============================================================
-// compute_core.sv  —  Weight-Stationary Systolic Array Core
+// compute_core.sv  —  Weight-Stationary Parallel PE Array Core
 // Project  : Edge CNN Accelerator for Industrial AI Applications
 // Course   : ECE510 Spring 2026
 // Author   : Naveen Babu Vanamala

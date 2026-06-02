@@ -13,7 +13,7 @@ Design justification report: [report/design_justification.pdf](report/design_jus
 |------|-------------|----------------|
 | `rtl/top.sv` | Integrated top module: AXI4-Lite write pipeline, weight staging, result capture, DONE flag. Identical to `project/m3/rtl/top.sv` — the version that was synthesized and benchmarked. | §2 Final RTL |
 | `rtl/interface.sv` | AXI4-Lite slave (`axi4lite_slave`) + wrapper (`cnn_interface`). M3 version adds result read-back at 0x10. Identical to `project/m3/rtl/interface.sv`. | §2 Final RTL |
-| `rtl/compute_core.sv` | Weight-stationary systolic array core: 4 conv_pe instances, weight memory FFs, result packing. From `project/m2/rtl/compute_core.sv` (unchanged). | §2 Final RTL |
+| `rtl/compute_core.sv` | Weight-stationary parallel PE array core: 4 conv_pe instances, weight memory FFs, result packing. From `project/m2/rtl/compute_core.sv` (unchanged). | §2 Final RTL |
 | `rtl/conv_pe.sv` | Single INT8 convolution processing element: 8×8 signed MAC, 32-bit accumulator, KERNEL_SIZE tap counter. From `project/m2/rtl/conv_pe.sv` (unchanged). | §2 Final RTL |
 
 **Diff from M3:** No RTL changes. The M4 RTL is identical to M3. The three planned improvements (streaming FIFO, 8-PE expansion, full OpenLane PnR) are documented in §9 of the design justification report under "What did not work / future work."
@@ -51,7 +51,7 @@ vvp sim_out
 
 | File | Description | Checklist item |
 |------|-------------|----------------|
-| `bench/benchmark.md` | Throughput, speedup, and energy comparison. HW: 60.0 MFLOPs/s (120 cycles/patch cosim). SW: 5.91 MFLOPs/s (Python loop). Speedup: 10.15×. Energy: ~2.49 µJ vs ~307 mJ. | §4 Benchmark |
+| `bench/benchmark.md` | Throughput, speedup, and energy comparison. HW: 47.7 MFLOPs/s (151 cycles/patch, measured cosim). SW: 5.91 MFLOPs/s (Python loop). Speedup: 8.07×. Energy: ~3.14 µJ vs ~307 mJ. | §4 Benchmark |
 | `bench/benchmark_data.csv` | Raw measurement data backing all numbers in benchmark.md and the report. One row per metric with value, unit, and source reference. | §4 Raw data |
 | `bench/roofline_final.png` | Roofline plot on sky130A axes (FLOP/byte vs GFLOPs/s, log scale). Shows hardware roofline, SW baseline point (5.91 MFLOPs/s, 2.48 AI), and M4 measured HW point (47.7 MFLOPs/s, 2.48 AI, 151 cycles/patch cosim). | §4 Roofline |
 
