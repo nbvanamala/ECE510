@@ -118,5 +118,6 @@ cnn_interface #(.DATA_WIDTH(8),.ADDR_WIDTH(32),.AXI_DW(32)) u_interface(
 .s_bvalid(s_bvalid),.s_bready(s_bready),.s_bresp(s_bresp),
 .s_arvalid(if_arvalid),.s_arready(if_arready),.s_araddr(s_araddr),
 .s_rvalid(if_rvalid),.s_rready(s_rready),.s_rdata(if_rdata),.s_rresp(if_rresp),
-.pixel_out(w_pixel_out),.weight_out(w_weight_out),.valid_out(w_valid_out),.done_in(w_done_in));
+.pixel_out(w_pixel_out),.weight_out(w_weight_out),.valid_out(w_valid_out),.done_in(w_done_in),
+.result_in(32'b0));
 endmodule
