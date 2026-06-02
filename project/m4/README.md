@@ -54,6 +54,7 @@ vvp sim_out
 | `bench/benchmark.md` | Throughput, speedup, and energy comparison. HW: 47.7 MFLOPs/s (151 cycles/patch, measured cosim). SW: 5.91 MFLOPs/s (Python loop). Speedup: 8.07×. Energy: ~3.14 µJ vs ~307 mJ. | §4 Benchmark |
 | `bench/benchmark_data.csv` | Raw measurement data backing all numbers in benchmark.md and the report. One row per metric with value, unit, and source reference. | §4 Raw data |
 | `bench/roofline_final.png` | Roofline plot on sky130A axes (FLOP/byte vs GFLOPs/s, log scale). Shows hardware roofline, SW baseline point (5.91 MFLOPs/s, 2.48 AI), and M4 measured HW point (47.7 MFLOPs/s, 2.48 AI, 151 cycles/patch cosim). | §4 Roofline |
+| `bench/generate_roofline_m4.py` | Python script that generated roofline_final.png. Sets HW point at 47.7 MFLOPs/s (measured from final_run.log). Run: `python3 bench/generate_roofline_m4.py`. | §4 Roofline |
 
 ### 6. Design Justification Report (`report/`)
 
