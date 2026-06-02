@@ -53,11 +53,16 @@ vvp sim_out
 |------|-------------|----------------|
 | `bench/benchmark.md` | Throughput, speedup, and energy comparison. HW: 60.0 MFLOPs/s (120 cycles/patch cosim). SW: 5.91 MFLOPs/s (Python loop). Speedup: 10.15×. Energy: ~2.49 µJ vs ~307 mJ. | §4 Benchmark |
 | `bench/benchmark_data.csv` | Raw measurement data backing all numbers in benchmark.md and the report. One row per metric with value, unit, and source reference. | §4 Raw data |
-| `bench/roofline_final.png` | Roofline plot on sky130A axes (FLOP/byte vs GFLOPs/s, log scale). Shows hardware roofline, SW baseline point (5.91 MFLOPs/s, 2.48 AI), and M4 measured HW point (60 MFLOPs/s, 2.48 AI). | §4 Roofline |
+| `bench/roofline_final.png` | Roofline plot on sky130A axes (FLOP/byte vs GFLOPs/s, log scale). Shows hardware roofline, SW baseline point (5.91 MFLOPs/s, 2.48 AI), and M4 measured HW point (47.7 MFLOPs/s, 2.48 AI, 151 cycles/patch cosim). | §4 Roofline |
 
 ### 6. Design Justification Report (`report/`)
 
 | File | Description | Checklist item |
 |------|-------------|----------------|
-| `report/design_justification.pdf` | 9-section engineering report (2,000–5,000 words). Sections: Problem & Motivation, Roofline Analysis, Precision & Data Format, Dataflow & Architecture, Hardware Interface, Verification, Synthesis Results, Benchmark Results, What Did Not Work. | §5 Report |
-| `report/figures/` | Figures referenced in the report by number (block diagram, dataflow diagram, roofline, waveform). | §5 Figures |
+| `report/design_justification.pdf` | 9-section engineering report (~4,200 words). Sections: Problem & Motivation, Roofline Analysis, Precision & Data Format, Dataflow & Architecture, Hardware Interface, Verification, Synthesis Results, Benchmark Results, What Did Not Work. | §5 Report |
+| `report/design_justification.md` | Markdown source for the PDF. Converted to PDF using `build_pdf.py`. | §5 Report source |
+| `report/build_pdf.py` | Python script (ReportLab) that generates design_justification.pdf from design_justification.md. Run: `python3 report/build_pdf.py`. | §5 Build tool |
+| `report/figures/block_diagram.png` | System block diagram (Figure 1 in report). | §5 Figures |
+| `report/figures/dataflow_diagram.png` | Weight-stationary dataflow diagram (Figure 2 in report). | §5 Figures |
+| `report/figures/final_waveform.png` | Annotated AXI4-Lite co-simulation waveform (Figure 3 in report). | §5 Figures |
+| `report/figures/roofline_final.png` | Final roofline plot with M4 measured point (Figure 4 in report). | §5 Figures |

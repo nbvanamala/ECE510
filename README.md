@@ -15,7 +15,7 @@
 ### Key results (M4)
 | Metric | Value |
 |--------|-------|
-| RTL | 4-PE weight-stationary systolic array, AXI4-Lite, INT8, SystemVerilog |
+| RTL | 4-PE weight-stationary parallel array, AXI4-Lite, INT8, SystemVerilog |
 | Simulation | PASS — `project/m4/sim/final_run.log` |
 | Synthesis | sky130A, 1,763 stdcells, 20,656 µm², 2.31 mW, 100 MHz (WNS=0) |
 | HW throughput | 60.0 MFLOPs/s (cosim, 120 cycles/patch) |

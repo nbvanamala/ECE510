@@ -1,24 +1,74 @@
-VCD info: dumpfile cosim_waveform.vcd opened for output.
-[REGION 1] Writing PE weights via AXI4-Lite WEIGHT_IN (0x04)
-[REGION 1] PE0 weight=3
-[REGION 1] PE1 weight=7
-[REGION 1] PE2 weight=-2 (0xFE as INT8)
-[REGION 1] PE3 weight=5
-[REGION 2] Streaming 9 distinct pixel taps via AXI4-Lite (pixels 1..9)
-[REGION 2] Tap 0: pixel=1
-[REGION 2] Tap 1: pixel=2
-[REGION 2] Tap 2: pixel=3
-[REGION 2] Tap 3: pixel=4
-[REGION 2] Tap 4: pixel=5
-[REGION 2] Tap 5: pixel=6
-[REGION 2] Tap 6: pixel=7
-[REGION 2] Tap 7: pixel=8
-[REGION 2] Tap 8: pixel=9
-[REGION 3] Polling DONE register (0x20) via AXI4-Lite read
-[REGION 3] DONE=1 after 1 poll(s)
-[REGION 3] PE0: got=135 expected=135       OK
-[REGION 3] PE1: got=315 expected=315       OK
-[REGION 3] PE2: got=-90 expected=-90       OK
-[REGION 3] PE3: got=225 expected=225       OK
+VCD info: dumpfile final_waveform.vcd opened for output.
+[RESET] Asserting reset for 5 clock cycles
+[RESET] Reset deasserted at t=75 ns
+[WEIGHT LOAD] Loading 4 PE weights (one-time cost)
+[WEIGHT LOAD] PE0 weight= 3
+[WEIGHT LOAD] PE1 weight= 7
+[WEIGHT LOAD] PE2 weight=-2 (0xFE INT8)
+[WEIGHT LOAD] PE3 weight= 5
+[WEIGHT LOAD] Complete at t=375 ns
+[MEASURE] Starting 3-invocation timing measurement
+[RUN 1] --- Pixel stream start t=375 ns ---
+[RUN 1] Tap 0: pixel=1 at t=516 ns
+[RUN 1] Tap 1: pixel=2 at t=656 ns
+[RUN 1] Tap 2: pixel=3 at t=796 ns
+[RUN 1] Tap 3: pixel=4 at t=936 ns
+[RUN 1] Tap 4: pixel=5 at t=1076 ns
+[RUN 1] Tap 5: pixel=6 at t=1216 ns
+[RUN 1] Tap 6: pixel=7 at t=1356 ns
+[RUN 1] Tap 7: pixel=8 at t=1496 ns
+[RUN 1] Tap 8: pixel=9 at t=1636 ns
+[RUN 1] Polling DONE (0x20)
+[RUN 1] DONE=1 after 1 poll(s) at t=1686 ns
+[RUN 1] PE0: got=135 expected=135       OK
+[RUN 1] PE1: got=315 expected=315       OK
+[RUN 1] PE2: got=-90 expected=-90       OK
+[RUN 1] PE3: got=225 expected=225       OK
+[RUN 1] --- Complete at t=1886 ns ---
+[RUN 2] --- Pixel stream start t=1886 ns ---
+[RUN 2] Tap 0: pixel=1 at t=2026 ns
+[RUN 2] Tap 1: pixel=2 at t=2166 ns
+[RUN 2] Tap 2: pixel=3 at t=2306 ns
+[RUN 2] Tap 3: pixel=4 at t=2446 ns
+[RUN 2] Tap 4: pixel=5 at t=2586 ns
+[RUN 2] Tap 5: pixel=6 at t=2726 ns
+[RUN 2] Tap 6: pixel=7 at t=2866 ns
+[RUN 2] Tap 7: pixel=8 at t=3006 ns
+[RUN 2] Tap 8: pixel=9 at t=3146 ns
+[RUN 2] Polling DONE (0x20)
+[RUN 2] DONE=1 after 1 poll(s) at t=3196 ns
+[RUN 2] PE0: got=135 expected=135       OK
+[RUN 2] PE1: got=315 expected=315       OK
+[RUN 2] PE2: got=-90 expected=-90       OK
+[RUN 2] PE3: got=225 expected=225       OK
+[RUN 2] --- Complete at t=3396 ns ---
+[RUN 3] --- Pixel stream start t=3396 ns ---
+[RUN 3] Tap 0: pixel=1 at t=3536 ns
+[RUN 3] Tap 1: pixel=2 at t=3676 ns
+[RUN 3] Tap 2: pixel=3 at t=3816 ns
+[RUN 3] Tap 3: pixel=4 at t=3956 ns
+[RUN 3] Tap 4: pixel=5 at t=4096 ns
+[RUN 3] Tap 5: pixel=6 at t=4236 ns
+[RUN 3] Tap 6: pixel=7 at t=4376 ns
+[RUN 3] Tap 7: pixel=8 at t=4516 ns
+[RUN 3] Tap 8: pixel=9 at t=4656 ns
+[RUN 3] Polling DONE (0x20)
+[RUN 3] DONE=1 after 1 poll(s) at t=4706 ns
+[RUN 3] PE0: got=135 expected=135       OK
+[RUN 3] PE1: got=315 expected=315       OK
+[RUN 3] PE2: got=-90 expected=-90       OK
+[RUN 3] PE3: got=225 expected=225       OK
+[RUN 3] --- Complete at t=4906 ns ---
+
+=== TIMING SUMMARY ===
+Clock period          : 10 ns (100 MHz)
+Measurement start     : t=375 ns
+Measurement end       : t=4906 ns
+Elapsed (3 patches)   : 4531 ns
+Total clock cycles    : 453 cycles  (= 4531 ns / 10 ns)
+Cycles per patch      : 151 cycles  (= 453 / 3)
+Time per patch        : 1510 ns
+======================
+
 PASS
-../tb/tb_top.sv:100: $finish called at 1935000 (1ps)
+/mnt/c/Users/navee/ECE510/project/m4/tb/tb_top.sv:184: $finish called at 4955000 (1ps)
