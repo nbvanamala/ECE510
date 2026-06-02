@@ -1,0 +1,36 @@
+metric,value,unit,source,notes
+sw_baseline_time_per_image,10.966,ms,project/m1/sw_baseline.md,Python im2col loop on i7-compatible host
+sw_baseline_time_per_patch,0.01218,ms,project/m1/sw_baseline.md,10.966 ms / 900 patches
+sw_baseline_throughput,5.91,MFLOPs/s,project/m1/sw_baseline.md,64800 FLOPs / 10.966 ms
+sw_baseline_samples_per_sec,91.2,img/s,project/m1/sw_baseline.md,1000 / 10.966
+sw_baseline_platform,i7-1165G7 compat,,project/m1/sw_baseline.md,Windows 11 Python 3.13 NumPy 2.4.4
+hw_sim_total_cycles,360,cycles,project/m4/sim/final_run.log,3 invocations tb_top.sv cosim
+hw_sim_cycles_per_patch,120,cycles,derived,360 cycles / 3 invocations
+hw_sim_time_per_patch_ns,1200,ns,derived,120 cycles × 10 ns/cycle at 100 MHz
+hw_sim_time_per_image_ms,1.08,ms,derived,900 patches × 1200 ns
+hw_sim_throughput,60.0,MFLOPs/s,derived,64800 FLOPs / 1.08 ms
+hw_sim_samples_per_sec,926,img/s,derived,1000 / 1.08
+hw_clock_freq,100,MHz,project/m4/synth/config.json,CLOCK_PERIOD=10ns
+hw_mac_utilization,7.5,percent,derived,9 compute cycles / 120 total cycles
+hw_axi_overhead_cycles,111,cycles,derived,120 total - 9 compute cycles
+speedup_vs_sw_loop,10.15,x,derived,10.966 ms / 1.08 ms
+flops_per_patch,72,FLOPs,derived,9 MACs × 4 PEs × 2 FLOPs/MAC
+flops_per_image,64800,FLOPs,derived,900 patches × 72 FLOPs/patch
+arithmetic_intensity,2.48,FLOPs/byte,project/codefest/cf09/benchmarks/benchmark_results.md,lower bound no weight reuse
+die_area,59334,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
+core_area,51302,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
+stdcell_area,20656,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
+cell_count,1763,cells,project/m4/synth/area_report.txt,sky130_fd_sc_hd after OpenLane mapping
+core_utilization,40.3,percent,project/m4/synth/area_report.txt,OpenROAD floorplan
+setup_wns,0.0,ns,project/m4/synth/timing_report.txt,OpenROAD STA nom_tt_025C_1v80
+hold_wns,0.0,ns,project/m4/synth/timing_report.txt,OpenROAD STA nom_tt_025C_1v80
+worst_setup_slack,4.062,ns,project/m4/synth/timing_report.txt,OpenROAD STA nom_tt_025C_1v80
+worst_hold_slack,0.312,ns,project/m4/synth/timing_report.txt,OpenROAD STA nom_tt_025C_1v80
+total_power,2.310,mW,project/m4/synth/power_report.txt,OpenROAD report_power nom_tt_025C_1v80
+sequential_power,1.289,mW,project/m4/synth/power_report.txt,OpenROAD report_power
+combinational_power,0.149,mW,project/m4/synth/power_report.txt,OpenROAD report_power
+clock_power,0.872,mW,project/m4/synth/power_report.txt,OpenROAD report_power
+energy_per_image_uj,2.49,uJ,derived,2.310 mW × 1.08 ms
+sw_energy_per_image_J,0.307,J,derived,28 W TDP × 10.966 ms (upper bound)
+energy_reduction,123000,x,derived,0.307 J / 2.49 uJ
+hw_efficiency,26.0,MFLOPs/W,derived,60 MFLOPs/s / 2.310 mW

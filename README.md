@@ -1,30 +1,57 @@
-Name: Naveen Babu Vanamala
+# Edge CNN Accelerator for Industrial AI Applications
 
-Course: Hardware for Artificial Intelligence and Machine Learning
-
-Term: Spring 2026
-
-Tentative Project Topic:
-Edge CNN Accelerator for Industrial AI Applications
-
-For my project, I plan to create a hardware accelerator that makes Convolutional Neural Networks (CNNs) run faster on small devices like industrial sensors or cameras. CNNs are commonly used in AI for tasks such as image recognition, detecting defects, and monitoring equipment. My design will use fixed point arithmetic and multiple convolution units working in parallel, which allows it to process data quickly while using less energy. I will implement the design in SystemVerilog and test it using Icarus Verilog and QuestaSim to make sure it works correctly. This project will show a practical way to run AI tasks efficiently on small devices, without needing to build a physical chip.
+**Name:** Naveen Babu Vanamala  
+**Course:** Hardware for Artificial Intelligence and Machine Learning (ECE 410/510)  
+**Term:** Spring 2026
 
 ---
 
-## HDL Compute Core (Milestone 2 — in progress)
+## Milestone 4 — Final Submission
 
-### Module: `conv_pe` (Convolution Processing Element)
-**File:** `project/hdl/conv_pe.sv`
+**M4 deliverables:** [`project/m4/`](project/m4/)  
+**Design justification report:** [`project/m4/report/design_justification.pdf`](project/m4/report/design_justification.pdf)  
+**M4 file catalog:** [`project/m4/README.md`](project/m4/README.md)
 
-`conv_pe` is a parameterized, synthesizable SystemVerilog module implementing a single convolution Processing Element for the Edge CNN Accelerator. It accepts a stream of INT8-signed pixel and weight pairs via a `valid_in` handshake, accumulates `pixel × weight` products into a 32-bit signed register over one kernel window (`KERNEL_SIZE` taps, default 9 for a 3×3 kernel), and pulses `valid_out` with the completed dot-product on the final tap. Parameters allow scaling to different kernel sizes and data widths without RTL changes.
+### Key results (M4)
+| Metric | Value |
+|--------|-------|
+| RTL | 4-PE weight-stationary systolic array, AXI4-Lite, INT8, SystemVerilog |
+| Simulation | PASS — `project/m4/sim/final_run.log` |
+| Synthesis | sky130A, 1,763 stdcells, 20,656 µm², 2.31 mW, 100 MHz (WNS=0) |
+| HW throughput | 60.0 MFLOPs/s (cosim, 120 cycles/patch) |
+| SW baseline | 5.91 MFLOPs/s (Python im2col loop, M1) |
+| Speedup | **10.15×** |
 
-**Testbench:** `project/hdl/test_conv_pe.py` (cocotb)
+---
 
-### Interface Choice: AXI4
-The accelerator exposes an AXI4 on-chip bus interface between the host CPU and the convolution PE array. AXI4 supports high-throughput burst transfers that match the tiled memory access pattern of the convolution engine.
+## Project Summary
 
-### Precision: INT8
-Weights and activations use INT8 symmetric quantization (scale factor S = max|W| / 127, as derived in CF04 CMAN). INT8 arithmetic halves DRAM bandwidth versus FP16 and is natively supported by the MAC array.
+This project implements a hardware accelerator for 3×3 INT8 convolutional
+neural network inference targeting the sky130A open-source PDK. The accelerator
+uses a weight-stationary dataflow with four parallel processing elements (PEs)
+connected via an AXI4-Lite host interface.
 
-### Interface Bandwidth Justification
-From the M1 roofline analysis, the convolution kernel has an arithmetic intensity of **2.51 FLOP/byte** and the target throughput is **500 GFLOP/s**, requiring ~199 GB/s of effective bandwidth. A naive CPU-to-accelerator link (PCIe 4.0 x16, ~32 GB/s) would be ~6× too slow. The design therefore uses AXI4 with large on-chip SRAM tile buffers (2 MB scratchpad + 512 KB weight buffer) to keep most data movement on-chip, reducing the external bandwidth requirement to ~32 GB/s — within reach of PCIe 4.0 x16 with double-buffered tiling. This matches the interface analysis documented in `project/m1/interface_selection.md`.
+---
+
+## Repository Structure
+
+```
+project/
+├── heilmeier.md          Project proposal
+├── m1/                   Software baseline, roofline analysis, interface selection
+├── m2/                   RTL (conv_pe, compute_core, interface), precision analysis
+├── m3/                   Integrated top module, co-simulation, OpenLane 2 synthesis
+└── m4/                   FINAL: RTL, TB, sim, synth, benchmark, report
+codefest/
+├── cf01/ … cf09/         Weekly codefest deliverables
+```
+
+---
+
+## Prior Milestone Notes
+
+**M2** introduced the INT8 conv_pe and compute_core, verified with cocotb.  
+**M3** integrated the AXI4-Lite interface, ran full co-simulation (PASS), and
+completed OpenLane 2 synthesis through global placement + STA on sky130A.  
+**M4** packages final RTL (identical to M3), extracts real OpenLane 2 timing/
+area/power numbers, and adds the benchmark comparison and design justification report.

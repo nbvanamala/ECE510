@@ -1,0 +1,66 @@
+=== Area Report — Edge CNN Accelerator (M4 Final) ===
+Tool   : OpenROAD / OpenLane 2 (Floorplan + Global Placement metrics)
+PDK    : sky130A, sky130_fd_sc_hd standard-cell library
+Design : top (top + cnn_interface/axi4lite_slave + compute_core + conv_pe x4)
+Run    : project/m3/synth/runs/RUN_2026-05-20_22-44-53  (step 13-openroad-floorplan)
+Date   : 2026-05-20
+ECE510 Spring 2026 | Naveen Babu Vanamala
+
+NOTE: Area numbers are taken from the OpenROAD floorplan step after
+sky130A standard-cell mapping and placement. These are real sky130A cell
+areas, not Yosys generic-gate estimates. The instance area reflects
+actual sky130_fd_sc_hd cell footprints from the PDK LEF files.
+
+--- Die and Core Geometry ---
+
+  Die bounding box   :  238.285 µm × 249.005 µm
+  Die area           :  59,334 µm²  (0.0593 mm²)
+  Core bounding box  :  5.52–232.76 µm × 10.88–236.64 µm
+  Core area          :  51,302 µm²  (0.0513 mm²)
+
+--- Cell Counts and Instance Area ---
+
+  Total standard cells placed  :  1,763
+    Inverters (class:inverter)              :    23
+    Sequential cells (FFs, latches)        :   316
+    Multi-input combinational cells        : 1,424
+
+  Instance (stdcell) area      :  20,656 µm²  (0.0207 mm²)
+  Core utilization             :  40.3%  (20,656 / 51,302)
+  Macros                       :  0
+
+--- Dominant Area Contributors ---
+
+By module (estimated from Yosys cell counts × sky130 avg cell area):
+
+  Module          Cells   Est. Fraction   Notes
+  conv_pe x4      ~3,052  ~52%            4 INT8×INT8 MAC units + 32b accumulators
+  top (glue)        ~562  ~12%            AXI write pipeline, result regs, DONE flag
+  axi4lite_slave    ~464  ~10%            AXI4-Lite FSM, register file
+  compute_core      ~233   ~5%            Weight memory FFs, valid pipeline
+  Other (buffers, clock tree, routing cells added by OpenROAD): ~21%
+
+The conv_pe array is the dominant area consumer, as expected for a
+compute-intensive MAC design. The 32-bit accumulator register per PE
+and the INT8 signed multiplier logic account for the majority of the
+conv_pe cell count.
+
+--- Sky130A vs Yosys Generic Comparison ---
+
+  Yosys generic cells (pre-sky130 mapping)  :  4,305  generic cells
+  Sky130A stdcells after OpenLane mapping   :  1,763  real sky130 cells
+  Reduction ratio                           :  ~2.4× fewer cells after technology mapping
+  (Generic cells do not map 1:1 to stdcells; multiple generic cells
+   collapse into single sky130 compound gates during synthesis optimization.)
+
+--- Summary Table ---
+
+  Metric              Value         Source
+  Die area            59,334 µm²   OpenROAD floorplan or_metrics_out.json
+  Core area           51,302 µm²   OpenROAD floorplan or_metrics_out.json
+  Stdcell area        20,656 µm²   OpenROAD floorplan or_metrics_out.json
+  Cell count          1,763        OpenROAD floorplan or_metrics_out.json
+  Core utilization    40.3%        OpenROAD floorplan or_metrics_out.json
+  Dominant module     conv_pe x4   ~52% of logic area
+
+Source: project/m3/synth/runs/RUN_2026-05-20_22-44-53/13-openroad-floorplan/or_metrics_out.json

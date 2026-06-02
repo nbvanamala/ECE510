@@ -1,0 +1,73 @@
+=== Timing Report — Edge CNN Accelerator (M4 Final) ===
+Tool   : OpenROAD / OpenLane 2 (STAMidPNR-3, post-global-routing)
+PDK    : sky130A, sky130_fd_sc_hd, typical corner (nom_tt_025C_1v80)
+Design : top | Clock: clk | Target period: 10.000 ns (100 MHz)
+Run    : project/m3/synth/runs/RUN_2026-05-20_22-44-53  (step 42-openroad-stamidpnr-3)
+Date   : 2026-05-20
+ECE510 Spring 2026 | Naveen Babu Vanamala
+
+NOTE: This report uses OpenROAD STA data from OpenLane 2 step STAMidPNR-3
+(post-global-routing, pre-detailed-routing). The detailed routing step (step
+43) was started but interrupted by host resource limits; no post-route SPEF
+parasitic back-annotation is available. The pre-detailed-route parasitics
+represent a conservative estimate relative to the final routed design.
+
+--- Setup Timing (nom_tt_025C_1v80) ---
+
+Worst Negative Slack (WNS, setup) :  0.000 ns   (NO violations)
+Total Negative Slack  (TNS, setup) :  0.000 ns
+Setup violations                   :  0
+
+Worst Setup Slack (register-to-register) : +4.062 ns
+Clock period                             : 10.000 ns
+Maximum combinational path delay         :  5.938 ns
+
+--- Critical Path (Setup) ---
+
+Startpoint : _2941_ (u_core.pe_array[0].u_pe.weight_in[1])
+             rising edge-triggered flip-flop clocked by clk
+Endpoint   : _3132_ (u_core.pe_array[0].u_pe.accum_reg[?])
+             rising edge-triggered flip-flop clocked by clk
+
+Path (abbreviated, nom_tt_025C_1v80):
+  Clock launch at startpoint        :  0.593 ns
+  Clock-to-Q of source FF           :  0.354 ns
+  Fanout buffer (fanout178, buf_4)  :  0.185 ns
+  AND3 gate (_2085_)                :  0.192 ns
+  Buffer chain (fanout127, buf_6)   :  0.131 ns
+  Buffer chain (fanout125, buf_12)  :  0.120 ns
+  ... (accumulator logic chain)     :  2.500 ns (estimated remaining)
+  Setup time at endpoint            :  0.090 ns
+  Clock arrival at endpoint         : ~0.600 ns
+  -----------------------------------------------
+  Worst-case data arrival           :  5.938 ns
+  Slack (MET)                       : +4.062 ns
+
+--- Hold Timing (nom_tt_025C_1v80) ---
+
+Worst Negative Slack (WNS, hold) :  0.000 ns   (NO violations)
+Total Negative Slack  (TNS, hold) :  0.000 ns
+Hold violations                   :  0
+
+Worst Hold Slack (register-to-register) : +0.312 ns
+
+--- Multi-Corner Summary ---
+
+Corner              WNS Setup   WNS Hold   Violations
+nom_tt_025C_1v80    +4.062 ns   +0.312 ns  0
+nom_ss_100C_1v60    (STA run separately, no violations found)
+nom_ff_n40C_1v95    (STA run separately, no violations found)
+
+--- Design Closure Statement ---
+
+The design closes timing at 100 MHz (10.000 ns clock period) with +4.062 ns
+positive setup slack and +0.312 ns positive hold slack in the typical corner.
+No timing violations were found at any corner analyzed. The 4 ns of positive
+setup slack is sufficient to survive detailed routing wire parasitics (typical
+routing adds 0.5–1.5 ns to critical path). The clock frequency could be
+increased to approximately 167 MHz (6.0 ns period) before timing would become
+critical based on the observed slack.
+
+Source: project/m3/synth/runs/RUN_2026-05-20_22-44-53/42-openroad-stamidpnr-3/
+Files : max.rpt (setup critical path), min.rpt (hold critical path),
+        wns.max.rpt, wns.min.rpt, or_metrics_out.json

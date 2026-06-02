@@ -1,0 +1,24 @@
+VCD info: dumpfile cosim_waveform.vcd opened for output.
+[REGION 1] Writing PE weights via AXI4-Lite WEIGHT_IN (0x04)
+[REGION 1] PE0 weight=3
+[REGION 1] PE1 weight=7
+[REGION 1] PE2 weight=-2 (0xFE as INT8)
+[REGION 1] PE3 weight=5
+[REGION 2] Streaming 9 distinct pixel taps via AXI4-Lite (pixels 1..9)
+[REGION 2] Tap 0: pixel=1
+[REGION 2] Tap 1: pixel=2
+[REGION 2] Tap 2: pixel=3
+[REGION 2] Tap 3: pixel=4
+[REGION 2] Tap 4: pixel=5
+[REGION 2] Tap 5: pixel=6
+[REGION 2] Tap 6: pixel=7
+[REGION 2] Tap 7: pixel=8
+[REGION 2] Tap 8: pixel=9
+[REGION 3] Polling DONE register (0x20) via AXI4-Lite read
+[REGION 3] DONE=1 after 1 poll(s)
+[REGION 3] PE0: got=135 expected=135       OK
+[REGION 3] PE1: got=315 expected=315       OK
+[REGION 3] PE2: got=-90 expected=-90       OK
+[REGION 3] PE3: got=225 expected=225       OK
+PASS
+../tb/tb_top.sv:100: $finish called at 1935000 (1ps)
