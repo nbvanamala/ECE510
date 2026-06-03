@@ -24,25 +24,36 @@ from PIL import Image as PILImage
 # Fonts
 # ---------------------------------------------------------------------------
 _FONT_DIR = Path("C:/Windows/Fonts")
+_REPORT_DIR = Path(__file__).resolve().parent
 for _name, _file in [
-    ("Arial",            "arial.ttf"),
-    ("Arial-Bold",       "arialbd.ttf"),
-    ("Arial-Italic",     "ariali.ttf"),
-    ("Arial-BoldItalic", "arialbi.ttf"),
-    ("CourierNew",       "cour.ttf"),
-    ("CourierNew-Bold",  "courbd.ttf"),
+    ("Helvetica",            "arial.ttf"),
+    ("Helvetica-Bold",       "arialbd.ttf"),
+    ("Helvetica-Oblique",     "ariali.ttf"),
+    ("Helvetica-BoldOblique", "arialbi.ttf"),
+    ("Courier",       "cour.ttf"),
+    ("Courier-Bold",  "courbd.ttf"),
 ]:
     _path = _FONT_DIR / _file
     if _path.exists():
         pdfmetrics.registerFont(TTFont(_name, str(_path)))
 
 registerFontFamily(
-    "Arial",
-    normal="Arial",
-    bold="Arial-Bold",
-    italic="Arial-Italic",
-    boldItalic="Arial-BoldItalic",
+    "Helvetica",
+    normal="Helvetica",
+    bold="Helvetica-Bold",
+    italic="Helvetica-Oblique",
+    boldItalic="Helvetica-BoldOblique",
 )
+
+# --- Fallback for environments without Windows TTFs (e.g. Ubuntu/WSL) ---
+from reportlab.pdfbase.pdfmetrics import getRegisteredFontNames as _grf
+_have = set(_grf())
+if "Courier" not in _have:
+    registerFontFamily("Courier", normal="Courier", bold="Courier-Bold",
+                        italic="Courier-Oblique", boldItalic="Courier-BoldOblique")
+if "Helvetica" not in _have:
+    registerFontFamily("Helvetica", normal="Helvetica", bold="Helvetica-Bold",
+                        italic="Helvetica-Oblique", boldItalic="Helvetica-BoldOblique")
 
 # ---------------------------------------------------------------------------
 # Layout
@@ -67,29 +78,29 @@ def _P(name, **kw):
     return ParagraphStyle(name, **kw)
 
 ST = {
-    "h1":     _P("H1",    fontName="Arial-Bold",   fontSize=18, leading=22,
+    "h1":     _P("H1",    fontName="Helvetica-Bold",   fontSize=18, leading=22,
                            spaceAfter=5,  textColor=NAVY, alignment=TA_CENTER),
-    "h2sub":  _P("H2S",   fontName="Arial-Bold",   fontSize=12, leading=15,
+    "h2sub":  _P("H2S",   fontName="Helvetica-Bold",   fontSize=12, leading=15,
                            spaceAfter=3,  textColor=NAVY, alignment=TA_CENTER),
-    "h3sub":  _P("H3S",   fontName="Arial-Italic", fontSize=11, leading=14,
+    "h3sub":  _P("H3S",   fontName="Helvetica-Oblique", fontSize=11, leading=14,
                            spaceAfter=3,  textColor=GRAY, alignment=TA_CENTER),
-    "sec":    _P("Sec",   fontName="Arial-Bold",   fontSize=13, leading=17,
+    "sec":    _P("Sec",   fontName="Helvetica-Bold",   fontSize=13, leading=17,
                            spaceBefore=18, spaceAfter=8, textColor=NAVY),
-    "subsec": _P("SS",    fontName="Arial-Bold",   fontSize=11, leading=14,
+    "subsec": _P("SS",    fontName="Helvetica-Bold",   fontSize=11, leading=14,
                            spaceBefore=10, spaceAfter=5, textColor=LTBLUE),
-    "body":   _P("Bd",    fontName="Arial",        fontSize=10.5, leading=14.5,
+    "body":   _P("Bd",    fontName="Helvetica",        fontSize=10.5, leading=14.5,
                            spaceAfter=8,  alignment=TA_JUSTIFY),
-    "bullet": _P("Bu",    fontName="Arial",        fontSize=10.5, leading=14,
+    "bullet": _P("Bu",    fontName="Helvetica",        fontSize=10.5, leading=14,
                            leftIndent=20, firstLineIndent=-10, spaceAfter=3),
-    "code":   _P("Co",    fontName="CourierNew",   fontSize=8.5, leading=11,
+    "code":   _P("Co",    fontName="Courier",   fontSize=8.5, leading=11,
                            leftIndent=16, spaceAfter=8, backColor=CODE_BG,
                            borderPadding=(3, 6, 3, 6)),
-    "note":   _P("No",    fontName="Arial-Italic", fontSize=9.5, leading=13,
+    "note":   _P("No",    fontName="Helvetica-Oblique", fontSize=9.5, leading=13,
                            textColor=GRAY, alignment=TA_JUSTIFY),
-    "th":     _P("TH",    fontName="Arial-Bold",   fontSize=9,   leading=11,
+    "th":     _P("TH",    fontName="Helvetica-Bold",   fontSize=9,   leading=11,
                            textColor=colors.white),
-    "td":     _P("TD",    fontName="Arial",        fontSize=9,   leading=11.5),
-    "tdcode": _P("TDc",   fontName="CourierNew",   fontSize=8.5, leading=10.5),
+    "td":     _P("TD",    fontName="Helvetica",        fontSize=9,   leading=11.5),
+    "tdcode": _P("TDc",   fontName="Courier",   fontSize=8.5, leading=10.5),
 }
 
 # ---------------------------------------------------------------------------
@@ -107,7 +118,7 @@ def _inline(text: str) -> str:
     text = re.sub(r"(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)", r"<i>\1</i>", text)
     # Inline code  `text`
     text = re.sub(r"`([^`]+)`",
-                  r'<font face="CourierNew" fontSize="9">\1</font>', text)
+                  r'<font face="Courier" fontSize="9">\1</font>', text)
     return text
 
 # ---------------------------------------------------------------------------
@@ -148,11 +159,11 @@ def _build_table(md_lines: list):
     fs_lead = fs + 2
 
     def _cell_para(text, is_header):
-        fn  = "Arial-Bold" if is_header else "Arial"
+        fn  = "Helvetica-Bold" if is_header else "Helvetica"
         ftc = colors.white if is_header else colors.black
         # use monospace for cells that look like hex/code  0x.. or [n:n]
         if not is_header and re.match(r"^(0x|`|\[)", text):
-            fn = "CourierNew"
+            fn = "Courier"
         style = ParagraphStyle(
             "c", fontName=fn, fontSize=fs, leading=fs_lead, textColor=ftc
         )
@@ -187,11 +198,11 @@ def _hf(canvas, doc):
     canvas.setStrokeColor(NAVY)
     canvas.setLineWidth(0.75)
     canvas.line(LM, y_hdr - 2, W - RM, y_hdr - 2)
-    canvas.setFont("Arial-Bold", 7.5)
+    canvas.setFont("Helvetica-Bold", 7.5)
     canvas.setFillColor(NAVY)
     canvas.drawString(LM, y_hdr + 2,
                       "Edge CNN Accelerator — Design Justification Report")
-    canvas.setFont("Arial", 7.5)
+    canvas.setFont("Helvetica", 7.5)
     canvas.drawRightString(W - RM, y_hdr + 2,
                            "Naveen Babu Vanamala  |  ECE 510 Spring 2026")
     # ── footer ─────────────────────────────────────────────
@@ -199,7 +210,7 @@ def _hf(canvas, doc):
     canvas.setStrokeColor(RULE_COLOR)
     canvas.setLineWidth(0.5)
     canvas.line(LM, y_ftr + 8, W - RM, y_ftr + 8)
-    canvas.setFont("Arial", 7.5)
+    canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(GRAY)
     canvas.drawCentredString(W / 2, y_ftr - 2, f"— {doc.page} —")
     canvas.restoreState()
@@ -303,7 +314,7 @@ def _md_to_story(md: str) -> list:
             if m:
                 caption  = m.group(1)
                 rel_path = m.group(2)
-                img_path = Path("C:/Users/navee/ECE510/project/m4/report") / rel_path
+                img_path = _REPORT_DIR / rel_path
                 if img_path.exists():
                     try:
                         pil  = PILImage.open(str(img_path))
@@ -313,7 +324,7 @@ def _md_to_story(md: str) -> list:
                         scale = min(max_w / pw, max_h / ph)
                         iw, ih = pw * scale, ph * scale
                         cap_st = ParagraphStyle(
-                            "Cap", fontName="Arial-Italic", fontSize=8.5,
+                            "Cap", fontName="Helvetica-Oblique", fontSize=8.5,
                             leading=11, alignment=TA_CENTER,
                             textColor=GRAY, spaceAfter=10, spaceBefore=2)
                         story.append(Spacer(1, 8))
@@ -371,7 +382,7 @@ def _md_to_story(md: str) -> list:
 # Entry point
 # ---------------------------------------------------------------------------
 def main():
-    base   = Path("C:/Users/navee/ECE510/project/m4/report")
+    base   = Path(__file__).resolve().parent
     md_in  = base / "design_justification.md"
     pdf_out = base / "design_justification.pdf"
 

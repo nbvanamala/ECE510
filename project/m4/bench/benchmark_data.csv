@@ -2,10 +2,10 @@ metric,value,unit,source,notes
 # SW baseline note: 5.91 MFLOPs/s is the measured Python im2col loop throughput (CF09 re-run).
 # 128.5 GFLOPs/s in m1/sw_baseline.md is the THEORETICAL i7-1165G7 roofline ceiling (attainable
 # peak if compute-bound) — NOT the Python loop speed. These are different quantities.
-sw_baseline_time_per_image,10.966,ms,project/codefest/cf09/benchmarks/benchmark_results.md,Measured Python im2col loop (CF09 Task 6 re-run) — row Exec time per image
-sw_baseline_time_per_patch,0.01218,ms,project/codefest/cf09/benchmarks/benchmark_results.md,10.966 ms / 900 patches
-sw_baseline_throughput,5.91,MFLOPs/s,project/codefest/cf09/benchmarks/benchmark_results.md,Measured Python loop — row Throughput (MFLOPs/s); 64800 FLOPs / 10.966 ms
-sw_baseline_samples_per_sec,91.2,img/s,project/codefest/cf09/benchmarks/benchmark_results.md,1000 / 10.966 ms
+sw_baseline_time_per_image,10.966,ms,codefest/cf09/benchmarks/benchmark_results.md,Measured Python im2col loop (CF09 Task 6 re-run) — row Exec time per image
+sw_baseline_time_per_patch,0.01218,ms,codefest/cf09/benchmarks/benchmark_results.md,10.966 ms / 900 patches
+sw_baseline_throughput,5.91,MFLOPs/s,codefest/cf09/benchmarks/benchmark_results.md,Measured Python loop — row Throughput (MFLOPs/s); 64800 FLOPs / 10.966 ms
+sw_baseline_samples_per_sec,91.2,img/s,codefest/cf09/benchmarks/benchmark_results.md,1000 / 10.966 ms
 sw_baseline_platform,i7-1165G7 compat,,project/m1/sw_baseline.md,Windows 11 Python 3.13 NumPy 2.4.4
 cpu_theoretical_roofline_ceiling,128.5,GFLOPs/s,project/m1/sw_baseline.md,i7-1165G7 roofline peak (NOT Python loop speed — this is compute-bound ceiling at ridge point 2.75 FLOPs/byte × 51.2 GB/s LPDDR4x)
 hw_sim_measurement_start_ns,375,ns,project/m4/sim/final_run.log,"$time printed: [MEASURE] Starting 3-invocation timing measurement"
@@ -26,7 +26,7 @@ hw_cycles_per_pixel_tap,14,cycles,derived from log timestamps,"tap-to-tap delta 
 speedup_vs_sw_loop,8.07,x,derived,10.966 ms / 1.359 ms
 flops_per_patch,72,FLOPs,derived,9 MACs x 4 PEs x 2 FLOPs/MAC
 flops_per_image,64800,FLOPs,derived,900 patches x 72 FLOPs/patch
-arithmetic_intensity,2.48,FLOPs/byte,project/codefest/cf09/benchmarks/benchmark_results.md,lower bound no weight reuse
+arithmetic_intensity,2.48,FLOPs/byte,codefest/cf09/benchmarks/benchmark_results.md,lower bound no weight reuse
 die_area,59334,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
 core_area,51302,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
 stdcell_area,20656,um2,project/m4/synth/area_report.txt,OpenROAD floorplan sky130A
