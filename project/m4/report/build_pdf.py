@@ -16,7 +16,9 @@ from reportlab.pdfbase.pdfmetrics import registerFontFamily
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     HRFlowable, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle,
+    Image as RLImage,
 )
+from PIL import Image as PILImage
 
 # ---------------------------------------------------------------------------
 # Fonts
@@ -295,6 +297,34 @@ def _md_to_story(md: str) -> list:
             story.append(Spacer(1, 3))
             continue
 
+        # ── inline image  ![caption](path) ───────────────
+        if line.startswith("!["):
+            m = re.match(r"!\[([^\]]*)\]\(([^)]+)\)", line)
+            if m:
+                caption  = m.group(1)
+                rel_path = m.group(2)
+                img_path = Path("C:/Users/navee/ECE510/project/m4/report") / rel_path
+                if img_path.exists():
+                    try:
+                        pil  = PILImage.open(str(img_path))
+                        pw, ph = pil.size
+                        max_w = TEXT_W * 0.95
+                        max_h = 3.8 * inch
+                        scale = min(max_w / pw, max_h / ph)
+                        iw, ih = pw * scale, ph * scale
+                        cap_st = ParagraphStyle(
+                            "Cap", fontName="Arial-Italic", fontSize=8.5,
+                            leading=11, alignment=TA_CENTER,
+                            textColor=GRAY, spaceAfter=10, spaceBefore=2)
+                        story.append(Spacer(1, 8))
+                        story.append(RLImage(str(img_path), width=iw, height=ih))
+                        story.append(Paragraph(_inline(caption), cap_st))
+                        story.append(Spacer(1, 6))
+                    except Exception as e:
+                        story.append(Paragraph(f"[Figure: {caption}]", ST["note"]))
+            i += 1
+            continue
+
         # ── blank line ────────────────────────────────────
         if line.strip() == "":
             i += 1
@@ -306,7 +336,8 @@ def _md_to_story(md: str) -> list:
             l = lines[i]
             if (l.strip() == "" or re.match(r"^#{1,3} ", l) or
                     l.startswith("|") or l.startswith("```") or
-                    l.strip() == "---" or re.match(r"^- ", l)):
+                    l.strip() == "---" or re.match(r"^- ", l) or
+                    l.startswith("![")):
                 break
             para_parts.append(l)
             i += 1

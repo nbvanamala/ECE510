@@ -27,6 +27,8 @@ The roofline analysis establishes the theoretical performance ceiling for the 3�
 
 **Measured M4 position.** The M4 accelerator achieves **47.7 MFLOPs/s** at AI = 2.48 FLOPs/byte (see Figure 4, `roofline_final.png`), measured directly from co-simulation timing (151 cycles/patch, `final_run.log` TIMING SUMMARY). This is **6.9× below the bandwidth ceiling** and **16.8× below the compute ceiling**. The design operates in neither the bandwidth-bound nor compute-bound regimes — it is **AXI-overhead-bound**: 142 of 151 cycles per patch are spent on AXI4-Lite bus handshakes, and only 9 cycles perform MAC accumulation (5.96% MAC utilization, measured). Closing the gap to the bandwidth ceiling requires replacing the per-pixel AXI write sequence with a streaming interface. This is discussed in Section 9.
 
+![Figure 4: Roofline plot — M4 measured HW point (47.7 MFLOPs/s, 151 cycles/patch) at AI=2.48 FLOPs/byte on sky130A. SW baseline (5.91 MFLOPs/s) and sky130A roofline shown for reference.](figures/roofline_final.png)
+
 **How the roofline shaped the architecture.** The roofline analysis directly motivated the weight-stationary dataflow: reusing each weight across all 9 pixel positions reduces weight-reload bandwidth from 4 × 9 = 36 to 4 byte fetches per patch invocation, increasing the effective arithmetic intensity. It also motivated the choice of 4 parallel PEs: doubling from 2 to 4 PEs doubles compute throughput at near-zero bandwidth cost because the same pixel is broadcast to all PEs from a single register.
 
 ---
@@ -57,6 +59,10 @@ In a weight-stationary dataflow, each processing element (PE) holds one weight v
 **Compute engine.** The compute engine (`project/m4/rtl/compute_core.sv`, `conv_pe.sv`) consists of four `conv_pe` instances in parallel. Each `conv_pe` holds one INT8 weight, multiplies it against the incoming INT8 pixel every clock cycle when `valid_in` is asserted, and accumulates into a 32-bit signed register. After 9 taps (KERNEL_SIZE = 9), the PE asserts `valid_out` and presents the completed dot-product on `accum_out`. The tap counter (`tap_count[3:0]`) resets to zero after the 9th tap and the accumulator clears to zero for the next patch.
 
 **What one PE computes.** Each PE computes `result = weight_i × sum(pixels[0..8])` — a single fixed weight multiplied by the sum of all 9 pixels in one 3×3 patch. This is a single-weight broadcast MAC, not a full 3×3 convolution dot-product (which requires nine distinct per-tap weights: Σᵢ wᵢ·pᵢ). The design demonstrates the weight-stationary memory hierarchy and AXI4-Lite control path; extending it to a true 9-weight dot-product would require loading KERNEL_SIZE distinct weights per PE per patch — exactly the streaming FIFO improvement described in Section 9. Four PEs in parallel produce four independently weighted sums simultaneously, one per output channel. See Figure 1 (block diagram) and Figure 2 (dataflow diagram).
+
+![Figure 1: System block diagram — AXI4-Lite master → cnn_interface → compute_core → 4× conv_pe → result registers.](figures/block_diagram.png)
+
+![Figure 2: Weight-stationary dataflow — one fixed weight per PE; same pixel broadcast to all 4 PEs each clock cycle.](figures/dataflow_diagram.png)
 
 **Memory hierarchy.**
 - *Weight storage:* 4 × 8-bit flip-flop registers in `compute_core.sv` (`weight_mem`). Loaded via AXI4-Lite WEIGHT_IN once per kernel application.
@@ -115,6 +121,8 @@ The top-level testbench drives the complete AXI4-Lite interface of the integrate
 - PE3: 5 × 45 = **225** ✓
 
 The simulation log (`project/m4/sim/final_run.log`) shows all four PEs produce correct results in every one of the 3 invocations — **12 of 12 PE result checks pass** — ending with the token `PASS`. The TIMING SUMMARY in the log directly provides the measured cycle counts (151 cycles/patch) that support the benchmark numbers in Section 8. See Figure 3 (`final_waveform.png`) for the annotated waveform.
+
+![Figure 3: M4 co-simulation waveform — Reset+Weight Load → Run 1 pixel stream (9 taps, PIXEL_IN+CTRL) → DONE poll + 4 result reads → Run 2 start. t=375 ns marks measurement start; 151 cycles/patch measured.](figures/final_waveform.png)
 
 **Coverage:** AXI write path (address and data phase handshakes), AXI read path, weight loading and PE index incrementing, pixel register capture, CTRL strobe generation, tap counter advance and reset, 9-tap accumulation arithmetic, multi-invocation result consistency, DONE flag assertion and auto-clear behavior, 3 back-to-back patch cycles without reset.
 

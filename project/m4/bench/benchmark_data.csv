@@ -1,9 +1,13 @@
 metric,value,unit,source,notes
-sw_baseline_time_per_image,10.966,ms,project/m1/sw_baseline.md,Python im2col loop on i7-compatible host
-sw_baseline_time_per_patch,0.01218,ms,project/m1/sw_baseline.md,10.966 ms / 900 patches
-sw_baseline_throughput,5.91,MFLOPs/s,project/m1/sw_baseline.md,64800 FLOPs / 10.966 ms
-sw_baseline_samples_per_sec,91.2,img/s,project/m1/sw_baseline.md,1000 / 10.966
+# SW baseline note: 5.91 MFLOPs/s is the measured Python im2col loop throughput (CF09 re-run).
+# 128.5 GFLOPs/s in m1/sw_baseline.md is the THEORETICAL i7-1165G7 roofline ceiling (attainable
+# peak if compute-bound) — NOT the Python loop speed. These are different quantities.
+sw_baseline_time_per_image,10.966,ms,project/codefest/cf09/benchmarks/benchmark_results.md,Measured Python im2col loop (CF09 Task 6 re-run) — row Exec time per image
+sw_baseline_time_per_patch,0.01218,ms,project/codefest/cf09/benchmarks/benchmark_results.md,10.966 ms / 900 patches
+sw_baseline_throughput,5.91,MFLOPs/s,project/codefest/cf09/benchmarks/benchmark_results.md,Measured Python loop — row Throughput (MFLOPs/s); 64800 FLOPs / 10.966 ms
+sw_baseline_samples_per_sec,91.2,img/s,project/codefest/cf09/benchmarks/benchmark_results.md,1000 / 10.966 ms
 sw_baseline_platform,i7-1165G7 compat,,project/m1/sw_baseline.md,Windows 11 Python 3.13 NumPy 2.4.4
+cpu_theoretical_roofline_ceiling,128.5,GFLOPs/s,project/m1/sw_baseline.md,i7-1165G7 roofline peak (NOT Python loop speed — this is compute-bound ceiling at ridge point 2.75 FLOPs/byte × 51.2 GB/s LPDDR4x)
 hw_sim_measurement_start_ns,375,ns,project/m4/sim/final_run.log,"$time printed: [MEASURE] Starting 3-invocation timing measurement"
 hw_sim_measurement_end_ns,4906,ns,project/m4/sim/final_run.log,"$time printed: [RUN 3] Complete at t=4906 ns"
 hw_sim_elapsed_3patches_ns,4531,ns,project/m4/sim/final_run.log,TIMING SUMMARY: Elapsed (3 patches) = 4531 ns
