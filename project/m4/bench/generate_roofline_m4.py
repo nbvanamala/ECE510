@@ -89,7 +89,7 @@ ax.annotate(
 # ── BW slope annotation ───────────────────────────────────────────────────────
 mid_bw = np.sqrt(0.1 * sky_ridge)
 ax.text(mid_bw, sky_bw_gbs * mid_bw * 0.4,
-        f"BW ceiling\nslope = {sky_bw_gbs*1000:.0f} MB/s",
+        f"BW ceiling\n{sky_bw_gbs*1000:.0f} MB/s\n(= {sky_bw_gbs*ai_lower*1000:.0f} MFLOPs/s\nat AI={ai_lower})",
         rotation=30, color="#1a6e3c", fontsize=7.5)
 
 # ── Axes ──────────────────────────────────────────────────────────────────────

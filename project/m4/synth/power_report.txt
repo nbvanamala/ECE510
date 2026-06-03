@@ -29,8 +29,8 @@ TOTAL               1.778056e-03 W    5.319614e-04 W    1.118749e-08 W    2.3100
 --- Summary ---
 
   Total power                :  2.310 mW  at 100 MHz, 1.80V, typical corner
-  Internal (switching FFs)   :  1.778 mW  (77.0% of total active power)
-  Switching (combinational)  :  0.532 mW  (23.0% of total active power)
+  Internal power (all groups):  1.778 mW  (sequential 1.277 + comb 0.066 + clock 0.435 mW)
+  Switching power (all groups):  0.532 mW  (sequential 0.012 + comb 0.083 + clock 0.437 mW)
   Leakage                    : ~11.2 nW   (negligible)
 
   Dominant contributor       : Sequential/clock network  (55.8% + 37.8% = 93.6%)

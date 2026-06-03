@@ -122,7 +122,7 @@ The simulation log (`project/m4/sim/final_run.log`) shows all four PEs produce c
 
 ## Section 7: Synthesis Results
 
-The design was synthesized using OpenLane 2 on the sky130A PDK (sky130_fd_sc_hd standard-cell library) with a 10 ns (100 MHz) clock constraint and AREA 0 synthesis strategy. The OpenLane 2 flow (`project/m4/synth/openlane_run.log`) ran 43 steps from Verilator lint through TritonRoute detailed routing. Timing and power numbers are from step 42 (OpenROAD STAMidPNR-3, post-global-routing STA). Area numbers are from step 13 (OpenROAD floorplan). All raw numbers are in `benchmark_data.csv`.
+The design was synthesized using OpenLane 2 on the sky130A PDK (sky130_fd_sc_hd standard-cell library) with a 10 ns (100 MHz) clock constraint and AREA 0 synthesis strategy. Note: the OpenLane 2 run (`synth/openlane_run.log`) was performed on the M3 version of `top.sv`. The M4 `top.sv` differs in two cosmetic places: a comment update and a `.result_in(32'b0)` tie-off on a dead port. Neither change affects the synthesized netlist; all timing, area, and power numbers apply directly to the M4 RTL. The OpenLane 2 flow (`project/m4/synth/openlane_run.log`) ran 43 steps from Verilator lint through TritonRoute detailed routing. Timing and power numbers are from step 42 (OpenROAD STAMidPNR-3, post-global-routing STA). Area numbers are from step 13 (OpenROAD floorplan). All raw numbers are in `benchmark_data.csv`.
 
 **Area.**
 
@@ -158,7 +158,7 @@ The design **closes timing at 100 MHz** with +4.062 ns of positive setup slack i
 | Clock           | 4.353×10⁻⁴     | 4.369×10⁻⁴    | 9.138×10⁻¹⁰ | 8.722×10⁻⁴   | 37.8%    |
 | **Total**       | **1.778×10⁻³** | **5.320×10⁻⁴** | **1.12×10⁻⁸** | **2.310×10⁻³** | **100%** |
 
-Total power: **2.310 mW** at 100 MHz, 1.80 V, typical corner. The dominant contributor is sequential switching (55.8%), followed by the clock tree (37.8%). This is within the target of <10 mW for edge IoT deployment.
+Total power: **2.310 mW** at 100 MHz, 1.80 V, typical corner. The 1.778 mW internal power figure is the sum across all groups (sequential 1.277 + combinational 0.066 + clock 0.435 mW), not FF switching alone. The dominant contributor is the sequential cell + clock tree network (55.8% + 37.8% = 93.6% combined), consistent with a small design where clock distribution dominates over logic. This is within the target of <10 mW for edge IoT deployment.
 
 ---
 
