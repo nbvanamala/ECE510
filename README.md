@@ -16,7 +16,7 @@
 > this repository. Because zip downloads strip `.git` metadata, the tag cannot
 > be seen in a zip; it is visible on GitHub at:
 > **https://github.com/nbvanamala/ECE510/tree/m4-submission**  
-> Graded commit: `ec0d3241c65070669b5d8a870e7e89c95950d633`  
+> Graded commit: `e57c930f09618b012d3bea6d8d3d967c515e6076`  
 > To verify locally: `git clone https://github.com/nbvanamala/ECE510.git && git checkout m4-submission`
 
 ### Key results (M4)
